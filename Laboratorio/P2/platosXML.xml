@@ -1,0 +1,43 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<Plato>
+    <Nombre>Pure de Patata</Nombre>
+    <Precio>5.95</Precio>
+    <Descripcion>Pure de patata roja con picatostes</Descripcion>
+    <Calorias>350</Calorias>
+</Plato>
+
+<Plato>
+    <Nombre>Macarrones con queso</Nombre>
+    <Precio>4.95</Precio>
+    <Descripcion>Macarrones con queso parmesano</Descripcion>
+    <Calorias>450</Calorias>
+</Plato>
+
+<Plato>
+    <Nombre>Garbanzos con chorizo</Nombre>
+    <Precio>6.95</Precio>
+    <Descripcion>Garbanzos cocidos con chorizo de Atienza</Descripcion>
+    <Calorias>950</Calorias>
+</Plato>
+
+<Plato>
+    <Nombre>Judias verdes</Nombre>
+    <Precio>3.95</Precio>
+    <Descripcion>Judias verdes cocidas de la variedad "Blanca de Espana"</Descripcion>
+    <Calorias>350</Calorias>
+</Plato>
+
+<Plato>
+    <Nombre>Sopa de pescado</Nombre>
+    <Precio>5.95</Precio>
+    <Descripcion>Sopa de morralla de pescado</Descripcion>
+    <Calorias>350</Calorias>
+</Plato>
+
+<Plato>
+    <Nombre>Merluza a la plancha</Nombre>
+    <Precio>6.95</Precio>
+    <Descripcion>Rodaja de merluza a la plancha con aceita de oliva</Descripcion>
+    <Calorias>400</Calorias>
+</Plato>
