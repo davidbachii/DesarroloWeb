@@ -7,11 +7,9 @@
     <title>AlphaTauri</title>
 </head>
 <body>
-    <header>
-
-    </header>
+    
     <section>
-        <form action="main.html" method="post">
+        <form action="index.html" method="post">
             <ul>
                 <h2>Vota por el mejor piloto</h2>
               <li>
@@ -24,7 +22,7 @@
               </li>
               <li>
                 <p><label for="msg">Pilotos:</label>
-                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64" />
+                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64" pattern="(Carlos Sainz Jr|Jaime Alguersuari|Sebastien Bourdais|Jean-Éric Vergne|Max Verstappen|Alberto Ascari|Daniel Ricciardo|Sebastian Vettel)" title="Seleccione un piloto perteneciente a la escudería" />
                 
                 <datalist id="pilotos">
                   <option value="Sebastian Vettel"></option>
@@ -44,6 +42,15 @@
             </ul>
           </form>
     </section>
+    <section class="Alpha">
+      <h2>Equipo AlphaTauri</h2>
+      <img src="Imagenes/alphateam.jpg" alt="Equipo AlphaTauri" style="max-height: 180px;">
+      <a href="https://especiales.marca.com/motor/formula1/escuderias/2023/alphatauri.html">AlphaTauri</a>
+      <p>El futuro de la escudería filial de Red Bull es toda una incertidumbre. Los resultados de la temporada pasada fueron decepcionantes, con un 9º puesto en el Mundial de Constructores, posterior a conseguir quedar 6º y subir al podio en 2021.
+
+      Pero, en la escudería de Faenza apuestan por novedades tanto en el monoplaza, donde el color rojo de su nuevo patrocinador predomina junto al azul, como al frente del AT04, siendo Nyck De Vries, después de su gran carrera en Monza el año pasado, el elegido para acompañar a Yuki Tsunoda en esta nueva temporada.</p>
+  </section>
+ 
     
 </body>
 </html>

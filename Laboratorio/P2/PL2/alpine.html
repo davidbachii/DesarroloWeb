@@ -11,7 +11,7 @@
 
     </header>
     <section>
-        <form action="main.html" method="post">
+        <form action="index.html" method="post">
             <ul>
                 <h2>Vota por el mejor piloto</h2>
               <li>
@@ -24,7 +24,7 @@
               </li>
               <li>
                 <p><label for="msg">Pilotos:</label>
-                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64" />
+                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64"  pattern="(Fernando Alonso|Alain Prost|Nelson Piquet|Damon Hill|Jean-Pierre Jabouille|Patrick Tambay|Thierry Boutsen)" title="Seleccione un piloto perteneciente a la escudería" />
                 
                 <datalist id="pilotos">
                   <option value="Fernando Alonso"></option>
@@ -44,6 +44,18 @@
             </ul>
           </form>
     </section>
+    <section class="Aston">
+      <h2>Equipo Alpine</h2>
+      <img src="Imagenes/teamAlpine.jpeg" alt="Equipo Alpine" style="max-height: 180px;">
+      <a href="https://especiales.marca.com/motor/formula1/escuderias/2023/alpine.html">Alpine</a>
+      <p>LEn Enstone han perdido al mejor piloto de su historia y a la mejor promesa de su escuela. Nadie imaginaba que, en 2023, la pareja de pilotos de Alpine sería Ocon y Gasly. Además, los franceses incorporan a Zidane como nuevo embajador. Cosas de este maravilloso deporte.
+
+      Desde la escudería francesa aseguran haber solucionado los problemas de fiabilidad del motor de su nuevo monoplaza (A523), principal punto negro en 2022. Otmar Szafnauer deberá lidiar con dos pilotos, cuya única afinidad es su nacionalidad. Después de cuatro años consecutivos en la zona media, deberán dar un paso adelante.</p>
+  </section>
+  <section>
+    <h2>Mejores momentos de Alpine(antiguamente renault)</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/aA3sYiA_59E?si=lDjpLwaD3DWG22BJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </section>
     
 </body>
 </html>

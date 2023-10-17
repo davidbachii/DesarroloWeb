@@ -11,7 +11,7 @@
 
     </header>
     <section>
-        <form action="main.html" method="post">
+        <form action="index.html" method="post">
             <ul>
                 <h2>Vota por el mejor piloto</h2>
               <li>
@@ -24,7 +24,7 @@
               </li>
               <li>
                 <p><label for="msg">Pilotos:</label>
-                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64" />
+                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64"  pattern="(Kimi Räikkönen|Felipe Massa|Robert Kubica|Heinz-Harald Frentzen|Sergio Pérez|Kamui Kobayashi|Jean Alesi)" title="Seleccione un piloto perteneciente a la escudería"/>
                 
                 <datalist id="pilotos">
                   <option value="Kimi Räikkönen"></option>
@@ -44,6 +44,19 @@
             </ul>
           </form>
     </section>
+    <section class="AlphaRomeo">
+      <h2>Equipo AlphaRomeo</h2>
+      <img src="Imagenes/teamRomeo.jpg  " alt="Equipo Redbull" style="max-height: 180px;">
+      <a href="https://especiales.marca.com/motor/formula1/escuderias/2023/alfaromeo.html">AlphaRomeo</a>
+      <p>Atrás quedó el color blanco y rojo del C42, para dar paso al negro y rojo del C43. Este cambio de colores intencionado busca aligerar peso en un monoplaza que fue el menos pesado en la temporada anterior y cuya principal ventaja es disponer del motor Ferrari.
+
+      Valtteri Bottas y Guanyou Zhou continuarán, un año más, al volante del Alfa Romeo. En la escudería italiana han optado por unos pontones muy al estilo de Maranello, con el objetivo de superar el 6º puesto en el Mundial de Constructores de la temporada pasada.
+        </p>
+  </section>
+  <section>
+    <h2>Mejores momentos de AlphaRomeo<h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/FYMdRTojYpo?si=ZWx_pKR98DSY6sEU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </section>
     
 </body>
 </html>

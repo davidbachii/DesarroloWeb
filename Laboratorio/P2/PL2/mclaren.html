@@ -11,7 +11,7 @@
 
     </header>
     <section>
-        <form action="main.html" method="post">
+        <form action="index.html" method="post">
             <ul>
                 <h2>Vota por el mejor piloto</h2>
               <li>
@@ -24,7 +24,7 @@
               </li>
               <li>
                 <p><label for="msg">Pilotos:</label>
-                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64" />
+                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64" pattern="(Ayrton Senna|Alain Prost|Lewis Hamilton|Mika Häkkinen|Niki Lauda|Emerson Fittipaldi|James Hunt)" title="Seleccione un piloto perteneciente a la escudería" />
                 
                 <datalist id="pilotos">
                   <option value="Ayrton Senna"></option>
@@ -44,6 +44,18 @@
             </ul>
           </form>
     </section>
+    <section class="McLaren">
+      <h2>Equipo McLaren</h2>
+      <img src="Imagenes/teamHaas.jpg" alt="Equipo mclaren" style="max-height: 180px;">
+      <a href="https://especiales.marca.com/motor/formula1/escuderias/2023/mclaren.html">McLaren</a>
+      <p>En Woking están en proceso de renovación. Tras un concepto equivocado en el monoplaza de 2022 y la salida de Daniel Ricciardo, McLaren quiere recuperar la distancia perdida con los equipos de la zona media. Bajo el mando de Andrea Stella, antiguo ingeniero de pista de Alonso en 2015, la escudería británica quiere realizar un buen papel en su 60º aniversario.
+
+      A los mandos de su nuevo monoplaza, el MCL60, estarán Lando Norris y Oscar Piastri. El británico quiere seguir demostrando su gran nivel en F1, mientras que el australiano llega al "Gran Circo" tras vencer en F2 y F3. En McLaren replican aquello de "juventud, divino tesoro".</p>
+  </section>
+  <section>
+    <h2>Mejores momentos de mclaren<h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/vkvJkMA-3z0?si=o1xkQ9zkmeUyhVxN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </section>
     
 </body>
 </html>
