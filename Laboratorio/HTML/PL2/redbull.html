@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Imagenes/redbull.png">
+    <title>Redbull</title>
+    <style>
+      header {
+            background-color: #1b1919;
+            color: #f2eeee;
+            text-align: center;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <h1>Redbull</h1>
+    <img src="Imagenes/redbull.png" alt="LogoF1" style="max-height: 80px;">
+    </header>
+    <section>
+        <form action="index.html" method="post">
+            <ul>
+              <li>
+                <h2>Vota por el mejor piloto</h2>
+              </li>
+              <li>
+                <p><label for="name">Nombre:</label>
+                <input type="text" id="name" name="user_name" required>
+              </li>
+              <li>
+                <p><label for="mail">Correo electrónico:</label>
+                <input type="email" id="mail" name="user_mail" required ></p>
+              </li>
+              <li>
+                <p><label for="msg">Pilotos:</label>
+                  <input type="text"  name="msg" id="msg" list="pilotos" required size="64" pattern="(Sebastian Vettel|Max Verstappen|Daniel Ricciardo|Mark Webber|David Coulthard|Heinz-Harald Frentzen|Jean-Éric Vergne)" title="Seleccione un piloto perteneciente a la escudería" >
+                
+                <datalist id="pilotos">
+                  <option value="Sebastian Vettel"></option>
+                  <option value="Max Verstappen"></option>
+                  <option value="Daniel Ricciardo"></option>
+                  <option value="Mark Webber"></option>
+                  <option value="David Coulthard"></option>
+                  <option value="Heinz-Harald Frentzen"></option>
+                  <option value="Jean-Éric Vergne"></option>
+                  
+                </datalist> 
+              </li>
+              <li>
+                <p><button  type="submit">Enviar</button>
+              </li>
+
+            </ul>
+          </form>
+    </section>
+    <section class="Redbull">
+      <h2>Equipo Redbull</h2>
+      <img src="Imagenes/teamRedbull.jpg" alt="Equipo Redbull" style="max-height: 180px;">
+      <a href="https://especiales.marca.com/motor/formula1/escuderias/2023/redbull.html">Redbull</a>
+      <p>Dominante. Este y otros términos se quedan cortos cuando hablamos de la temporada pasada de Red Bull. El campeón sobresalió sobre el resto con 17 victorias en 22 Grandes Premios. Su nuevo monoplaza, el RB19, está por debajo del límite de peso y su estabilidad al salir de curva mejora a la de su predecesor. Adrian Newey lo ha vuelto a hacer.
+
+      A los mandos de esta obra de la ingeniería estará el mayor talento de la parrilla, Max Verstappen, y el siempre combativo, Checo Pérez. Con temas pendientes en el tramo final de la temporada pasada, el mexicano y el neerlandés están abocados a entenderse. Red Bull y Verstappen quieren el tercer título consecutivo. Ambos son el rival a batir.
+        </p>
+  </section>
+  <section>
+    <h2>Mejores momentos de Redbull<h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MqOA0QhPSrs?si=I7uf8hCFNLbEOLYj" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </section>
+</body>
+</html>
