@@ -26,7 +26,9 @@
     <section>
         <form action="index.html" method="post">
             <ul>
+              <li>
                 <h2>Vota por el mejor piloto</h2>
+              </li>
               <li>
                 <p><label for="name">Nombre:</label>
                 <input type="text" id="name" name="user_name" required>
@@ -37,7 +39,7 @@
               </li>
               <li>
                 <p><label for="msg">Pilotos:</label>
-                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64" pattern="(Carlos Sainz Jr|Jaime Alguersuari|Sebastien Bourdais|Jean-Éric Vergne|Max Verstappen|Alberto Ascari|Daniel Ricciardo|Sebastian Vettel)" title="Seleccione un piloto perteneciente a la escudería" />
+                  <input type="text"  name="msg" id="msg" list="pilotos" required size="64" pattern="(Carlos Sainz Jr|Jaime Alguersuari|Sebastien Bourdais|Jean-Éric Vergne|Max Verstappen|Alberto Ascari|Daniel Ricciardo|Sebastian Vettel)" title="Seleccione un piloto perteneciente a la escudería" >
                 
                 <datalist id="pilotos">
                   <option value="Sebastian Vettel"></option>

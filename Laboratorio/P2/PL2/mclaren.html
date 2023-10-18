@@ -25,7 +25,9 @@
     <section>
         <form action="index.html" method="post">
             <ul>
+              <li>
                 <h2>Vota por el mejor piloto</h2>
+              </li>
               <li>
                 <p><label for="name">Nombre:</label>
                 <input type="text" id="name" name="user_name" required>
@@ -36,7 +38,7 @@
               </li>
               <li>
                 <p><label for="msg">Pilotos:</label>
-                  <input type="msg" multiple name="msg" id="msg" list="pilotos" required size="64" pattern="(Ayrton Senna|Alain Prost|Lewis Hamilton|Mika Häkkinen|Niki Lauda|Emerson Fittipaldi|James Hunt)" title="Seleccione un piloto perteneciente a la escudería" />
+                  <input type="text"  name="msg" id="msg" list="pilotos" required size="64" pattern="(Ayrton Senna|Alain Prost|Lewis Hamilton|Mika Häkkinen|Niki Lauda|Emerson Fittipaldi|James Hunt)" title="Seleccione un piloto perteneciente a la escudería" >
                 
                 <datalist id="pilotos">
                   <option value="Ayrton Senna"></option>
@@ -66,7 +68,7 @@
   </section>
   <section>
     <h2>Mejores momentos de mclaren<h2>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/vkvJkMA-3z0?si=o1xkQ9zkmeUyhVxN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/vkvJkMA-3z0?si=o1xkQ9zkmeUyhVxN" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </section>
     
 </body>
