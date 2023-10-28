@@ -1,0 +1,72 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f5ec73; /* Color rojo mate */
+}
+
+/* Estilos para el encabezado */
+header {
+    
+    background-color: #23cf93;
+    color: #f2eeee;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-family: 'Pacifico', cursive; /* Cambié la fuente de h1 */
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+    max-height: 105px; /* Aumenté la altura máxima a 300px */
+}
+
+/* Estilos para los contenidos */
+.container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los encabezados */
+h2 {
+    color: #333;
+    font-size: 25x;
+    font-family: 'Indie Flower', cursive; /* Cambié la fuente de h2 */
+}
+
+/* Estilos para las imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-height: 500px; /* Aumenté la altura máxima a 300px */
+}
+
+/* Estilos para el reproductor de audio */
+audio {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px 0;
+}
+
+/* Estilos para el reproductor de video */
+iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    
+}
