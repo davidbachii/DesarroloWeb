@@ -8,20 +8,80 @@ body {
 }
 
 /* Estilos para el encabezado */
-header {
-    background-color: #ab2a2a;
-    color: #150a0a;
-    padding: 20px 0;
-}
 
 h1 {
     font-size: 36px;
     margin: 0;
+    margin-right: 25px;
 }
 header img {
     max-width: 100%;
     height: auto;
-    max-height: 120px; /* Aumenté la altura máxima a 300px */
+    max-height: 120px; 
+}
+
+#headerAlpine {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#headerFerrari {
+    background-color: #cf0e0e;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#headerRedbull {
+    background-color: #0B162F;
+    color: #f2eeee;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#headerAston {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#headerAlpha {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#headerMercedes {
+    background-color: #000000;
+    color: #f2eeee;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#headerWilliams {
+    background-color: #0e144d;
+    color: #f2eeee;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Estilos para la sección del formulario */
