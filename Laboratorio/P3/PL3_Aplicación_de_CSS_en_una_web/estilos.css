@@ -1,0 +1,147 @@
+/* Estilos para el body y fuentes */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f571;
+    text-align: center;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #ab2a2a;
+    color: #150a0a;
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 0;
+}
+header img {
+    max-width: 100%;
+    height: auto;
+    max-height: 120px; /* Aumenté la altura máxima a 300px */
+}
+
+/* Estilos para la sección del formulario */
+section {
+    padding: 20px;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label, input, button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dc0000;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #dc0000;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a70000;
+}
+
+/* Estilos para la sección del equipo Ferrari */
+.team {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    max-width: 630px;
+}
+
+a {
+    color: #dc0000;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Estilos para los elementos de lista */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Estilos para el video de YouTube */
+iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+p {
+    font-family: 'Roboto', sans-serif; /* Cambiado a la fuente 'Roboto' */
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333333;
+}
+
+/* Estilos para la sección de información de Scuderia Ferrari */
+.info {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Añadimos el siguiente código para centrar horizontalmente */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info h2 {
+    color: #dc0000;
+    margin-bottom: 10px;
+}
+
+.info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.info li strong {
+    font-weight: bold;
+    color: #dc0000;
+}
