@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
         var nombre = document.getElementById('Name').value;
         var emailRegistro = document.getElementById('mail').value;
         var contrasena = document.getElementById('pswd').value;
+        var fechaNacimiento = document.getElementById('Fecha-nacimiento').value;
+        var numerTarjeta = document.getElementById('tarjeta-credito').value;
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var fechaPattern = /^\d{4}-\d{2}-\d{2}$/; // Define un patrón de fecha (AAAA-MM-DD)
 
         // Verificar si el nombre está lleno
         if (nombre.trim() === '') {
@@ -30,6 +33,21 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
         } else {
             document.getElementById('error-contrasena').textContent = '';
+        }
+        // Verificar si la contraseña está lleno
+        if (numerTarjeta.trim() === '') {
+            document.getElementById('error-credito').textContent = 'Por favor, ingresa un valor correcto';
+            e.preventDefault();
+        } else {
+            document.getElementById('error-credito').textContent = '';
+        }
+
+        // Verificar si la fecha cumple con el formato esperado
+        if (!fechaNacimiento.match(fechaPattern)) {
+            document.getElementById('error-fecha').textContent = 'Por favor, ingresa una fecha válida en el formato DD-MM-AAAA';
+            e.preventDefault();
+        } else {
+            document.getElementById('error-fecha').textContent = '';
         }
     });
 
