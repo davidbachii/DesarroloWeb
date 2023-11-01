@@ -2,29 +2,39 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="DaDstyle.css">
-    <!--Drag and Drop event -->
-    <script>
 
-        function allowDrop(ev) {
+    <link rel="stylesheet" href="DaDstyle.css">
+    <script>
+        // Función que permite soltar un elemento arrastrado
+        function permitirDrop(ev) {
+            // Evita el comportamiento predeterminado del navegador
             ev.preventDefault();
         }
 
+        // Función que se activa el drag de un elemento
         function drag(ev) {
+            // Configura los datos del drag event con  ID del elemento
             ev.dataTransfer.setData("text", ev.target.id);
         }
 
+        // Función soltar un elemento arrastrado
         function drop(ev) {
             ev.preventDefault();
+
+            // Obtiene el ID del elemento drag
             var data = ev.dataTransfer.getData("text");
+
+            // Obtiene el elemento de destino donde se soltará 
             var targetElement = ev.target;
+
+            // Si es "div1", anexa el elemento arrastrado a este contenedor
             if (targetElement.id === "div1") {
                 targetElement.appendChild(document.getElementById(data));
             } else {
+                //Muestra una alerta
                 alert("El área de destino ya contiene una imagen o no es el área permitida para soltar.");
             }
         }
-
     </script>
 </head>
 
@@ -37,11 +47,11 @@
 
     <div id = "contenedor">
         <h3>Ferrari</h3>
-        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div1" ondrop="drop(event)" ondragover="permitirDrop(event)"></div>
         <h3>Alpha Tauri</h3>
-        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div1" ondrop="drop(event)" ondragover="permitirDrop(event)"></div>
         <h3>RedBull</h3>
-        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div1" ondrop="drop(event)" ondragover="permitirDrop(event)"></div>
         <br>
     </div>
         <img id="drag1" src="Imagenes/alpha.jpeg " draggable="true" ondragstart="drag(event)" width="275" height="183">

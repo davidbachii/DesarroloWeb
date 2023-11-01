@@ -1,78 +1,85 @@
 /* Estilos para el body y fuentes */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f571;
-    text-align: center;
+    font-family: Arial, sans-serif; /* Se establece la fuente para el cuerpo del documento, dando prioridad a Arial y luego a cualquier fuente sans-serif disponible */
+    margin: 0; /* Se elimina el margen predeterminado del cuerpo del documento */
+    padding: 0; /* Se elimina el relleno predeterminado del cuerpo del documento */
+    background-color: #f7f571; /* Se establece el color de fondo del cuerpo del documento */
+    text-align: center; /* Se centra el texto dentro del cuerpo del documento */
 }
 
 /* Estilos para el encabezado */
 
 h1 {
-    font-size: 36px;
-    margin: 0;
-    margin-right: 25px;
+    font-size: 36px; /* Se establece el tamaño de fuente para los elementos h1 */
+    margin: 0; /* Se elimina el margen predeterminado de los elementos h1 */
+    margin-right: 25px; /* Se establece un margen derecho de 25 píxeles para los elementos h1 */
 }
 header img {
-    max-width: 100%;
-    height: auto;
-    max-height: 120px; 
+    max-width: 100%; /* Se establece el ancho máximo de la imagen dentro del encabezado al 100% del contenedor */
+    height: auto; /* Se permite que la altura de la imagen se ajuste automáticamente para mantener la proporción */
+    max-height: 120px; /* Se establece la altura máxima de la imagen dentro del encabezado en 120 píxeles */
 }
 
+/* Estilos para los encabezados específicos de equipos */
+
 #headerAlpine {
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #ffffff; /* Se establece el color de fondo para el encabezado del equipo Alpine */
+    color: #000000; /* Se establece el color del texto para el encabezado del equipo Alpine */
+    text-align: center; /* Se centra el texto dentro del encabezado del equipo Alpine */
+    padding: 20px 0; /* Se establece un relleno de 20 píxeles en la parte superior e inferior del encabezado del equipo Alpine y ningún relleno en los lados */
+    display: flex; /* Se utiliza un modelo de caja flexible para organizar los elementos en el encabezado del equipo Alpine */
+    justify-content: center; /* Se centran los elementos horizontalmente dentro del encabezado del equipo Alpine */
+    align-items: center; /* Se centran los elementos verticalmente dentro del encabezado del equipo Alpine */
 }
+
 #headerFerrari {
-    background-color: #cf0e0e;
-    color: #ffffff;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #cf0e0e; /* Se establece el color de fondo para el encabezado del equipo Ferrari */
+    color: #ffffff; /* Se establece el color del texto para el encabezado del equipo Ferrari */
+    text-align: center; /* Se centra el texto dentro del encabezado del equipo Ferrari */
+    padding: 20px 0; /* Se establece un relleno de 20 píxeles en la parte superior e inferior del encabezado del equipo Ferrari y ningún relleno en los lados */
+    display: flex; /* Se utiliza un modelo de caja flexible para organizar los elementos en el encabezado del equipo Ferrari */
+    justify-content: center; /* Se centran los elementos horizontalmente dentro del encabezado del equipo Ferrari */
+    align-items: center; /* Se centran los elementos verticalmente dentro del encabezado del equipo Ferrari */
 }
+
 #headerRedbull {
-    background-color: #0B162F;
-    color: #f2eeee;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #0B162F; /* Se establece el color de fondo para el encabezado del equipo Redbull */
+    color: #f2eeee; /* Se establece el color del texto para el encabezado del equipo Redbull */
+    text-align: center; /* Se centra el texto dentro del encabezado del equipo Redbull */
+    padding: 20px 0; /* Se establece un relleno de 20 píxeles en la parte superior e inferior del encabezado del equipo Redbull y ningún relleno en los lados */
+    display: flex; /* Se utiliza un modelo de caja flexible para organizar los elementos en el encabezado del equipo Redbull */
+    justify-content: center; /* Se centran los elementos horizontalmente dentro del encabezado del equipo Redbull */
+    align-items: center; /* Se centran los elementos verticalmente dentro del encabezado del equipo Redbull */
 }
+
 #headerAston {
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #ffffff; /* Se establece el color de fondo para el encabezado del equipo Aston */
+    color: #000000; /* Se establece el color del texto para el encabezado del equipo Aston */
+    text-align: center; /* Se centra el texto dentro del encabezado del equipo Aston */
+    padding: 20px 0; /* Se establece un relleno de 20 píxeles en la parte superior e inferior del encabezado del equipo Aston y ningún relleno en los lados */
+    display: flex; /* Se utiliza un modelo de caja flexible para organizar los elementos en el encabezado del equipo Aston */
+    justify-content: center; /* Se centran los elementos horizontalmente dentro del encabezado del equipo Aston */
+    align-items: center; /* Se centran los elementos verticalmente dentro del encabezado del equipo Aston */
 }
+
 #headerAlpha {
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #ffffff; /* Se establece el color de fondo para el encabezado del equipo Alpha */
+    color: #000000; /* Se establece el color del texto para el encabezado del equipo Alpha */
+    text-align: center; /* Se centra el texto dentro del encabezado del equipo Alpha */
+    padding: 20px 0; /* Se establece un relleno de 20 píxeles en la parte superior e inferior del encabezado del equipo Alpha y ningún relleno en los lados */
+    display: flex; /* Se utiliza un modelo de caja flexible para organizar los elementos en el encabezado del equipo Alpha */
+    justify-content: center; /* Se centran los elementos horizontalmente dentro del encabezado del equipo Alpha */
+    align-items: center; /* Se centran los elementos verticalmente dentro del encabezado del equipo Alpha */
 }
+
 #headerMercedes {
-    background-color: #000000;
-    color: #f2eeee;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #000000; /* Se establece el color de fondo para el encabezado del equipo Mercedes */
+    color: #f2eeee; /* Se establece el color del texto para el encabezado del equipo Mercedes */
+    text-align: center; /* Se centra el texto dentro del encabezado del equipo Mercedes */
+    padding: 20px 0; /* Se establece un relleno de 20 píxeles en la parte superior e inferior del encabezado del equipo Mercedes y ningún relleno en los lados */
+    display: flex; /* Se utiliza un modelo de caja flexible para organizar los elementos en el encabezado del equipo Mercedes */
+    justify-content: center; /* Se centran los elementos horizontalmente dentro del encabezado del equipo Mercedes */
+    align-items: center; /* Se centran los elementos verticalmente dentro del encabezado del equipo Mercedes */
 }
 #headerWilliams {
     background-color: #0e144d;
