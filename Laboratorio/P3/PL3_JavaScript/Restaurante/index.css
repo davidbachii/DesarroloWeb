@@ -35,3 +35,35 @@ select {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.menu-container {
+    display: flex;
+   
+    margin: 20px auto;
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+.menu-container input {
+    width: 90%; /* Ancho ajustado para los inputs */
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+   
+}
+.menu-container-selecciones {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    margin: 20px auto;
+}
+
+.menu-container-selecciones input {
+    width: 90%; /* Ancho ajustado para los inputs */
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
