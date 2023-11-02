@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 50px;
+    background-color: aquamarine;
     
 }
 
@@ -39,14 +40,17 @@ select {
     color: #333; /* Color del texto */
 }
 
-/* Estilos específicos para el contenedor del primer select */
-.menu-container select {
-    height: 200px; /* Ajusta la altura para mostrar más opciones */
-    width: 450px; /* Ajusta la altura para mostrar más opciones */
+.menu-container {
+    display: inline-block;
+    width: 40%;
+    margin: 20px;
+    vertical-align: top;
 }
 
-/* Estilos específicos para el contenedor del segundo select */
-.menu-container-selecciones select {
-    height: 200px; /* Ajusta la altura para mostrar más opciones */
-    width: 450px; 
+.menu-container-selecciones {
+    display: inline-block;
+    width: 40%;
+    margin: 20px;
+    vertical-align: top;
 }
+
