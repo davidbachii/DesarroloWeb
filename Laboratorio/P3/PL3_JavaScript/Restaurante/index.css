@@ -30,40 +30,23 @@ input[type="radio"] {
 
 select {
     width: 100%;
-    padding: 5px;
+    padding: 12px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9; /* Color de fondo */
+    color: #333; /* Color del texto */
 }
 
-.menu-container {
-    display: flex;
-   
-    margin: 20px auto;
-    justify-content: center; /* Centra horizontalmente los elementos */
-    align-items: center; /* Centra verticalmente los elementos */
+/* Estilos específicos para el contenedor del primer select */
+.menu-container select {
+    height: 200px; /* Ajusta la altura para mostrar más opciones */
+    width: 450px; /* Ajusta la altura para mostrar más opciones */
 }
 
-.menu-container input {
-    width: 90%; /* Ancho ajustado para los inputs */
-    padding: 15px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-   
-}
-.menu-container-selecciones {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente los elementos */
-    align-items: center; /* Centra verticalmente los elementos */
-    margin: 20px auto;
-}
-
-.menu-container-selecciones input {
-    width: 90%; /* Ancho ajustado para los inputs */
-    padding: 15px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    
+/* Estilos específicos para el contenedor del segundo select */
+.menu-container-selecciones select {
+    height: 200px; /* Ajusta la altura para mostrar más opciones */
+    width: 450px; 
 }
