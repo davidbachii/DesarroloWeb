@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     const platoRadios = $('input[name="plato"]');
     const opcionesSelect = $('#Opciones');
@@ -188,4 +189,5 @@ $(document).ready(function () {
 
     // Inicializar los platos al cargar la página
     mostrarPlatos([]);
+
 });
