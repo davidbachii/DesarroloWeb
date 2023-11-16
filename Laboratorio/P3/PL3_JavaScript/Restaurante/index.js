@@ -19,6 +19,21 @@ $(document).ready(function () {
         4: [],
         5: []
     };
+    let totalPorMesa={
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0
+    }
+
+    let extraPorMesa={
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0
+    }
 
     // Función para mostrar los platos según la selección de la mesa
     function mostrarPlatosPorMesa() {
@@ -39,31 +54,32 @@ $(document).ready(function () {
 
 
     // Función para mostrar los platos según la selección
-    function mostrarPlatos(platosMostrados) {
-        opcionesSelect.html(''); // Limpiar las opciones
+function mostrarPlatos(platosMostrados) {
+    opcionesSelect.html(''); // Limpiar las opciones
 
-        const platosDisponibles = obtenerPlatosDisponibles(mesaSelect.val());
-
-        $.each(platosDisponibles, function (index, plato) {
-            const option = $('<option>').text(plato);
-            opcionesSelect.append(option);
-
-            // Agregar evento de doble clic a cada opción generada
-            option.dblclick(function () {
-                const seleccion = $('<option>').text(plato);
-                seleccionesSelect.append(seleccion);
-
-                // Almacenar el plato seleccionado para la mesa actual
-                platosPorMesa[mesaSelect.val()].push(plato);
-            });
-        });
-
-        // Mostrar los platos previamente seleccionados en la nueva mesa
-        $.each(platosPorMesa[mesaSelect.val()], function (index, plato) {
+    const platosDisponibles = obtenerPlatosDisponibles(mesaSelect.val());
+    
+    $.each(platosDisponibles, function (index, plato) {
+        const option = $('<option>').text(plato);
+        opcionesSelect.append(option);
+        // Agregar evento de doble clic a cada opción generada
+        option.dblclick(function () {
             const seleccion = $('<option>').text(plato);
             seleccionesSelect.append(seleccion);
+            
+            // Almacenar el plato seleccionado para la mesa actual
+            platosPorMesa[mesaSelect.val()].push(plato);
+
+            calcularTotal();
         });
-    }
+    });
+
+    // Mostrar los platos previamente seleccionados en la nueva mesa
+    $.each(platosPorMesa[mesaSelect.val()], function (index, plato) {
+        const seleccion = $('<option>').text(plato);
+        seleccionesSelect.append(seleccion);
+    });
+}
 
     // Asociar evento a la selección de mesa
     mesaSelect.change(mostrarPlatosPorMesa);
@@ -74,11 +90,7 @@ $(document).ready(function () {
 
 
         const platoSeleccionado = obtenerPlatoSeleccionado();
-
-        // Filtrar platos disponibles según la categoría seleccionada y platos ya seleccionados
-        return $.grep(platos[platoSeleccionado], function (plato) {
-            return $.inArray(plato, platosPorMesa[mesa]) === -1;
-        });
+        return platos[platoSeleccionado] || [];
     }
 
     // Función para obtener la categoría de plato seleccionada
@@ -93,7 +105,7 @@ $(document).ready(function () {
     }
     // Función para calcular el total
     function calcularTotal() {
-        let total = 0;
+        let total = totalPorMesa[mesaSelect.val()];
 
         // Sumar el precio de cada plato seleccionado
         $.each(platosPorMesa[mesaSelect.val()], function (index, plato) {
@@ -177,7 +189,8 @@ $(document).ready(function () {
             // Limpiar platos seleccionados para la mesa actual
             platosPorMesa[mesaSeleccionada] = [];
             seleccionesSelect.html('');
-
+            totalCuentaInput.val(0);
+            extrasRadios.not(this).prop('checked', false);
             // Mostrar alerta
             alert('¡Pago realizado con éxito!');
 
@@ -187,6 +200,12 @@ $(document).ready(function () {
         }
     });
 
+
+    // Limpiar la selección de extras al cambiar la mesa
+    mesaSelect.change(function () {
+        extrasRadios.prop('checked', false);
+        calcularTotal();
+    });
     // Inicializar los platos al cargar la página
     mostrarPlatos([]);
 
