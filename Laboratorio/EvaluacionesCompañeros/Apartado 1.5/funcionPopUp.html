@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Presentación</title>
+
+    <script>
+      let nombre;
+
+      function askName() {
+        nombre = prompt('Dime tu nombre');
+      }
+      
+      function greet() {
+        let message = 'Hola ' + nombre + ', un placer conocerte!';
+        alert(message);
+      }
+    </script>
+
+  </head>
+  <body>
+    <h1>ENCANTADO!</h1>
+    <p onclick="askName();">
+      Pulsa aquí para escribir tu nombre.
+    </p>
+    
+    <p onclick="greet();">
+      Pulsa aquí para recibir un saludo.
+    </p>
+  </body>
+</html>

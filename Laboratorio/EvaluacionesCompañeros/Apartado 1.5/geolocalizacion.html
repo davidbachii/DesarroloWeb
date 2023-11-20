@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocalización</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="city"></p>
+
+    <script>
+        const x = document.getElementById("demo");
+        const cityElement = document.getElementById("city");
+
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+
+        function showPosition(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          const exactitud = position.coords.accuracy;
+          x.innerHTML = "Latitud: " + latitude + "<br>Longitud: " + longitude + "<br>Exactitud: " + exactitud;
+
+          // USAMOS LA API nominatim para sacar la ciudad a partir de las coordenadas
+          const nominatimUrl = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+
+          fetch(nominatimUrl)
+            .then(response => response.json())
+            .then(data => {
+              const city = data.address.city || data.address.town || data.address.village || data.address.suburb;
+              const street = data.address.road;
+              cityElement.innerHTML = "Ciudad: " + city + "<br>Calle: " + street ;
+              
+            })
+            .catch(error => {
+              cityElement.innerHTML = "La información de la ciudad no está disponible";
+            });
+        }
+
+        getLocation();
+    </script>
+</body>
+</html>

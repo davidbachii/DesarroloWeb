@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #titulo {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #menu, #pedido {
+            border: 2px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            min-height: 200px;
+            background-color: white;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        #vaciarPedido {
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            var copy = draggedElement.cloneNode(true);
+            copy.removeAttribute("draggable");
+            event.target.appendChild(copy);
+        }
+
+        function vaciarPedido() {
+            var pedidoContainer = document.getElementById("pedido");
+            pedidoContainer.innerHTML = "<p>Pedido</p>";
+        }
+    </script>
+</head>
+<body>
+    <div id="titulo">Elige tu pedido</div>
+
+    <div id="menu" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <p>Menú</p>
+        <img id="img1" src="imagen1.jpg" draggable="true" ondragstart="drag(event)">
+        <img id="img2" src="imagen2.jpg" draggable="true" ondragstart="drag(event)">
+    </div>
+
+    <div id="pedido" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <p>Pedido</p>
+    </div>
+
+    <button id="vaciarPedido" onclick="vaciarPedido()">Mandar Pedido</button>
+</body>
+</html>
+
+
