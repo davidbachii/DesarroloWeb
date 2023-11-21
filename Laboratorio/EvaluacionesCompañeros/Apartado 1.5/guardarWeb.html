@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardado de Datos</title>
+</head>
+<body>
+    <h1>Página de Guardado de Datos</h1>
+    <form id="myForm">
+        <label for="inputData">INGRESE NOMBRE Y APELLIDO</label>
+        <input type="text" id="inputData">
+        <button type="submit">Guardar</button>
+    </form>
+    <p id="result"></p>
+    <p id="historial"></p>
+    <script>
+        // Escuchar el evento 'submit' del formulario
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Evitar que el formulario se envíe normalmente
+
+            // Obtener el valor del input
+            const inputData = document.getElementById("inputData").value;
+
+            // Generar una clave única basada en la marca de tiempo
+            const timestamp = new Date().getTime();
+            const key = `userInput_${timestamp}`;
+
+            // Guardar el valor en localStorage con la clave única
+            localStorage.setItem(key, inputData);
+
+            // Actualizar el contenido de un elemento en la página
+            document.getElementById("result").innerHTML = "Dato guardado en localStorage: " + inputData;
+            displayHistory();
+        });
+
+        function displayHistory() {
+            const historyList = document.getElementById("historial");
+            historyList.innerHTML = "EL HISTORIAL DE DATOS ES: ";
+
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
+                historyList.innerHTML += `<p>${value}</p>`;
+            }
+        }
+
+        // Mostrar el historial al cargar la página
+        displayHistory();
+    </script>
+</body>
+</html>

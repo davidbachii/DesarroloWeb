@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartado 2.2 Mostrar en una ventana un valor del formulario</title>
+    <script language = "javascript">
+        function ventana(txt){
+            alert(txt);
+        }
+    </script>
+</head>
+<body>
+    <form name = "form1">
+        <input name = "entrada">
+        <input type = "button" onclick="ventana(form1.entrada.value)">
+    </form>
+    
+</body>
+</html>
