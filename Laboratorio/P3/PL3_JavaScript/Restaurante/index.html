@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="jquery-3.7.1.js" type="text/javascript"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
     <h1>Bachis Restaurant</h1>
 
-<form>
-    <label>Selecciona tu plato:</label>
-    <br>
-    <input type="radio" name="plato" value="primer_plato"> Primer Plato
-    <input type="radio" name="plato" value="segundo_plato"> Segundo Plato
-    <input type="radio" name="plato" value="postre"> Postre
-    <br><br>
+    <form>
+        <label>Selecciona tu plato:</label>
+        <br>
+        <input type="radio" name="plato" value="primer_plato" id="P_plato"> Primer Plato
+        <input type="radio" name="plato" value="segundo_plato" id="S_plato"> Segundo Plato
+        <input type="radio" name="plato" value="postre" id="Postre"> Postre
+        <br><br>
 
-    <label for="mesa">Selecciona tu mesa:</label>
-    <select name="mesa" id="mesa">
-        <option value="1">Mesa 1</option>
-        <option value="2">Mesa 2</option>
-        <option value="3">Mesa 3</option>
-        <option value="4">Mesa 4</option>
-        <option value="5">Mesa 5</option>
-    </select>
+        <label for="mesa">Selecciona tu mesa:</label>
+        <select name="mesa" id="mesa">
+            <option value="1">Mesa 1</option>
+            <option value="2">Mesa 2</option>
+            <option value="3">Mesa 3</option>
+            <option value="4">Mesa 4</option>
+            <option value="5">Mesa 5</option>
+        </select>
 
-    <br><br>
-</form>
+        <br><br>
+    </form>
 
-
-   
     <div class="menu-container">
         <div class="menu">
             <select id="Opciones" size="5" multiple>
@@ -48,21 +47,13 @@
         </div>
     </div>
     <br><br>
-    
-    <input type="radio" name="extras" value="cafe"> Con Café
-    <input type="radio" name="extras" value="copa"> Con Copa
+
+    <input type="checkbox" name="extras" value="cafe" id="Cafe_x"> Con Café
+    <input type="checkbox" name="extras" value="copa" id="Copa_x"> Con Copa
     <br><br>
     <p>Total: <input type="text" placeholder="Total" id="total_cuenta" required> €</p><br><br>
     <button type="submit" id="Pagar_Total">Pagado</button>
 
-  
-
-
-
-
-    
-
-
-<script src="./index.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>

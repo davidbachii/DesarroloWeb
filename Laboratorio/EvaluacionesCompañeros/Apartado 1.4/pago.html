@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pago de Entrada de Cine</title>
+</head>
+<body>
+    <h1>Pago Requirido</h1>
+    <form action="pagoCompletado.html" method="post">
+        
+
+        <label for="tarjeta_credito">Tarjeta de Credito:</label>
+        <input type="text" id="tarjeta_credito" name="tarjeta_credito" pattern="[0-9]{13,16}" title="Por favor, ingrese una tarjeta de crédito válida" required><br>
+
+        <label for="cvc">Codigo de Seguridad (CVC):</label>
+        <input type="number" id="cvc" name="cvc" min="0" max="999" required><br>
+
+        <label for="fecha_caducidad">Fecha de Caducidad:</label>
+        <input type="date" id="fecha_caducidad" name="fecha_caducidad" required><br>
+
+        <input type="submit" value="Comprar Entrada">
+    </form>
+</body>
+</html>

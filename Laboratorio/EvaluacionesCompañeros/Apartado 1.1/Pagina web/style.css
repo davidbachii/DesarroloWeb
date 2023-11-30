@@ -1,0 +1,9 @@
+body{ background-image: url("./imagenes/bandera.jpg");
+font: 150% sans-serif;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center center;}
+table{
+    width: 100%; text-align: left; border: 0; }
+img{height: 600px; width: 700px; align-items: center;} 
+td{vertical-align: top; width: 50;}
