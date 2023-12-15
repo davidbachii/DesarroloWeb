@@ -14,8 +14,8 @@ import java.io.IOException;
 @WebServlet("/CalculatePowerServlet")
 public class CalculatePowerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int circuitId = Integer.parseInt(request.getParameter("circuitId"));
-        int carId = Integer.parseInt(request.getParameter("carId"));
+        String circuitId = (request.getParameter("circuitId"));
+        String carId = (request.getParameter("carId"));
 
         try {
             Circuit circuit = DatabaseManager.getCircuitById(circuitId);

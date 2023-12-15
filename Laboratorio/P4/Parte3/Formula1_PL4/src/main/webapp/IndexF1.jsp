@@ -44,7 +44,7 @@
 
 <form action="CalculatePowerServlet" method="post">
     <h2>Calcular Potencia</h2>
-    <label for="circuitId">Select Circuit:</label>
+    <label>Select Circuit:</label>
     <select name="circuitId">
         <% List<Circuit> circuits = new ArrayList<>();
             try {
@@ -57,7 +57,7 @@
         <% } %>
     </select><br>
 
-    <label for="carId">Select Car:</label>
+    <label>Select Car:</label>
     <select name="carId">
         <% List<Car> cars = new ArrayList<>();
             try {

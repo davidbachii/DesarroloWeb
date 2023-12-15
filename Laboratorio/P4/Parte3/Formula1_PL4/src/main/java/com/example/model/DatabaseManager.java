@@ -115,12 +115,12 @@ public class DatabaseManager {
     }
 
     // Métodos para obtener un circuito por ID
-    public static Circuit getCircuitById(int circuitId) throws SQLException {
+    public static Circuit getCircuitById(String circuitId) throws SQLException {
         abrirConexion();
         try {
             String sql = "SELECT * FROM circuits WHERE id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, circuitId);
+                preparedStatement.setString(1, circuitId);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
                         return new Circuit(
@@ -141,12 +141,12 @@ public class DatabaseManager {
     }
 
     // Métodos para obtener un coche por ID
-    public static Car getCarById(int carId) throws SQLException {
+    public static Car getCarById(String carId) throws SQLException {
         abrirConexion();
         try {
             String sql = "SELECT * FROM cars WHERE id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, carId);
+                preparedStatement.setString(1, carId);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
                         return new Car(
