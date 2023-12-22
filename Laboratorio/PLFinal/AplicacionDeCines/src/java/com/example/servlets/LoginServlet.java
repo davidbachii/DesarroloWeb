@@ -15,9 +15,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level; 
+import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 /**
  *
@@ -31,22 +30,34 @@ public class LoginServlet extends HttpServlet {
         String contrasena = request.getParameter("pswd-2");
 
         try {
-            // Obtener el usuario por correo
-            Usuario usuario = DatabaseManager.getUsuarioPorCorreo(correo);
-            System.out.println(usuario.getContraseña());
+            if (correo.equals("admin@gmail.com") && contrasena.equals("admin")) {
+                // Usuario admin autenticado correctamente
+                response.sendRedirect("gestionPeliculas.jsp");
 
-            if (usuario != null && usuario.getContraseña().equals(contrasena)) {
-                // Usuario autenticado correctamente
-
-                // Aquí puedes redirigir a una página de bienvenida o realizar otras acciones
-                response.getWriter().println("Acceso autorizado. ¡Bienvenido, " + usuario.getNombre() + "!");
             } else {
-                // Usuario no encontrado o contraseña incorrecta
-                response.getWriter().println("Correo o contraseña incorrectos.");
+                // Obtener el usuario por correo
+                Usuario usuario = DatabaseManager.getUsuarioPorCorreo(correo);
+
+                if (usuario != null) {
+                    if (usuario.getContraseña().equals(contrasena)) {
+
+                        // Usuario autenticado correctamente (no admin)
+                        // Aquí puedes redirigir a una página de bienvenida o realizar otras acciones
+                        response.getWriter().println("Acceso autorizado. ¡Bienvenido, " + usuario.getNombre() + "!");
+
+                    }else{
+                        response.getWriter().println("Usuario y/o contraseña incorrectos.");
+                    }
+                } else {
+                    // Usuario no encontrado o contraseña incorrecta
+                    response.getWriter().println("No hay ningun usuario registrado en el sistema.");
+                }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al acceder.");
         }
+
     }
 }

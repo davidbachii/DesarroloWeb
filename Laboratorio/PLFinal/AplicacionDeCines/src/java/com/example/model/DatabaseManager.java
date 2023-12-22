@@ -123,8 +123,41 @@ public class DatabaseManager {
 
     }
 
+    public static void guardarPelicula(Pelicula pelicula) throws SQLException {
+        abrirConexion();
+        try {
+            if (pelicula != null) {
+                String sql = "INSERT INTO peliculas (nombre, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, año, distribuidora, director, actores, clasificacionEdad) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, pelicula.getNombre());
+                    preparedStatement.setString(2, pelicula.getSinopsis());
+                    preparedStatement.setString(3, pelicula.getPaginaOficial());
+                    preparedStatement.setString(4, pelicula.getTituloOriginal());
+                    preparedStatement.setString(5, pelicula.getGenero());
+                    preparedStatement.setString(6, pelicula.getNacionalidad());
+                    preparedStatement.setInt(7, pelicula.getDuracion());
+                    preparedStatement.setInt(8, pelicula.getAño());
+                    preparedStatement.setString(9, pelicula.getDistribuidora());
+                    preparedStatement.setString(10, pelicula.getDirector());
+                    preparedStatement.setString(11, pelicula.getActores());
+                    preparedStatement.setInt(12, pelicula.getClasificacionEdad());
 
-    /*
+                    preparedStatement.executeUpdate();
+                }
+            } else {
+                System.out.println("Error: La película no se ha creado correctamente.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+
+
+/*
      
       public static List<Car> getAllCars() throws SQLException {
         abrirConexion();
@@ -250,5 +283,5 @@ public static List<Circuit> getAllCircuits() throws SQLException {
 
     
 
-     */
+ */
 }
