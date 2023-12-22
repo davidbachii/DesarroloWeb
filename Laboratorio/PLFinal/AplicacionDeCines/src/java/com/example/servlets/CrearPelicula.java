@@ -39,11 +39,15 @@ public class CrearPelicula extends HttpServlet {
         String distribuidora = request.getParameter("distribuidora");
         String director = request.getParameter("director");
         String actores = request.getParameter("actores");
-        int clasificacionEdad = Integer.parseInt(request.getParameter("edad"));
+        int clasificacionEdad = Integer.parseInt(request.getParameter("clasificacionEdad"));
+        
+        System.out.println("Datos bien leidos");
 
         // Crear instancia de la clase Pelicula
         Pelicula pelicula = new Pelicula(nombre, sinopsis, paginaOficial, tituloOriginal, genero,
                 nacionalidad, duracion, año, distribuidora, director, actores, clasificacionEdad);
+        
+        System.out.println(pelicula.toString());
 
         try {
             // Guardar la película en la base de datos

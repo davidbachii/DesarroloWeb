@@ -14,49 +14,22 @@
     </head>
     <body>
 
-
         <form action="CrearPelicula" method="post">
-
-            <h1>Crear Nueva Película</h1>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
-
-            <label for="sinopsis">Sinopsis:</label>
-            <textarea id="sinopsis" name="sinopsis" required></textarea><br>
-
-            <label for="paginaOficial">Página Oficial:</label>
-            <input type="text" id="paginaOficial" name="paginaOficial"><br>
-
-            <label for="tituloOriginal">Título Original:</label>
-            <input type="text" id="tituloOriginal" name="tituloOriginal"><br>
-
-            <label for="genero">Género:</label>
-            <input type="text" id="genero" name="genero"><br>
-
-            <label for="nacionalidad">Nacionalidad:</label>
-            <input type="text" id="nacionalidad" name="nacionalidad"><br>
-
-            <label for="duracion">Duración (minutos):</label>
-            <input type="number" id="duracion" name="duracion" required><br>
-
-            <label for="año">Año:</label>
-            <input type="number" id="año" name="año" required><br>
-
-            <label for="distribuidora">Distribuidora:</label>
-            <input type="text" id="distribuidora" name="distribuidora"><br>
-
-            <label for="director">Director:</label>
-            <input type="text" id="director" name="director"><br>
-
-            <label for="actores">Actores (separados por comas):</label>
-            <input type="text" id="actores" name="actores" required><br>
-
-            <label for="edad">Clasificacion por edad</label>
-            <input type="number" id="edad" name="edad" required><br>
-
-            <button type="submit" id="Guardar">Guardar</button>
+            <h2>Crear Peliculas</h2>
+            Nombre <input type="text" name="nombre" required><br>
+            Sinopsis <input type="text" name="sinopsis" required><br>
+            Pagina Oficial <input type="text" name="paginaOficial" required><br>
+            Titulo Original <input type="text" name="tituloOriginal"  required><br>
+            Genero: <input type="text" name="genero"  required><br>
+            Nacionalidad: <input type="text" type="nacionalidad"  required><br>
+            Duracion <input type="number" name="duracion" required><br>
+            Año <input type="number" name="año" required><br>
+            Distribuidora <input type="text" name="distribuidora" required><br>
+            Director <input type="text" name="director"  required><br>
+            Actores <input type="text" name="actores"  required><br>
+            Clasificacion por edad <input type="number" name="clasificacionEdad"  required><br>
+            <button type="submit" id="Guardar">Guardar Pelicula</button>
 
         </form>
-
     </body>
 </html>

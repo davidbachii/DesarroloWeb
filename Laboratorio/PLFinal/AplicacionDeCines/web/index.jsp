@@ -17,7 +17,7 @@
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="CrearUsuario" method="post">
+		<form action="CrearPelicula" method="post">
 			<h1>Crear Cuenta</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
