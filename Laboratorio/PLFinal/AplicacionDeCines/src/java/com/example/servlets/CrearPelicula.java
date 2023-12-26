@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.example.servlets;
-
 
 import com.example.model.DatabaseManager;
 import com.example.model.Pelicula;
@@ -12,12 +7,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -41,12 +33,15 @@ public class CrearPelicula extends HttpServlet {
         String actores = request.getParameter("actores");
         int clasificacionEdad = Integer.parseInt(request.getParameter("clasificacionEdad"));
         
+        //Creamos una sesion NECESARIA AQUI?
+        HttpSession session = request.getSession();
+
         System.out.println("Datos bien leidos");
 
         // Crear instancia de la clase Pelicula
         Pelicula pelicula = new Pelicula(nombre, sinopsis, paginaOficial, tituloOriginal, genero,
                 nacionalidad, duracion, año, distribuidora, director, actores, clasificacionEdad);
-        
+
         System.out.println(pelicula.toString());
 
         try {

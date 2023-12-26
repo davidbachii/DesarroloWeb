@@ -7,20 +7,15 @@ package com.example.servlets;
 import com.example.model.DatabaseManager;
 import com.example.model.Fecha;
 import com.example.model.Usuario;
-import java.io.IOException;
-import java.io.PrintWriter;
-
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -28,9 +23,9 @@ import java.util.logging.Logger;
  */
 @WebServlet("/CrearUsuario")
 public class CrearUsuario extends HttpServlet {
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        
+
         // Obtén los parámetros del formulario de registro
         String nombre = request.getParameter("Name");
         String correo = request.getParameter("mail");
@@ -40,9 +35,8 @@ public class CrearUsuario extends HttpServlet {
         try {
             // Crea una instancia de la clase Fecha con la fecha de nacimiento
             Fecha fecha = new Fecha(fechaNacimiento);
-            
+
             Usuario user = new Usuario(nombre, correo, contraseña, fecha);
-           
 
             // Guardar el usuario en la base de datos
             DatabaseManager.getInstance().guardarUsuario(user);
@@ -52,5 +46,5 @@ public class CrearUsuario extends HttpServlet {
             response.getWriter().println("Error al crear el usuario.");
         }
     }
-  
+
 }
