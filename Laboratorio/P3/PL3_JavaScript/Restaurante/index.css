@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+    background-color: aquamarine;
+    
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9; /* Color de fondo */
+    color: #333; /* Color del texto */
+}
+
+.menu-container {
+    display: inline-block;
+    width: 40%;
+    margin: 20px;
+    vertical-align: top;
+}
+
+.menu-container-selecciones {
+    display: inline-block;
+    width: 40%;
+    margin: 20px;
+    vertical-align: top;
+}
