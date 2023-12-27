@@ -127,8 +127,7 @@ public class DatabaseManager {
         abrirConexion();
         try {
             if (pelicula != null) {
-                String sql = "INSERT INTO peliculas (nombre, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, año, distribuidora, director, actores, clasificacionEdad) "
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO pelicula (nombre, sinopsis, paginaoficial, titulo_original, genero, nacionalidad, duracion, año, distribuidora, director, actores, clasificacionEdad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, pelicula.getNombre());
                     preparedStatement.setString(2, pelicula.getSinopsis());
@@ -146,7 +145,7 @@ public class DatabaseManager {
                     preparedStatement.executeUpdate();
                 }
             } else {
-                System.out.println("Error: La película no se ha creado correctamente.");
+                System.out.println("Error: Pelicula es nula.");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -155,31 +154,113 @@ public class DatabaseManager {
         }
     }
 
-
-
-/*
-     
-      public static List<Car> getAllCars() throws SQLException {
+    public static List<Pelicula> getAllPeliculas() throws SQLException {
         abrirConexion();
-        List<Car> cars = new ArrayList<>();
+        List<Pelicula> peliculas = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM cars";
+            String sql = "SELECT * FROM pelicula";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
-                        Car car = new Car(
-                                resultSet.getString("name"),
-                                resultSet.getInt("powerPerCurve")
+                        Pelicula pelicula = new Pelicula(
+                                resultSet.getString("nombre"),
+                                resultSet.getString("sinopsis"),
+                                resultSet.getString("paginaOficial"),
+                                resultSet.getString("titulo_original"),
+                                resultSet.getString("genero"),
+                                resultSet.getString("nacionalidad"),
+                                resultSet.getInt("duracion"),
+                                resultSet.getInt("año"),
+                                resultSet.getString("distribuidora"),
+                                resultSet.getString("director"),
+                                resultSet.getString("actores"),
+                                resultSet.getInt("clasificacionEdad")
                         );
-                        cars.add(car);
+                        peliculas.add(pelicula);
                     }
                 }
             }
         } finally {
             cerrarConexion();
         }
-        return cars;
+        return peliculas;
     }
+
+    public static Pelicula getPeliculaPorNombre(String nombre) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "SELECT * FROM pelicula WHERE nombre = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, nombre);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return new Pelicula(
+                                resultSet.getString("nombre"),
+                                resultSet.getString("sinopsis"),
+                                resultSet.getString("paginaOficial"),
+                                resultSet.getString("titulo_original"),
+                                resultSet.getString("genero"),
+                                resultSet.getString("nacionalidad"),
+                                resultSet.getInt("duracion"),
+                                resultSet.getInt("año"),
+                                resultSet.getString("distribuidora"),
+                                resultSet.getString("director"),
+                                resultSet.getString("actores"),
+                                resultSet.getInt("clasificacionEdad")
+                        );
+                    }
+                }
+            }
+        } finally {
+            cerrarConexion();
+        }
+        return null;
+    }
+
+    public static void borrarPelicula(Pelicula pelicula) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "DELETE FROM pelicula WHERE nombre = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, pelicula.getNombre());
+                preparedStatement.executeUpdate();
+            }
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public static void modificarPelicula(String nombreActual, Pelicula nuevaPelicula) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "UPDATE pelicula SET nombre=?, sinopsis=?, paginaoficial=?, titulo_original=?, genero=?, nacionalidad=?, duracion=?, año=?, distribuidora=?, director=?, actores=?, clasificacionEdad=? WHERE nombre=?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, nuevaPelicula.getNombre());
+                preparedStatement.setString(2, nuevaPelicula.getSinopsis());
+                preparedStatement.setString(3, nuevaPelicula.getPaginaOficial());
+                preparedStatement.setString(4, nuevaPelicula.getTituloOriginal());
+                preparedStatement.setString(5, nuevaPelicula.getGenero());
+                preparedStatement.setString(6, nuevaPelicula.getNacionalidad());
+                preparedStatement.setInt(7, nuevaPelicula.getDuracion());
+                preparedStatement.setInt(8, nuevaPelicula.getAño());
+                preparedStatement.setString(9, nuevaPelicula.getDistribuidora());
+                preparedStatement.setString(10, nuevaPelicula.getDirector());
+                preparedStatement.setString(11, nuevaPelicula.getActores());
+                preparedStatement.setInt(12, nuevaPelicula.getClasificacionEdad());
+
+                preparedStatement.setString(13, nombreActual); // Condición para actualizar la película específica
+
+                preparedStatement.executeUpdate();
+            }
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+
+    /*
+     
+     
       
     // Métodos para obtener un coche por ID
     public static Car getCarById(String carId) throws SQLException {
@@ -283,5 +364,5 @@ public static List<Circuit> getAllCircuits() throws SQLException {
 
     
 
- */
+     */
 }
