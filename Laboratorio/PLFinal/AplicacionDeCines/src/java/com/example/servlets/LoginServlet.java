@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 
             } else {
                 // Obtener el usuario por correo
-                Usuario usuario = DatabaseManager.getUsuarioPorCorreo(correo);
+                Usuario usuario = DatabaseManager.getInstance().getUsuarioPorCorreo(correo);
 
                 if (usuario != null) {
                     if (usuario.getContraseña().equals(contrasena)) {

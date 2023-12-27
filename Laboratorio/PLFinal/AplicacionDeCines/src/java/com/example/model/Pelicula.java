@@ -9,10 +9,12 @@ package com.example.model;
  * @author david
  */
 public class Pelicula {
+
     private String nombre;
     private String sinopsis;
     private String paginaOficial;
     private String tituloOriginal;
+
     private String genero;
     private String nacionalidad;
     private int duracion;
@@ -138,7 +140,4 @@ public class Pelicula {
         return "Pelicula{" + "nombre=" + nombre + ", sinopsis=" + sinopsis + ", paginaOficial=" + paginaOficial + ", tituloOriginal=" + tituloOriginal + ", genero=" + genero + ", nacionalidad=" + nacionalidad + ", duracion=" + duracion + ", a\u00f1o=" + año + ", distribuidora=" + distribuidora + ", director=" + director + ", actores=" + actores + ", clasificacionEdad=" + clasificacionEdad + '}';
     }
 
-    
-    
-    
 }
