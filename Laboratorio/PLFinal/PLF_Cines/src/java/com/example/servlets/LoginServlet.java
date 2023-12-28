@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         try {
             if (correo.equals("admin@gmail.com") && contrasena.equals("admin")) {
                 // Usuario admin autenticado correctamente
-                response.sendRedirect("gestionPeliculas.jsp");
+                response.sendRedirect("panelAdmin.jsp");
 
             } else {
                 // Obtener el usuario por correo

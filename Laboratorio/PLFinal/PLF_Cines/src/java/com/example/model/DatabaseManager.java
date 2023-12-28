@@ -262,6 +262,108 @@ public class DatabaseManager {
         }
     }
 
+    public static void guardarSala(Sala sala) throws SQLException {
+        abrirConexion();
+        System.out.println("GuardarSala");
+        try {
+            if (sala != null) {
+                String sql = "INSERT INTO Sala (nombreSala, filas, columnas, nombrePelicula_Pelicula) VALUES (?, ?, ?, ?)";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, sala.getNombreSala());
+                    preparedStatement.setInt(2, sala.getFilas());
+                    preparedStatement.setInt(3, sala.getColumnas());
+                    preparedStatement.setString(4, sala.getNombre_pelicula());
+
+                    preparedStatement.executeUpdate();
+                    System.out.println("Sala guardada correctamente.");
+                }
+            } else {
+                System.out.println("Error: Sala es nula.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al guardar la sala: " + e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public static List<Sala> getAllSalas() throws SQLException {
+        abrirConexion();
+        List<Sala> salas = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM sala";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        Sala sala = new Sala(
+                                resultSet.getString("nombresala"),
+                                resultSet.getInt("filas"),
+                                resultSet.getInt("columnas"),
+                                resultSet.getString("nombrepelicula_pelicula")
+                        );
+                        salas.add(sala);
+                    }
+                }
+            }
+        } finally {
+            cerrarConexion();
+        }
+        return salas;
+    }
+
+    public static Sala getSalaPorNombre(String nombre) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "SELECT * FROM sala WHERE nombresala = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, nombre);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        Sala sala = new Sala(
+                                resultSet.getString("nombresala"),
+                                resultSet.getInt("filas"),
+                                resultSet.getInt("columnas"),
+                                resultSet.getString("nombrepelicula_pelicula")
+                        );
+                    }
+                }
+            }
+        } finally {
+            cerrarConexion();
+        }
+        return null;
+    }
+
+    public static void borrarSala(Sala sala) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "DELETE FROM sala WHERE nombresala = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, sala.getNombreSala());
+                preparedStatement.executeUpdate();
+            }
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public static void modificarSala(String nombreActual, Sala sala) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "UPDATE sala SET nombresala=?, filas=?, columnas=?, nombrepelicula_pelicula=? WHERE nombresala=?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, sala.getNombreSala());
+                preparedStatement.setInt(2, sala.getFilas());
+                preparedStatement.setInt(3, sala.getColumnas());
+                preparedStatement.setString(4, sala.getNombre_pelicula());
+                preparedStatement.setString(5, nombreActual); // Condición para actualizar la película específica
+
+                preparedStatement.executeUpdate();
+            }
+        } finally {
+            cerrarConexion();
+        }
+    }
 
     /*
      
