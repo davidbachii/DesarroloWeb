@@ -11,6 +11,10 @@
         // Obtén la lista de salas
         List<Sala> salas = DatabaseManager.getAllSalas();
 %>
+
+<%-- METER EN RESERVA --%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,30 +24,35 @@
 
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="estilos/butacas.css"></head>
     <body>
-
-        <h2>Butacas:</h2>
         <form action="GestionButacas" method="post">
+            <label for="escogerButacas">Selecciona una sala:</label>
             <select name="escogerButacas">
                 <% for (Sala sala : salas) { %>
-                <option value="<%= sala.getNombreSala() %>" <%= (sala.getNombreSala().equals(salaSeleccionada)) ? "selected" : "" %>><%= sala.getNombreSala() %></option>
+                <option value="<%= sala.getNombreSala() %>"><%= sala.getNombreSala() %></option>
                 <% } %>
             </select>
             <button type="submit">Mostrar Butacas</button>
         </form>
-        <br>
 
-        <% if (salaSeleccionadaObj != null) { %>
-        <h3>Butacas para la Sala: <%= salaElegida %></h3>
-        <table style='border-collapse: collapse;'>
-            <% 
-                for (int i = 0; i < salaSeleccionadaObj.getFilas(); i++) {
+        <%-- Agrega aquí la lógica para mostrar las butacas según la sala seleccionada --%>
+        <%
+            String salaSeleccionada = request.getParameter("escogerButacas");
+            out.println(salaSeleccionada);
+            Sala sala = DatabaseManager.getInstance().getSalaPorNombre(salaSeleccionada);
+        
+            if (sala != null) {
+        %>
+        <h2>Butacas para la Sala: <%= sala.getNombreSala() %></h2>
+        <table border='1'>
+            <%
+                for (int i = 0; i < sala.getFilas(); i++) {
             %>
             <tr>
-                <% 
-                    for (int j = 0; j < salaSeleccionadaObj.getColumnas(); j++) {
+                <%
+                    for (int j = 0; j < sala.getColumnas(); j++) {
                 %>
                 <td>
-                    <img class='butaca' src='butacas/butaca_libre.png' alt='Butaca <%= (i + 1) %>-<%= (j + 1) %>' data-fila='<%= i %>' data-columna='<%= j %>'>
+                    <img class='butaca' src='butacas/butaca_libre.png' alt='Butaca <%= (i + 1) %>-<%= (j + 1) %>' data-fila='<%= i %>' data-columna='<%= j %>' onclick='toggleButaca(this)'>
                 </td>
                 <%
                     }
@@ -53,10 +62,13 @@
                 }
             %>
         </table>
-        <% } %>
-        <!-- Botón de compra -->
-        <button id="botonCompra">Comprar</button>
-
+        <button onclick='comprarButacas()'>Comprar Butacas</button>
+        <%
+            } else {
+                // Puedes mostrar un mensaje si no se selecciona ninguna sala
+                out.println("<p>Por favor, selecciona una sala para mostrar las butacas.</p>");
+            }
+        %>
         <script>
             $(document).ready(function () {
                 // Manejar el clic en una butaca
