@@ -38,7 +38,8 @@ public class LoginServlet extends HttpServlet {
 
                 if (usuario != null) {
                     if (usuario.getContraseña().equals(contrasena)) {
-
+                        
+                        
                         // Usuario autenticado correctamente (no admin)
                         // Aquí puedes redirigir a una página de bienvenida o realizar otras acciones
                         response.getWriter().println("Acceso autorizado. ¡Bienvenido, " + usuario.getNombre() + "!");
