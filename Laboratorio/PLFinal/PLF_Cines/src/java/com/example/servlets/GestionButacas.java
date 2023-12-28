@@ -21,29 +21,28 @@ import java.util.logging.Logger;
 @WebServlet("/GestionButacas")
 public class GestionButacas extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String salaSeleccionada = request.getParameter("escogerButaca");
-        String salaElegida = null; // Declaración de la variable antes de usarla
-
-        Sala salaSeleccionadaObj = null;
-
-        List<Sala> salas;
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String salaSeleccionada = request.getParameter("escogerButacas");
+        System.out.println(salaSeleccionada);
         try {
-            salas = DatabaseManager.getAllSalas();
-            if (salaSeleccionada != null && !salaSeleccionada.isEmpty()) {
-                for (Sala sala : salas) {
-                    if (sala.getNombreSala().equals(salaSeleccionada)) {
-                        salaSeleccionadaObj = sala;
-                        salaElegida = sala.getNombreSala();
-                        break;
-                    }
-                }
+            // Obtén la información de la sala seleccionada
+            Sala sala = DatabaseManager.getInstance().getSalaPorNombre(salaSeleccionada);
+            
+            if (sala != null) {
+                // Guarda la información de la sala en el atributo "sala" para usarla en el JSP
+                request.setAttribute("sala", sala);
+                // Redirige a tu JSP que mostrará las butacas
+                request.getRequestDispatcher("mostrarButacas.jsp").forward(request, response);
+                System.out.println("entrando para mostrar sala");
+            } else {
+                response.getWriter().println("No se encontró la sala seleccionada.");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionButacas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.getWriter().println("Error al obtener la información de la sala.");
         }
-
     }
+
 
     /**
      * Returns a short description of the servlet.
