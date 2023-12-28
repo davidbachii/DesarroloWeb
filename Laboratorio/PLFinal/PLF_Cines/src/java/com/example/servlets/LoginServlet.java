@@ -27,7 +27,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String correo = request.getParameter("mail-2");
         String contrasena = request.getParameter("pswd-2");
-        HttpSession session = new request.getSession();
         try {
             if (correo.equals("admin@gmail.com") && contrasena.equals("admin")) {
                 // Usuario admin autenticado correctamente
@@ -39,12 +38,12 @@ public class LoginServlet extends HttpServlet {
 
                 if (usuario != null) {
                     if (usuario.getContraseña().equals(contrasena)) {
-                        
-                        
+                        HttpSession session = request.getSession();
+                        session.setAttribute("nombre", usuario.getNombre());
                         // Usuario autenticado correctamente (no admin)
                         // Aquí puedes redirigir a una página de bienvenida o realizar otras acciones
-                        response.getWriter().println("Acceso autorizado. ¡Bienvenido, " + usuario.getNombre() + "!");
-                        response.sendRedirect("butacas.jsp");
+                        response.getWriter().println("Acceso autorizado. ¡Bienvenido, " + session.getAttribute("nombre") + "!");
+                        //response.sendRedirect("butacas.jsp");
                     }else{
                         response.getWriter().println("Usuario y/o contraseña incorrectos.");
                     }
