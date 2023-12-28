@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="tu_paquete.SalaCine" %>
 
 <%
@@ -30,7 +30,7 @@
         out.println("<tr>");
         for (int j = 0; j < 5; j++) {
             String estado = sala.getEstadoButaca(i, j);
-            String imagen = (estado.equals("libre")) ? "path/to/butaca_libre.png" : "path/to/butaca_ocupada.png";
+            String imagen = (estado.equals("libre")) ? "butaca_libre.png" : "butaca_ocupada.png";
             out.println("<td><img class='butaca' src='" + imagen + "' alt='Butaca " + (i + 1) + "-" + (j + 1) + "' data-fila='" + i + "' data-columna='" + j + "'></td>");
         }
         out.println("</tr>");
