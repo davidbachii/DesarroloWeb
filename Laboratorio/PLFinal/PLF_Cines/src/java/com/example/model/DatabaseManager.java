@@ -261,6 +261,10 @@ public class DatabaseManager {
             cerrarConexion();
         }
     }
+    
+    public static void seleccionarButaca(int fila, int columna){
+        
+    }
 
 
     /*
