@@ -1,62 +1,99 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="tu_paquete.SalaCine" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.model.Sala" %>
+<%@ page import="com.example.model.DatabaseManager" %>
+<%@ page import="java.util.ArrayList" %>
 
 <%
-    // Crear una instancia de SalaCine con 5 filas y 5 columnas
-    SalaCine sala = new SalaCine(5, 5);
-    // Guardar la instancia en el ámbito de la sesión para mantener el estado
-    session.setAttribute("sala", sala);
+    DatabaseManager databaseManager = DatabaseManager.getInstance();
+    
+    try {
+        // Obtén la lista de salas
+        List<Sala> salas = DatabaseManager.getAllSalas();
 %>
-
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seleccionar Butacas</title>
-    <!-- Agregar aquí enlaces a jQuery u otras bibliotecas si es necesario -->
-</head>
-<body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Selección de Butacas</title>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<h2>Butacas:</h2>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="estilos/butacas.css"></head>
+    <body>
 
-<%
-    // Obtener la instancia de SalaCine del ámbito de la sesión
-    SalaCine sala = (SalaCine) session.getAttribute("sala");
+        <h2>Butacas:</h2>
+        <form action="GestionButacas" method="post">
+            <select name="escogerButacas">
+                <% for (Sala sala : salas) { %>
+                <option value="<%= sala.getNombreSala() %>" <%= (sala.getNombreSala().equals(salaSeleccionada)) ? "selected" : "" %>><%= sala.getNombreSala() %></option>
+                <% } %>
+            </select>
+            <button type="submit">Mostrar Butacas</button>
+        </form>
+        <br>
 
-    // Mostrar las butacas en la tabla
-    out.println("<table border='1'>");
-    for (int i = 0; i < 5; i++) {
-        out.println("<tr>");
-        for (int j = 0; j < 5; j++) {
-            String estado = sala.getEstadoButaca(i, j);
-            String imagen = (estado.equals("libre")) ? "path/to/butaca_libre.png" : "path/to/butaca_ocupada.png";
-            out.println("<td><img class='butaca' src='" + imagen + "' alt='Butaca " + (i + 1) + "-" + (j + 1) + "' data-fila='" + i + "' data-columna='" + j + "'></td>");
-        }
-        out.println("</tr>");
-    }
-    out.println("</table>");
-%>
+        <% if (salaSeleccionadaObj != null) { %>
+        <h3>Butacas para la Sala: <%= salaElegida %></h3>
+        <table style='border-collapse: collapse;'>
+            <% 
+                for (int i = 0; i < salaSeleccionadaObj.getFilas(); i++) {
+            %>
+            <tr>
+                <% 
+                    for (int j = 0; j < salaSeleccionadaObj.getColumnas(); j++) {
+                %>
+                <td>
+                    <img class='butaca' src='butacas/butaca_libre.png' alt='Butaca <%= (i + 1) %>-<%= (j + 1) %>' data-fila='<%= i %>' data-columna='<%= j %>'>
+                </td>
+                <%
+                    }
+                %>
+            </tr>
+            <%
+                }
+            %>
+        </table>
+        <% } %>
+        <!-- Botón de compra -->
+        <button id="botonCompra">Comprar</button>
 
-<!-- Botón de compra -->
-<button id="botonCompra">Comprar</button>
+        <script>
+            $(document).ready(function () {
+                // Manejar el clic en una butaca
+                $('.butaca').click(function () {
+                    // Obtener la ruta actual de la imagen
+                    var currentSrc = $(this).attr('src');
 
-<script>
-    // jQuery function
-    $(document).ready(function() {
-        $('.butaca').click(function() {
-            // Toggle entre los estados de libre y ocupado
-            $(this).attr('src', function(_, attr) {
-                return (attr.includes('butaca_libre.png')) ? 'butaca_ocupada.png' : 'butaca_libre.png';
+                    // Cambiar la imagen entre libre y ocupada
+                    if (currentSrc.includes('butacas/butaca_libre.png')) {
+                        // Si la butaca está libre, cambiar a ocupada
+                        $(this).attr('src', 'butacas/butaca_ocupada.png');
+                        // También puedes agregar una clase para estilos adicionales
+                        $(this).addClass('ocupada');
+                    } else {
+                        // Si la butaca está ocupada, cambiar a libre
+                        $(this).attr('src', 'butacas/butaca_libre.png');
+                        // También puedes quitar la clase 'ocupada' si la habías agregado anteriormente
+                        $(this).removeClass('ocupada');
+                    }
+                });
+
+                // Función para el botón de compra
+                $('#botonCompra').click(function () {
+                    // Implementa tu lógica de compra aquí
+                    // Puedes obtener información sobre las butacas seleccionadas
+                    var butacasSeleccionadas = $('.butaca.ocupada');
+                    // Puedes enviar esta información al servidor o realizar otras acciones según tu necesidad
+                    alert("Compra realizada para las butacas seleccionadas: " + butacasSeleccionadas.length);
+                });
             });
-        });
-
-        // Función para el botón de compra
-        $('#botonCompra').click(function() {
-            // Implementa tu lógica de compra aquí
-            alert("Compra realizada");
-        });
-    });
-</script>
-</body>
+        </script>
+    </body>
 </html>
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        DatabaseManager.cerrarConexion();
+    }
+%>
