@@ -39,7 +39,7 @@ public class GestionSala extends HttpServlet {
 
             try {
 
-                Sala sala = new Sala(nombresala, filas, columnas, nombresala);
+                Sala sala = new Sala(nombresala, filas, columnas, nombrepelicula_pelicula);
 
                 // Guardar el usuario en la base de datos
                 DatabaseManager.getInstance().guardarSala(sala);
@@ -59,10 +59,10 @@ public class GestionSala extends HttpServlet {
                 if (sala != null) {
                     // Borra la película de la base de datos
                     DatabaseManager.getInstance().borrarSala(sala);
-                    response.sendRedirect("gestionPeliculas.jsp"); // Redirigir a la página principal
+                    response.sendRedirect("gestionSalas.jsp"); // Redirigir a la página principal
                     System.out.println("Pelicula borrada con exito");
                 } else {
-                    response.getWriter().println("No se encontró la película a borrar.");
+                    response.getWriter().println("No se encontró la sala a borrar.");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -89,7 +89,7 @@ public class GestionSala extends HttpServlet {
                     // Guarda la película modificada en la base de datos
                     DatabaseManager.getInstance().modificarSala(nombreSalaAModificar, sala);
 
-                    response.sendRedirect("gestionPeliculas.jsp");
+                    response.sendRedirect("gestionSalas.jsp");
 
                 } else {
                     response.getWriter().println("No se encontró la película a modificar.");

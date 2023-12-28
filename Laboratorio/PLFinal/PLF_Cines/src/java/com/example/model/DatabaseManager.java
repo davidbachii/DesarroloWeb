@@ -128,7 +128,7 @@ public class DatabaseManager {
         System.out.println("GuardarPelicula");
         try {
             if (pelicula != null) {
-                String sql = "INSERT INTO pelicula (nombrepelicula, sinopsis, paginaoficial, titulooriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosdatos, actores) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+                String sql = "INSERT INTO pelicula (nombrepelicula, sinopsis, paginaoficial, titulooriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosdatos, actores, url_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, pelicula.getNombre());
                     preparedStatement.setString(2, pelicula.getSinopsis());
@@ -143,6 +143,7 @@ public class DatabaseManager {
                     preparedStatement.setInt(11, pelicula.getClasificacionEdad());
                     preparedStatement.setString(12, pelicula.getOtrosDatos());
                     preparedStatement.setString(13, pelicula.getActores());
+                    preparedStatement.setString(14, pelicula.getUrl_image());
 
                     preparedStatement.executeUpdate();
                 }
@@ -177,7 +178,9 @@ public class DatabaseManager {
                                 resultSet.getString("director"),
                                 resultSet.getInt("clasificacionEdad"),
                                 resultSet.getString("otrosdatos"),
-                                resultSet.getString("actores")
+                                resultSet.getString("actores"),
+                                resultSet.getString("url_image")
+                         
                         );
                         peliculas.add(pelicula);
                     }
@@ -210,7 +213,8 @@ public class DatabaseManager {
                                 resultSet.getString("director"),
                                 resultSet.getInt("clasificacionEdad"),
                                 resultSet.getString("otrosdatos"),
-                                resultSet.getString("actores")
+                                resultSet.getString("actores"),
+                                resultSet.getString("url_image")
                         );
                     }
                 }
@@ -237,7 +241,7 @@ public class DatabaseManager {
     public static void modificarPelicula(String nombreActual, Pelicula nuevaPelicula) throws SQLException {
         abrirConexion();
         try {
-            String sql = "UPDATE pelicula SET nombrepelicula=?, sinopsis=?, paginaoficial=?, titulooriginal=?, genero=?, nacionalidad=?, duracion=?, anho=?, distribuidora=?, director=?, clasificacionedad=?, otrosdatos=?, actores=? WHERE nombrepelicula=?";
+            String sql = "UPDATE pelicula SET nombrepelicula=?, sinopsis=?, paginaoficial=?, titulooriginal=?, genero=?, nacionalidad=?, duracion=?, anho=?, distribuidora=?, director=?, clasificacionedad=?, otrosdatos=?, actores=?, url_image=? WHERE nombrepelicula=?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, nuevaPelicula.getNombre());
                 preparedStatement.setString(2, nuevaPelicula.getSinopsis());
@@ -252,8 +256,9 @@ public class DatabaseManager {
                 preparedStatement.setInt(11, nuevaPelicula.getClasificacionEdad());
                 preparedStatement.setString(12, nuevaPelicula.getOtrosDatos());
                 preparedStatement.setString(13, nuevaPelicula.getActores());
+                preparedStatement.setString(14, nuevaPelicula.getUrl_image());
 
-                preparedStatement.setString(14, nombreActual); // Condición para actualizar la película específica
+                preparedStatement.setString(15, nombreActual); // Condición para actualizar la película específica
 
                 preparedStatement.executeUpdate();
             }
@@ -319,7 +324,7 @@ public class DatabaseManager {
                 preparedStatement.setString(1, nombre);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
-                        Sala sala = new Sala(
+                        return new Sala(
                                 resultSet.getString("nombresala"),
                                 resultSet.getInt("filas"),
                                 resultSet.getInt("columnas"),

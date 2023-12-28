@@ -37,7 +37,7 @@
             <select name="peliculaSeleccionar">
                 <% List<Pelicula> peliculas = new ArrayList<>();
                     try {
-                        peliculas = DatabaseManager.getAllPeliculas(); // Asume que tienes un método para obtener todas las películas
+                        peliculas = DatabaseManager.getAllPeliculas(); 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
