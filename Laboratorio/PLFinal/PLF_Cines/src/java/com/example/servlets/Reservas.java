@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -36,8 +37,9 @@ public class Reservas extends HttpServlet {
 
         // Obtener los parámetros del formulario
         String peliculaId = request.getParameter("peliculaSeleccionada");
-        String hora = request.getParameter("hora");
         String fecha = request.getParameter("fecha");
+        String hora = request.getParameter("hora");
+
         String sala = request.getParameter("salaSeleccionada");
         System.out.println(sala);
         try {
