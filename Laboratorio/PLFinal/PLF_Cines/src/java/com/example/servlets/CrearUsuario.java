@@ -39,7 +39,7 @@ public class CrearUsuario extends HttpServlet {
             Fecha fecha = new Fecha(fechaNacimiento);
 
 
-            Usuario user = new Usuario(nombre, correo, contraseña, fecha);
+            Usuario user = new Usuario(nombre,apellidos, correo, contraseña, fecha);
 
             // Guardar el usuario en la base de datos
             DatabaseManager.getInstance().guardarUsuario(user);
