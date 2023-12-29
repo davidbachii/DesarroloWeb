@@ -14,7 +14,6 @@
 <%@ page import="java.util.ArrayList" %>
 
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,13 +28,11 @@
             <h1>CinesWeb</h1>
         </div>
         <nav>
-            
             <div class="search-bar">
                 <input type="text" placeholder="Buscar...">
                 <button>Buscar</button>
             </div>
             <div class="user-profile">
-                
                 <a href="login.jsp">Registrarse</a>
             </div>
         </nav>
@@ -49,13 +46,13 @@
         //Una vez que tenemos la lista con todas las películas, vamos a extraer los titulos que hay en ellas
         for(Pelicula pelicula : listaPeliculas){
         //Cogemos la pelicula que corresponde de la lista
-        String titulo = pelicula.getTituloOriginal();
+        String titulo = pelicula.getNombre();
         String urlImagen = pelicula.getUrl_image();
         
         //Una vez que ya tengamos el titulo cogido, lo mostramos en la pagina
         %>
         <div class="pelicula">
-            <h3><%= titulo %></h3>
+            <h3><a href="indexDetallado.jsp?id=<%= pelicula.getNombre()%>"><%= titulo %></a></h3>
             <img src="<%= urlImagen %>" alt="<%= titulo %>">
             <!-- Puedes agregar más detalles de la película si es necesario -->
         </div>
