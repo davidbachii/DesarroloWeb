@@ -6,7 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
+<%@ page import="com.example.model.Sala" %>
 <%@ page import="com.example.model.Pelicula" %>
+<%@ page import="com.example.model.Entrada" %>
 <%@ page import="com.example.model.DatabaseManager" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -60,10 +62,10 @@
             <input type="number" id="anho" name="anho" required><br>
             <span id="mensajeErrorAño"></span><br>
 
-            <label for="nacionalidad">Distribuidora</label>
+            <label for="distribuidora">Distribuidora</label>
             <input type="text" id="distribuidora" name="distribuidora" required><br>
 
-            <label for="nacionalidad">Director</label>
+            <label for="director">Director</label>
             <input type="text" id="director" name="director" required><br>
 
             <label for="duracion">ClasificacionEdad</label>
@@ -73,8 +75,11 @@
             <input type="text" id="otrosDatos" name="otrosDatos" required><br> 
 
             
-            <label for="nacionalidad">Actores</label>
+            <label for="actores">Actores</label>
             <input type="text" id="actores" name="actores" required><br> 
+            
+            <label for="nacionalidad">Url imagen</label>
+            <input type="text" id="imagen" name="imagen" required><br> 
 
 
             <!-- Campos que esta ocultos para saber que accion esta realizando el servlet y no crear un servlet exclusivo para cada accion de 
@@ -160,8 +165,11 @@
             <input type="text" id="nuevosDatos" name="nuevosDatos" required><br>
 
 
-            <label for="actores">Nuevos Actores</label>
+            <label for="nuevosActores">Nuevos Actores</label>
             <input type="text" id="nuevosActores" name="nuevosActores" required><br>
+            
+            <label for="nuevaImagen">Nuevos url de la imagen</label>
+            <input type="text" id="nuevaImagen" name="nuevaImagen" required><br>
 
 
             <!-- Agrega otros campos para los nuevos valores -->

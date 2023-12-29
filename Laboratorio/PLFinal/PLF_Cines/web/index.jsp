@@ -1,78 +1,70 @@
 <%-- 
-    Document   : login.jsp
-    Created on : 27 dic 2023, 17:34:37
+    Document   : index.jsp
+    Created on : 29 dic 2023, 13:54:32
     Author     : david
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="com.example.model.Entrada" %>
+<%@ page import="com.example.model.Sala" %>
+<%@ page import="com.example.model.Pelicula" %>
+<%@ page import="com.example.model.DatabaseManager" %>
+<%@ page import="java.util.ArrayList" %>
+
 <!DOCTYPE html>
-<html lang="en" >
-    <head>
-        <meta charset="UTF-8">
-        <title>Formulario</title>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="estilos/login.css">
-
-    </head>
-    <body>
-
-        <div class="container" id="container">
-            <div class="form-container sign-up-container">
-                <form action="CrearUsuario" method="post">
-                    <h1>Crear Cuenta</h1>
-                    <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <span>o usa su correo electronico para registrarte</span>
-                    <input type="text" placeholder="Nombre" id="Name" name="Name"/>
-                    <span id="error-nombre" class="error"></span>
-                    <input type="text" placeholder="Apellidos" id="Apellidos" name="Apellidos"/>
-                    <span id="error-apellido" class="error"></span>
-                    <input type="password" placeholder="Contraseña" id="pswd" name="pswd"/>
-                    <span id="error-contrasena" class="error"></span>
-                    <input type="email" placeholder="Correo electronico" id="mail" name="mail"/>
-                    <span id="error-email" class="error"></span>			
-                    <input type="date" placeholder="Fecha-nacimiento" id="Fecha-nacimiento" name="Fecha-nacimiento"/>
-                    <span id="error-fecha" class="error"></span>
-                    <button  type="submit" id="Registrar">Registrar</button>
-                </form>
-            </div>
-            <div class="form-container sign-in-container">
-                <form action="AccederUsuario" method="post">
-                    <h1>Cinesa</h1>
-                    <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <span>o usa tu cuenta</span>
-                    <input type="email" placeholder="Correo electronico"  id = "mail-2" name="mail-2"/>
-                    <span id="error-email-acceso" class="error"></span>
-                    <input type="password" placeholder="Contrasena" id = "pswd-2" name="pswd-2"/>
-                    <span id="error-contrasena-acceso" class="error"></span>
-                    <a href="#">¿Olvidaste tu contrasena?</a>
-                    <button type="submit" id="Acceder">Acceder</button>
-                </form>
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1>¡Bienvenido/a de nuevo!</h1>
-                        <p>Para seguir conectado con nosotros, introduce tus datos</p>
-                        <button class="ghost" id="signIn">Acceder</button>
-                    </div>
-                    <div class="overlay-panel overlay-right">
-                        <h1>¡Hola, amigo!</h1>
-                        <p>Introduce tus datos y registrate en Cinesa</p>
-                        <button class="ghost" id="signUp">Registrarse</button>
-                    </div>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cine</title>
+    <!-- Aquí puedes enlazar tu archivo CSS -->
+    <link rel="stylesheet" href="estilos/index.css">
+</head>
+<body>
+    <header>
+        <div class="app-info">
+            <h1>CinesWeb</h1>
         </div>
-        <script src="estilos/login.js"></script>
-
-
-    </body>
+        <nav>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar...">
+                <button>Buscar</button>
+            </div>
+            <div class="user-profile">
+                
+                <a href="login.jsp">Registrarse</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h2>Lista de peliculas</h2>
+        <%
+        // Llamamos al metodo getAllPeliculas para iterar sobre todas las peliculas
+        List<Pelicula> listaPeliculas = DatabaseManager.getInstance().getAllPeliculas();
+        
+        //Una vez que tenemos la lista con todas las películas, vamos a extraer los titulos que hay en ellas
+        for(Pelicula pelicula : listaPeliculas){
+        //Cogemos la pelicula que corresponde de la lista
+        String titulo = pelicula.getTituloOriginal();
+        String urlImagen = pelicula.getUrl_image();
+        
+        //Una vez que ya tengamos el titulo cogido, lo mostramos en la pagina
+        %>
+        <div class="pelicula">
+            <h3><%= titulo %></h3>
+            <img src="<%= urlImagen %>" alt="<%= titulo %>">
+            <!-- Puedes agregar más detalles de la película si es necesario -->
+        </div>
+        <%
+            }
+        %>
+    </main>
+    <footer>
+        <!-- Aquí puedes agregar información de contacto y derechos de autor -->
+    </footer>
+</body>
 </html>
-

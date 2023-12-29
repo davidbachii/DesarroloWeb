@@ -63,10 +63,11 @@ public class GestionPelicula extends HttpServlet {
 
             String otrosDatos = request.getParameter("otrosDatos");
             String actores = request.getParameter("actores");
+            String url_image = request.getParameter("imagen");
 
             try {
 
-                Pelicula pelicula = new Pelicula(nombre, sinopsis, pagina_oficial, titulo_original, genero, nacionalidad, duracion, año, distribuidora, director, clasificacionEdad, otrosDatos, actores);
+                Pelicula pelicula = new Pelicula(nombre, sinopsis, pagina_oficial, titulo_original, genero, nacionalidad, duracion, año, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image);
 
                 // Guardar el usuario en la base de datos
                 DatabaseManager.getInstance().guardarPelicula(pelicula);
@@ -120,6 +121,7 @@ public class GestionPelicula extends HttpServlet {
                     pelicula.setClasificacionEdad(Integer.parseInt(request.getParameter("nuevaClasificacionEdad")));
                     pelicula.setOtrosDatos(request.getParameter("nuevosDatos"));
                     pelicula.setActores(request.getParameter("nuevosActores"));
+                     pelicula.setUrl_image(request.getParameter("nuevaImagen"));
 
                     // Guarda la película modificada en la base de datos
                     DatabaseManager.modificarPelicula(nombrePeliculaAModificar, pelicula);
