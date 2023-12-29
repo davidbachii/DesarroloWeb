@@ -41,7 +41,27 @@
         </nav>
     </header>
     <main>
-        <!-- Aquí puedes agregar un carrusel de películas -->
+        <h2>Lista de peliculas</h2>
+        <%
+        // Llamamos al metodo getAllPeliculas para iterar sobre todas las peliculas
+        List<Pelicula> listaPeliculas = DatabaseManager.getInstance().getAllPeliculas();
+        
+        //Una vez que tenemos la lista con todas las películas, vamos a extraer los titulos que hay en ellas
+        for(Pelicula pelicula : listaPeliculas){
+        //Cogemos la pelicula que corresponde de la lista
+        String titulo = pelicula.getTituloOriginal();
+        String urlImagen = pelicula.getUrl_image();
+        
+        //Una vez que ya tengamos el titulo cogido, lo mostramos en la pagina
+        %>
+        <div class="pelicula">
+            <h3><%= titulo %></h3>
+            <img src="<%= urlImagen %>" alt="<%= titulo %>">
+            <!-- Puedes agregar más detalles de la película si es necesario -->
+        </div>
+        <%
+            }
+        %>
     </main>
     <footer>
         <!-- Aquí puedes agregar información de contacto y derechos de autor -->
