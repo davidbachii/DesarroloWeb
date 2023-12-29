@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
             response.getWriter().println("Error al acceder.");
         }
-
+ 
     }
 }
 

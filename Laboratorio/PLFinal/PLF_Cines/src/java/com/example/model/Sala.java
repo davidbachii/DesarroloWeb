@@ -23,6 +23,7 @@ public class Sala {
     }
 
     public String getNombreSala() {
+        System.out.println(nombreSala);
         return nombreSala;
     }
 

@@ -261,9 +261,9 @@ public class DatabaseManager {
             cerrarConexion();
         }
     }
-    
-    public static void seleccionarButaca(int fila, int columna){
-        
+
+    public static void seleccionarButaca(int fila, int columna) {
+
     }
 
     public static void guardarSala(Sala sala) throws SQLException {
@@ -323,7 +323,7 @@ public class DatabaseManager {
                 preparedStatement.setString(1, nombre);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
-                        Sala sala = new Sala(
+                        return new Sala(
                                 resultSet.getString("nombresala"),
                                 resultSet.getInt("filas"),
                                 resultSet.getInt("columnas"),
