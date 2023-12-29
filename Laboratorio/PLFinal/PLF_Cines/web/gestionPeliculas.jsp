@@ -6,7 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
+<%@ page import="com.example.model.Sala" %>
 <%@ page import="com.example.model.Pelicula" %>
+<%@ page import="com.example.model.Entrada" %>
 <%@ page import="com.example.model.DatabaseManager" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>

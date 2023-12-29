@@ -180,7 +180,6 @@ public class DatabaseManager {
                                 resultSet.getString("otrosdatos"),
                                 resultSet.getString("actores"),
                                 resultSet.getString("url_image")
-                         
                         );
                         peliculas.add(pelicula);
                     }
@@ -370,22 +369,76 @@ public class DatabaseManager {
         }
     }
 
-    /*
-     
-     
-      
-    // Métodos para obtener un coche por ID
-    public static Car getCarById(String carId) throws SQLException {
+    public static void guardarEntrada(Entrada entrada) throws SQLException {
         abrirConexion();
         try {
-            String sql = "SELECT * FROM cars WHERE name = ?";
+            if (entrada != null) {
+                String sql = "INSERT INTO Entrada (idEntrada, fecha, hora, fila, columna, nombreSala_Sala) VALUES (?, ?, ?, ?, ?, ?)";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, entrada.getIdEntrada());
+                    LocalDate localDate = entrada.getFecha().toLocalDate();
+                    java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
+
+                    preparedStatement.setDate(2, fechaSQL);
+                    preparedStatement.setString(3, entrada.getHora().toString()); // Almacenar LocalTime como String
+                    preparedStatement.setInt(4, entrada.getFila());
+                    preparedStatement.setInt(5, entrada.getColumna());
+                    preparedStatement.setString(6, entrada.getNombreSala());
+
+                    preparedStatement.executeUpdate();
+                    System.out.println("La entrada se ha guarado correctmante");
+                }
+            } else {
+                System.out.println("Error: Entrada es nula.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public static List<Entrada> getAllEntradas() throws SQLException {
+        abrirConexion();
+        List<Entrada> entradas = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Entrada";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setString(1, carId);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        Entrada entrada = new Entrada(
+                                resultSet.getString("idEntrada"),
+                                new Fecha(resultSet.getString("fecha")),
+                                resultSet.getTime("hora").toLocalTime(),
+                                resultSet.getInt("fila"),
+                                resultSet.getInt("columna"),
+                                resultSet.getString("nombreSala_Sala")
+                        );
+                        entradas.add(entrada);
+                    }
+                }
+            }
+        } finally {
+            cerrarConexion();
+        }
+        return entradas;
+    }
+
+    public static Entrada getEntradaPorId(String idEntrada) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "SELECT * FROM Entrada WHERE idEntrada = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, idEntrada);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
-                        return new Car(
-                                resultSet.getString("name"),
-                                resultSet.getInt("powerPerCurve")
+                        return new Entrada(
+                                resultSet.getString("idEntrada"),
+                                new Fecha(resultSet.getString("fecha")),
+                                resultSet.getTime("hora").toLocalTime(),
+                                resultSet.getInt("fila"),
+                                resultSet.getInt("columna"),
+                                resultSet.getString("nombreSala_Sala")
                         );
                     }
                 }
@@ -394,20 +447,14 @@ public class DatabaseManager {
             cerrarConexion();
         }
         return null;
-    }  
-      
+    }
 
-    public static void saveCircuit(Circuit circuit) throws SQLException {
+    public static void borrarEntrada(Entrada entrada) throws SQLException {
         abrirConexion();
         try {
-            String sql = "INSERT INTO circuits (name, city, country, laps, lapLength, curves  ) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "DELETE FROM Entrada WHERE idEntrada = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setString(1, circuit.getName());
-                preparedStatement.setString(2, circuit.getCity());
-                preparedStatement.setString(3, circuit.getCountry());
-                preparedStatement.setInt(4, circuit.getLaps());
-                preparedStatement.setInt(5, circuit.getLapLength());
-                preparedStatement.setInt(6, circuit.getCurves());
+                preparedStatement.setString(1, entrada.getIdEntrada());
                 preparedStatement.executeUpdate();
             }
         } finally {
@@ -415,66 +462,27 @@ public class DatabaseManager {
         }
     }
 
-   
-    // Dentro del método getAllCircuits
-public static List<Circuit> getAllCircuits() throws SQLException {
-    abrirConexion();
-    List<Circuit> circuits = new ArrayList<>();
-    try {
-        String sql = "SELECT * FROM circuits";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                    Circuit circuit = new Circuit(
-                            resultSet.getString("name"),
-                            resultSet.getString("city"),
-                            resultSet.getString("country"),
-                            resultSet.getInt("laps"),
-                            resultSet.getInt("lapLength"),
-                            resultSet.getInt("curves")
-                    );
-                    circuits.add(circuit);
-                }
-            }
-        }
-    } catch (SQLException e) {
-        e.printStackTrace(); // Agrega este mensaje de registro
-    } finally {
-        cerrarConexion();
-    }
-    return circuits;
-}
-
-
-   
-
-    // Métodos para obtener un circuito por ID
-    public static Circuit getCircuitById(String circuitId) throws SQLException {
+    public static void modificarEntrada(String idEntradaActual, Entrada nuevaEntrada) throws SQLException {
         abrirConexion();
         try {
-            String sql = "SELECT * FROM circuits WHERE name = ?";
+            String sql = "UPDATE Entrada SET idEntrada=?, fecha=?, hora=?, fila=?, columna=?, nombreSala_Sala=? WHERE idEntrada=?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setString(1, circuitId);
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        return new Circuit(
-                                resultSet.getString("name"),
-                                resultSet.getString("city"),
-                                resultSet.getString("country"),
-                                resultSet.getInt("laps"),
-                                resultSet.getInt("lapLength"),
-                                resultSet.getInt("curves")
-                        );
-                    }
-                }
+                preparedStatement.setString(1, nuevaEntrada.getIdEntrada());
+                LocalDate localDate = nuevaEntrada.getFecha().toLocalDate();
+                java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
+
+                preparedStatement.setDate(2, fechaSQL);
+                preparedStatement.setString(3, nuevaEntrada.getHora().toString()); // Almacenar LocalTime como String
+                preparedStatement.setInt(4, nuevaEntrada.getFila());
+                preparedStatement.setInt(5, nuevaEntrada.getColumna());
+                preparedStatement.setString(6, nuevaEntrada.getNombreSala());
+
+                preparedStatement.setString(7, idEntradaActual);
+
+                preparedStatement.executeUpdate();
             }
         } finally {
             cerrarConexion();
         }
-        return null;
     }
-
-    
-
-     */
 }
