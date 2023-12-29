@@ -107,13 +107,13 @@ REFERENCES Pelicula (nombrePelicula);
 -- Películas
 
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('El Padrino', 'Un poderoso drama criminal que sigue la vida de la familia Corleone en el mundo del crimen organizado.', 'https://example.com/godfather', 'Il Padrino', 'Crimen, Drama', 'Estados Unidos', 175, 1972, 'Paramount Pictures', 'Francis Ford Coppola', 18, 'Ganadora de 3 premios Oscar.', 'Marlon Brando, Al Pacino, James Caan','/ElPadrino.jpeg');
+VALUES ('El Padrino', 'Un poderoso drama criminal que sigue la vida de la familia Corleone en el mundo del crimen organizado.', 'https://example.com/godfather', 'Il Padrino', 'Crimen, Drama', 'Estados Unidos', 175, 1972, 'Paramount Pictures', 'Francis Ford Coppola', 18, 'Ganadora de 3 premios Oscar.', 'Marlon Brando, Al Pacino, James Caan','images/ElPadrino.jpeg');
 
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Cadena Perpetua', 'La historia de un hombre inocente encarcelado que encuentra esperanza y amistad en Shawshank.', 'https://example.com/shawshank', 'Shawshank Redemption', 'Drama', 'Estados Unidos', 142, 1994, 'Columbia Pictures', 'Frank Darabont', 15, 'Basada en la novela de Stephen King.', 'Tim Robbins, Morgan Freeman', '/CadenaPerpetua.jpeg');
+VALUES ('Cadena Perpetua', 'La historia de un hombre inocente encarcelado que encuentra esperanza y amistad en Shawshank.', 'https://example.com/shawshank', 'Shawshank Redemption', 'Drama', 'Estados Unidos', 142, 1994, 'Columbia Pictures', 'Frank Darabont', 15, 'Basada en la novela de Stephen King.', 'Tim Robbins, Morgan Freeman', 'images/CadenaPerpetua.jpeg');
 
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('El Caballero Oscuro', 'Batman se enfrenta a su némesis, el Joker, en un juego de ingenio que amenaza Gotham City.', 'https://example.com/darkknight', 'The Dark Knight', 'Acción, Crimen, Drama', 'Estados Unidos', 152, 2008, 'Warner Bros.', 'Christopher Nolan', 16, 'Ganadora de 2 premios Oscar.', 'Christian Bale, Heath Ledger, Aaron Eckhart', '/CaballeroOscuro.jpeg');
+VALUES ('El Caballero Oscuro', 'Batman se enfrenta a su némesis, el Joker, en un juego de ingenio que amenaza Gotham City.', 'https://example.com/darkknight', 'The Dark Knight', 'Acción, Crimen, Drama', 'Estados Unidos', 152, 2008, 'Warner Bros.', 'Christopher Nolan', 16, 'Ganadora de 2 premios Oscar.', 'Christian Bale, Heath Ledger, Aaron Eckhart', 'images/CaballeroOscuro.jpeg');
 
 -- Puedes agregar más películas según sea necesario...
 
@@ -139,13 +139,13 @@ VALUES ('E3', '2023-01-03', '18:45:00', 8, 15, 'Sala 3');
 
 -- Usuarios
 INSERT INTO Usuario (nombre, apellidos, contrasenha, email, fechaNacimiento)
-VALUES ('Rafael', 'Gonzalez', '1234', 'rafael@example.com', '1990-05-15');
+VALUES ('Rafael', 'Gonzalez', 'contraseña1', 'rafael@example.com', '1990-05-15');
 
 INSERT INTO Usuario (nombre, apellidos, contrasenha, email, fechaNacimiento)
-VALUES ('Maria', 'Lopez', '1234', 'maria@example.com', '1985-09-22');
+VALUES ('Maria', 'Lopez', 'contraseña2', 'maria@example.com', '1985-09-22');
 
 INSERT INTO Usuario (nombre, apellidos, contrasenha, email, fechaNacimiento)
-VALUES ('Carlos', 'Martinez', '1234', 'carlos@example.com', '1995-12-10');
+VALUES ('Carlos', 'Martinez', 'contraseña3', 'carlos@example.com', '1995-12-10');
 
 -- Reservas
 INSERT INTO Reserva (numeroRef, estado, email_Usuario, idEntrada_Entrada)

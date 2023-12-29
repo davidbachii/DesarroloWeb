@@ -11,7 +11,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -27,6 +26,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String correo = request.getParameter("mail-2");
         String contrasena = request.getParameter("pswd-2");
+
         try {
             if (correo.equals("admin@gmail.com") && contrasena.equals("admin")) {
                 // Usuario admin autenticado correctamente
@@ -38,14 +38,12 @@ public class LoginServlet extends HttpServlet {
 
                 if (usuario != null) {
                     if (usuario.getContraseña().equals(contrasena)) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("nombre", usuario.getNombre());
+
                         // Usuario autenticado correctamente (no admin)
                         // Aquí puedes redirigir a una página de bienvenida o realizar otras acciones
-
-
                         response.getWriter().println("Acceso autorizado. ¡Bienvenido, " + usuario.getNombre() + "!");
-                        response.sendRedirect("pagPeliculas.jsp");
+                        response.sendRedirect("index.jsp");
+
                     }else{
                         response.getWriter().println("Usuario y/o contraseña incorrectos.");
                     }

@@ -40,7 +40,7 @@ public class CrearUsuario extends HttpServlet {
 
             // Guardar el usuario en la base de datos
             DatabaseManager.getInstance().guardarUsuario(user);
-            response.sendRedirect("index.jsp"); // Redirigir a la página principal
+            response.sendRedirect("login.jsp"); // Redirigir a la página principal
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al crear el usuario.");
