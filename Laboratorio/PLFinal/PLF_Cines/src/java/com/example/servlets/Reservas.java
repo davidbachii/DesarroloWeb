@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,6 +49,7 @@ public class Reservas extends HttpServlet {
             session.setAttribute("fecha", fecha);
             session.setAttribute("sala", salaSelec);
             // Redireccionar a butacas.jsp
+           
             response.sendRedirect(request.getContextPath() + "/butacas.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(Reservas.class.getName()).log(Level.SEVERE, null, ex);
