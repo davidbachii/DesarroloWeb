@@ -34,15 +34,9 @@ public class CrearUsuario extends HttpServlet {
         try {
             // Crea una instancia de la clase Fecha con la fecha de nacimiento
             Fecha fecha = new Fecha(fechaNacimiento);
-<<<<<<< HEAD
-
-
-            Usuario user = new Usuario(nombre,apellidos, correo, contraseña, fecha);
-=======
-            
+    
             Usuario user = new Usuario(nombre, apellidos, contraseña, correo, fecha);
            
->>>>>>> parent of ef071dc (Merge branch 'realese_bachi' into release_alex2)
 
             // Guardar el usuario en la base de datos
             DatabaseManager.getInstance().guardarUsuario(user);
