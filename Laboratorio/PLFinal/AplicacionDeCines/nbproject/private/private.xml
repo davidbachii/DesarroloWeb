@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
+        <group>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/web/Estilos/login.css</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/src/java/com/example/model/DatabaseManager.java</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/src/java/com/example/model/Fecha.java</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/src/java/com/example/servlets/CrearUsuario.java</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/src/java/com/example/servlets/LoginServlet.java</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/web/gestionPeliculas.jsp</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/src/java/com/example/model/Pelicula.java</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/src/java/com/example/model/Usuario.java</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/web/Estilos/DiseñopPanelAdmin.css</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/src/java/com/example/servlets/GestionPelicula.java</file>
+            <file>file:/C:/Java/Java_Uah/AplicacionDeCines/web/index.jsp</file>
+        </group>
+>>>>>>> 0a0203994202e07bdce69736d1d70720c117d5aa
+    </open-files>
+</project-private>
