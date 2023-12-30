@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input {
+    padding: 5px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.user-profile a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.pelicula {
+    text-align: center;
+    margin: 20px;
+    display: inline-block;
+    width: 30%; /* Ajusta el ancho para permitir tres películas por fila */
+    box-sizing: border-box;
+}
+
+.pelicula img {
+    width: 200px; /* Establece el ancho en píxeles */
+    height: 300px; /* Establece la altura en píxeles */
+    display: block;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 800px) {
+    .pelicula {
+        width: 100%; /* Para dispositivos más pequeños, ocupa el 100% del ancho */
+    }
+}
