@@ -3,7 +3,6 @@
     Created on : 29 dic 2023, 13:54:32
     Author     : david
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
@@ -52,7 +51,8 @@
         //Una vez que ya tengamos el titulo cogido, lo mostramos en la pagina
         %>
         <div class="pelicula">
-            <h3><a href="indexDetallado.jsp?id=<%= pelicula.getNombre()%>"><%= titulo %></a></h3>
+            
+            <h3><a href="indexDetallado.jsp?id=<%= pelicula.getNombre() %>"><%= titulo %></a></h3>
             <img src="<%= urlImagen %>" alt="<%= titulo %>">
             <!-- Puedes agregar más detalles de la película si es necesario -->
         </div>

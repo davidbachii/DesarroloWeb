@@ -485,8 +485,7 @@ public class DatabaseManager {
             cerrarConexion();
         }
     }
-    
-    
+
     public static void guardarReserva(Reserva reserva) throws SQLException {
         abrirConexion();
         System.out.println("GuardarSala");
@@ -497,7 +496,6 @@ public class DatabaseManager {
                     preparedStatement.setString(1, reserva.getNumeroRef());
                     preparedStatement.setString(2, reserva.getEmail_usuario());
                     preparedStatement.setString(3, reserva.getId_entrada());
-                   
 
                     preparedStatement.executeUpdate();
                     System.out.println("Reserva guardada correctamente.");
@@ -524,7 +522,6 @@ public class DatabaseManager {
                                 resultSet.getString("numeroref"),
                                 resultSet.getString("email_usuario"),
                                 resultSet.getString("identrada_entrada")
-                               
                         );
                         reservas.add(reserva);
                     }
@@ -548,7 +545,6 @@ public class DatabaseManager {
                                 resultSet.getString("numeroref"),
                                 resultSet.getString("email_usuario"),
                                 resultSet.getString("identrada_entrada")
-                                
                         );
                     }
                 }
@@ -580,8 +576,121 @@ public class DatabaseManager {
                 preparedStatement.setString(1, reserva.getNumeroRef());
                 preparedStatement.setString(2, reserva.getEmail_usuario());
                 preparedStatement.setString(3, reserva.getId_entrada());
-               
+
                 preparedStatement.setString(4, nombreActual); // Condición para actualizar la película específica
+
+                preparedStatement.executeUpdate();
+            }
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public static void guardarComentario(Comentario comentario) throws SQLException {
+        abrirConexion();
+
+        try {
+            if (comentario != null) {
+                String sql = "INSERT INTO comentario (texto, valoracion, fechacomentario, email_usuario, nombrepelicula_pelicula) VALUES (?, ?, ?, ?, ?)";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, comentario.getTexto());
+                    preparedStatement.setInt(2, comentario.getValoracion());
+                    LocalDate localDate = comentario.getFecha().toLocalDate();
+                    java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
+                    preparedStatement.setDate(3, fechaSQL);
+                    preparedStatement.setString(4, comentario.getEmail_user());
+                    preparedStatement.setString(5, comentario.getNombrePelicula());
+
+                    preparedStatement.executeUpdate();
+                    System.out.println("Comentario guardada correctamente.");
+                }
+            } else {
+                System.out.println("Error: El comentario es nula.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al guardar el comentario: " + e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public static List<Comentario> getAllComentario() throws SQLException {
+        abrirConexion();
+        List<Comentario> comentarios = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM comentario";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        Comentario comentario = new Comentario(
+                                resultSet.getString("texto"),
+                                resultSet.getInt("valoracion"),
+                                new Fecha(resultSet.getString("fechacomentario")),
+                                resultSet.getString("email_usuario"),
+                                resultSet.getString("nombrepelicula_pelicula")
+                        );
+                        comentarios.add(comentario);
+                    }
+                }
+            }
+        } finally {
+            cerrarConexion();
+        }
+        return comentarios;
+    }
+
+    public static Comentario getComentarioPorNombrePelicula(String nombre) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "SELECT * FROM comentario WHERE nombrepelicula_pelicula = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, nombre);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return new Comentario(
+                                resultSet.getString("texto"),
+                                resultSet.getInt("valoracion"),
+                                new Fecha(resultSet.getString("fechacomentario")),
+                                resultSet.getString("email_usuario"),
+                                resultSet.getString("nombrepelicula_pelicula")
+                        );
+                    }
+                }
+            }
+        } finally {
+            cerrarConexion();
+        }
+        return null;
+    }
+
+    public static void borrarComentarioDePelicula(Comentario comentario) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "DELETE FROM comentario WHERE nombrepelicula_pelicula = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, comentario.getNombrePelicula());
+                preparedStatement.executeUpdate();
+            }
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public static void modificarComentario(String nombreActual, Comentario comentario) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "UPDATE comentario SET texto=?, valoracion=?, fechacomentario=?, email_usuario=?, nombrepelicula_pelicula= ?  WHERE nombrepelicula_pelicula=?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, comentario.getTexto());
+                preparedStatement.setInt(2, comentario.getValoracion());
+                LocalDate localDate = comentario.getFecha().toLocalDate();
+                java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
+
+                preparedStatement.setDate(3, fechaSQL);
+                preparedStatement.setString(4, comentario.getEmail_user());
+                preparedStatement.setString(5, comentario.getNombrePelicula());
+                
+                preparedStatement.setString(6, nombreActual); // Condición para actualizar la película específica
 
                 preparedStatement.executeUpdate();
             }

@@ -46,16 +46,17 @@
                 <option value="<%= reserva.getNumeroRef() %>"><%= reserva.getNumeroRef() %></option>
                 <% } %>
             </select><br>
+            
 
             <!-- Campos para mostrar la información de la sala -->
             <label>Numero de Referencia</label>
             <input type="text" id="numeroReferencia" name="numeroReferencia" value="${numeroReferencia}" ><br>
 
             <label for="emailUser">Email del Usuario</label>
-            <input type="number" id="emailUser" name="emailUser" value="${emailUser}" ><br>
+            <input type="text" id="emailUser" name="emailUser" value="${emailUser}" ><br>
 
             <label for="idEntrada">Id de la entrada</label>
-            <input type="number" id="idEntrada" name="idEntrada" value="${idEntrada}" ><br>
+            <input type="text" id="idEntrada" name="idEntrada" value="${idEntrada}" ><br>
 
 
             <input type="hidden" name="accion" value="Consultar">

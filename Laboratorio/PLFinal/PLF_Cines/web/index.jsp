@@ -51,7 +51,8 @@
         //Una vez que ya tengamos el titulo cogido, lo mostramos en la pagina
         %>
         <div class="pelicula">
-            <h3><a href="indexDetallado.jsp?id=<%= pelicula.getNombre()%>"><%= titulo %></a></h3>
+            
+            <h3><a href="indexDetallado.jsp?id=<%= pelicula.getNombre() %>"><%= titulo %></a></h3>
             <img src="<%= urlImagen %>" alt="<%= titulo %>">
             <!-- Puedes agregar más detalles de la película si es necesario -->
         </div>

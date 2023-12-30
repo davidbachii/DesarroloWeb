@@ -16,10 +16,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Gestion de entradas</title>
-        <link rel="stylesheet" type="text/css" href="./estilos/panelAdmin.css">
+        <link rel="stylesheet" type="text/css" href="estilos/panelAdmin.css">
         <!-- Agrega tus estilos y scripts si es necesario -->
     </head>
     <body>
+        <header>
+            <div class="navbar">
+            <a href="gestionPeliculas.jsp">Gestión de Películas</a>
+            <a href="gestionSalas.jsp">Gestión de Salas</a>
+            <a href="gestionEntradas.jsp">Gestión de Entradas</a>
+            <a href="gestionReservas.jsp">Gestión de Reservas</a>
+            <a href="gestionInformes.jsp">Gestión de Informes</a>
+        </div>
+        </header>
+        
+        
+        
         <form action="GestionEntrada" method="post">
             <h2>Crear Entrada</h2>
 
@@ -37,8 +49,8 @@
 
             <label for="columna">Columna</label>
             <input type="number" id="columna" name="columna" required><br>
-            
-             <label for="nombreSala">Selecciona uan sala</label>
+
+            <label for="nombreSala">Selecciona uan sala</label>
             <select name="nombreSala">
                 <% List<Sala> salas = new ArrayList<>();
                     try {
@@ -125,6 +137,49 @@
             <input type="hidden" name="accion" value="modificar">
 
             <button type="submit">Modificar Entrada</button>
+        </form>
+
+
+        <form action="GestionEntrada" method="post">
+            <h2>Consultar Entrada</h2>
+
+            <label>Selecciona una entrada para consultar</label>
+            <select name="idEntradaAConsultar">
+                <% List<Entrada> entradas3 = new ArrayList<>();
+                    try {
+                        entradas3 = DatabaseManager.getAllEntradas();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    for (Entrada entrada3 : entradas3) { %>
+                <option value="<%= entrada3.getIdEntrada() %>"><%= entrada3.getIdEntrada() %></option>
+                <% } %>
+            </select><br>
+
+            <!-- Campos para mostrar la información de la entrada -->
+            <label>ID de Entrada</label>
+            <input type="text" id="idEntradaConsultar" name="idEntradaConsultar" value="${idEntradaConsultar}"><br>
+
+            <label>Fecha</label>
+            <input type="date" id="fechaConsultar" name="fechaConsultar" value="${fechaConsultar}"><br><br>
+
+            <label>Hora</label>
+            <input type="time" id="horaConsultar" name="horaConsultar" value="${horaConsultar}"><br><br>
+
+            <label>Fila</label>
+            <input type="number" id="filaConsultar" name="filaConsultar" value="${filaConsultar}"><br>
+
+            <label>Columna</label>
+            <input type="number" id="columnaConsultar" name="columnaConsultar" value="${columnaConsultar}"><br>
+
+            <label>Nombre de Sala</label>
+            <input type="text" id="nombreSalaAconsultar" name="nombreSalaAconsultar" value="${nombreSalaAconsultar}"><br>
+
+
+            <!-- Otros campos para mostrar -->
+
+            <input type="hidden" name="accion" value="Consultar">
+            <button type="submit">Consultar Entrada</button><br><br>
         </form>
     </body>
 </html>

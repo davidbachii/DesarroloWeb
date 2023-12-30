@@ -19,6 +19,18 @@
 
     </head>
     <body>
+        
+        
+        
+         <header>
+            <div class="navbar">
+            <a href="gestionPeliculas.jsp">Gestión de Películas</a>
+            <a href="gestionSalas.jsp">Gestión de Salas</a>
+            <a href="gestionEntradas.jsp">Gestión de Entradas</a>
+            <a href="gestionReservas.jsp">Gestión de Reservas</a>
+            <a href="gestionInformes.jsp">Gestión de Informes</a>
+        </div>
+        </header>
         <form action="GestionSala" method="post">
             <h2>Crear Sala</h2>
 
@@ -101,8 +113,8 @@
             <label for="nuevoAnho">Nuevo Numero de columnas</label>
             <input type="number" id="nuevoColumnas" name="nuevoColumnas" required><br>
 
-            <label for="distribuidora">Nueva Pelicula en la sala</label>
-               <select name="peliculaCambioSala">
+            <label for="peliculaCambioSala">Nueva Pelicula en la sala</label>
+            <select name="peliculaCambioSala">
                 <% List<Pelicula> peliculas3 = new ArrayList<>();
                     try {
                         peliculas3 = DatabaseManager.getAllPeliculas(); // Asume que tienes un método para obtener todas las películas
@@ -119,6 +131,41 @@
 
             <input type="hidden" name="accion" value="modificar">
             <button type="submit">Modificar Sala</button>
+        </form>     
+
+
+
+        <form action="GestionSala" method="post">
+            <h2>Consultar Sala</h2>
+            <select name="salaAConsultar">
+                <% List<Sala> salas3 = new ArrayList<>();
+                    try {
+                        salas3 = DatabaseManager.getAllSalas(); // Asume que tienes un método para obtener todas las películas
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    for (Sala sala3 : salas3) { %>
+                <option value="<%= sala3.getNombreSala() %>"><%= sala3.getNombreSala() %></option>
+                <% } %>
+            </select><br>
+
+            <!-- Campos para mostrar la información de la sala -->
+            <label>Nombre de la Sala</label>
+            <input type="text" id="nuevoNombreSala" name="nuevoNombreSala" value="${nuevoNombreSala}" ><br>
+
+            <label for="filasConsultar">Numero de Filas</label>
+            <input type="number" id="filasConsultar" name="filasConsultar" value="${filasConsultar}" ><br>
+
+            <label for="ColumnasConsultar">Numero de columnas</label>
+            <input type="number" id="ColumnasConsultar" name="ColumnasConsultar" value="${ColumnasConsultar}" ><br>
+
+            <label for="peliculaEnSala">Pelicula en la sala</label>
+            <input type="text" id="peliculaEnSala" name="peliculaEnSala" value="${peliculaEnSala}" ><br>
+
+            <input type="hidden" name="accion" value="Consultar">
+            <button type="submit">Consultar Sala</button><br><br>
+
+
         </form>     
 
 
