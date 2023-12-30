@@ -121,7 +121,7 @@ public class GestionPelicula extends HttpServlet {
                     pelicula.setClasificacionEdad(Integer.parseInt(request.getParameter("nuevaClasificacionEdad")));
                     pelicula.setOtrosDatos(request.getParameter("nuevosDatos"));
                     pelicula.setActores(request.getParameter("nuevosActores"));
-                     pelicula.setUrl_image(request.getParameter("nuevaImagen"));
+                    pelicula.setUrl_image(request.getParameter("nuevaImagen"));
 
                     // Guarda la película modificada en la base de datos
                     DatabaseManager.modificarPelicula(nombrePeliculaAModificar, pelicula);
@@ -135,6 +135,40 @@ public class GestionPelicula extends HttpServlet {
                 e.printStackTrace();
                 response.getWriter().println("Error al modificar la película.");
             }
+        } else if ("Consultar".equals(accion)) {
+            String nombrePeliculaAConsultar = request.getParameter("peliculaAConsultar");
+
+            try {
+                // Obtén la película por su nombre
+                Pelicula pelicula = DatabaseManager.getPeliculaPorNombre(nombrePeliculaAConsultar);
+
+                if (pelicula != null) {
+                    // Setea los atributos de la película en el request para que puedan ser accesibles en el JSP
+                    request.setAttribute("nombreConsultar", pelicula.getNombre());
+                    request.setAttribute("sinopsisConsultar", pelicula.getSinopsis());
+                    request.setAttribute("paginaOficialConsultar", pelicula.getPaginaOficial());
+                    request.setAttribute("tituloOriginalConsultar", pelicula.getTituloOriginal());
+                    request.setAttribute("generoConsultar", pelicula.getGenero());
+                    request.setAttribute("nacionalidadConsultar", pelicula.getNacionalidad());
+                    request.setAttribute("duracionConsultar", pelicula.getDuracion());
+                    request.setAttribute("AnhoConsultar", pelicula.getAño());
+                    request.setAttribute("distribuidoraConsultar", pelicula.getDistribuidora());
+                    request.setAttribute("directorConsultar", pelicula.getDirector());
+                    request.setAttribute("clasificacionEdadConsultar", pelicula.getClasificacionEdad());
+                    request.setAttribute("datosConsultar", pelicula.getOtrosDatos());
+                    request.setAttribute("actoresConsultar", pelicula.getActores());
+                    request.setAttribute("ImagenConsultar", pelicula.getUrl_image());
+
+                    // Redirige a la página del formulario con los campos ya populados
+                    request.getRequestDispatcher("gestionPeliculas.jsp").forward(request, response);
+                } else {
+                    response.getWriter().println("No se encontró la película a Consultar.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                response.getWriter().println("Error al consultar la película.");
+            }
+
         } else {
             response.getWriter().println("Acción no reconocida");
         }
