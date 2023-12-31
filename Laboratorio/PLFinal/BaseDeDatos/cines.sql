@@ -114,22 +114,22 @@ INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, g
 VALUES ('El Caballero Oscuro', 'Batman se enfrenta a su némesis, el Joker, en un juego de ingenio que amenaza Gotham City.', 'https://example.com/darkknight', 'The Dark Knight', 'Acción, Crimen, Drama', 'Estados Unidos', 152, 2008, 'Warner Bros.', 'Christopher Nolan', 16, 'Ganadora de 2 premios Oscar.', 'Christian Bale, Heath Ledger, Aaron Eckhart', 'images/CaballeroOscuro.jpeg');
 
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Cars', 'En un mundo donde los autos son seres vivos, el aspirante a corredor Rayo McQueen termina en un pequeño pueblo llamado Radiador Springs. Aprendiendo lecciones valiosas de amistad y humildad, Rayo descubre el verdadero significado de la velocidad.', 'https://www.paginaoficial.com/cars', 'Cars', 'Animación', 'Estadounidense', '120 minutos', 2006, 'Pixar', 'John Lasseter', 'Apta para todos los públicos', 'Datos adicionales sobre la película Cars.', 'Owen Wilson, Bonnie Hunt', 'images/Cars.png');
+VALUES ('Cars', 'En un mundo donde los autos son seres vivos, el aspirante a corredor Rayo McQueen termina en un pequeño pueblo llamado Radiador Springs. Aprendiendo lecciones valiosas de amistad y humildad, Rayo descubre el verdadero significado de la velocidad.', 'https://www.paginaoficial.com/cars', 'Cars', 'Animación', 'Estadounidense', 120, 2006, 'Pixar', 'John Lasseter', 3, 'Datos adicionales sobre la película Cars.', 'Owen Wilson, Bonnie Hunt', 'images/Cars.png');
 
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Cars 2', 'Rayo McQueen y su amigo Mate se ven envueltos en una misión internacional de espionaje cuando son reclutados para participar en el Grand Prix Mundial. Intrigas, giros y vueltas esperan a nuestros héroes mientras luchan contra una misteriosa amenaza.', 'https://www.paginaoficial.com/cars2', 'Cars 2', 'Animación', 'Estadounidense', '130 minutos', 2011, 'Pixar', 'John Lasseter', 'Apta para todos los públicos', 'Datos adicionales sobre la película Cars 2.', 'Owen Wilson, Larry the Cable Guy', 'images/Cars2.png');
+VALUES ('Cars 2', 'Rayo McQueen y su amigo Mate se ven envueltos en una misión internacional de espionaje cuando son reclutados para participar en el Grand Prix Mundial. Intrigas, giros y vueltas esperan a nuestros héroes mientras luchan contra una misteriosa amenaza.', 'https://www.paginaoficial.com/cars2', 'Cars 2', 'Animación', 'Estadounidense', 130, 2011, 'Pixar', 'John Lasseter', 3, 'Datos adicionales sobre la película Cars 2.', 'Owen Wilson, Larry the Cable Guy', 'images/Cars2.png');
 
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Cars 3', 'Con una nueva generación de corredores amenazando su posición, Rayo McQueen se embarca en un emocionante viaje de redescubrimiento y superación. Con la ayuda de entrenadores y nuevos amigos, Rayo intenta volver al ruedo y dejar su marca.', 'https://www.paginaoficial.com/cars3', 'Cars 3', 'Animación', 'Estadounidense', '110 minutos', 2017, 'Pixar', 'Brian Fee', 'Apta para todos los públicos', 'Datos adicionales sobre la película Cars 3.', 'Owen Wilson, Cristela Alonzo', 'images/Cars3.png');
+VALUES ('Cars 3', 'Con una nueva generación de corredores amenazando su posición, Rayo McQueen se embarca en un emocionante viaje de redescubrimiento y superación. Con la ayuda de entrenadores y nuevos amigos, Rayo intenta volver al ruedo y dejar su marca.', 'https://www.paginaoficial.com/cars3', 'Cars 3', 'Animación', 'Estadounidense', 110, 2017, 'Pixar', 'Brian Fee', 3, 'Datos adicionales sobre la película Cars 3.', 'Owen Wilson, Cristela Alonzo', 'images/Cars3.png');
 
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Kung Fu Panda', 'Po, un torpe oso panda, sueña con convertirse en un hábil guerrero de kung fu. Su vida da un giro cuando es elegido accidentalmente para cumplir una antigua profecía. Po se embarca en una aventura cómica y emocionante para aprender las artes marciales y salvar el Valle de la Paz.', 'https://www.paginaoficial.com/kungfupanda', 'Kung Fu Panda', 'Animación', 'Estadounidense', '95 minutos', 2008, 'DreamWorks Animation', 'Mark Osborne, John Stevenson', 'Apta para todos los públicos', 'Datos adicionales sobre la película Kung Fu Panda.', 'Jack Black, Angelina Jolie', 'images/KunfuPanda.png');
+VALUES ('Kung Fu Panda', 'Po, un torpe oso panda, sueña con convertirse en un hábil guerrero de kung fu. Su vida da un giro cuando es elegido accidentalmente para cumplir una antigua profecía. Po se embarca en una aventura cómica y emocionante para aprender las artes marciales y salvar el Valle de la Paz.', 'https://www.paginaoficial.com/kungfupanda', 'Kung Fu Panda', 'Animación', 'Estadounidense', 95, 2008, 'DreamWorks Animation', 'Mark Osborne, John Stevenson', 3, 'Datos adicionales sobre la película Kung Fu Panda.', 'Jack Black, Angelina Jolie', 'images/KunfuPanda.png');
 
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('One Piece', 'Monkey D. Luffy y su valiente tripulación emprenden un viaje épico en busca del legendario tesoro conocido como "One Piece". Enfrentándose a peligros, enemigos y desafíos, Luffy se esfuerza por convertirse en el Rey de los Piratas.', 'https://www.paginaoficial.com/onepiece', 'One Piece', 'Animación', 'Japonesa', '120 minutos', 2022, 'Toei Animation', 'Eiichiro Oda', 'Apta para todos los públicos', 'Datos adicionales sobre la película One Piece.', 'Mayumi Tanaka, Kazuya Nakai', 'images/OnePiece.png');
+VALUES ('One Piece', 'Monkey D. Luffy y su valiente tripulación emprenden un viaje épico en busca del legendario tesoro conocido como "One Piece". Enfrentándose a peligros, enemigos y desafíos, Luffy se esfuerza por convertirse en el Rey de los Piratas.', 'https://www.paginaoficial.com/onepiece', 'One Piece', 'Animación', 'Japonesa', 120, 2022, 'Toei Animation', 'Eiichiro Oda', 12, 'Datos adicionales sobre la película One Piece.', 'Mayumi Tanaka, Kazuya Nakai', 'images/OnePiece.png');
 
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Rocky', 'Rocky Balboa, un boxeador de Filadelfia con pocas oportunidades, recibe la oportunidad de enfrentarse al campeón de peso pesado Apollo Creed. Aunque inicialmente es considerado como un oponente fácil, Rocky se prepara para la pelea de su vida, demostrando coraje y determinación.', 'https://www.paginaoficial.com/rocky', 'Rocky', 'Drama', 'Estadounidense', '120 minutos', 1976, 'United Artists', 'John G. Avildsen', 'Apta para mayores de 12 años', 'Datos adicionales sobre la película Rocky.', 'Sylvester Stallone, Talia Shire, Burgess Meredith', 'images/Rocky.png');
+VALUES ('Rocky', 'Rocky Balboa, un boxeador de Filadelfia con pocas oportunidades, recibe la oportunidad de enfrentarse al campeón de peso pesado Apollo Creed. Aunque inicialmente es considerado como un oponente fácil, Rocky se prepara para la pelea de su vida, demostrando coraje y determinación.', 'https://www.paginaoficial.com/rocky', 'Rocky', 'Drama', 'Estadounidense', 120, 1976, 'United Artists', 'John G. Avildsen', 12, 'Datos adicionales sobre la película Rocky.', 'Sylvester Stallone, Talia Shire, Burgess Meredith', 'images/Rocky.png');
 
 -- Puedes agregar más películas según sea necesario...
 
@@ -164,14 +164,14 @@ INSERT INTO Usuario (nombre, apellidos, contrasenha, email, fechaNacimiento)
 VALUES ('Carlos', 'Martinez', '12345', 'carlos@example.com', '1995-12-10');
 
 -- Reservas
-INSERT INTO Reserva (numeroRef, estado, email_Usuario, idEntrada_Entrada)
-VALUES ('R1', TRUE, 'rafael@example.com', 'E1');
+INSERT INTO Reserva (numeroRef,email_Usuario, idEntrada_Entrada)
+VALUES ('R1', 'rafael@example.com', 'E1');
 
 INSERT INTO Reserva (numeroRef, estado, email_Usuario, idEntrada_Entrada)
-VALUES ('R2', TRUE, 'maria@example.com', 'E2');
+VALUES ('R2','maria@example.com', 'E2');
 
 INSERT INTO Reserva (numeroRef, estado, email_Usuario, idEntrada_Entrada)
-VALUES ('R3', FALSE, 'carlos@example.com', 'E3');
+VALUES ('R3','carlos@example.com', 'E3');
 
 -- Comentarios
 INSERT INTO Comentario (texto, valoracion, fechaComentario, email_Usuario, nombrePelicula_Pelicula)
