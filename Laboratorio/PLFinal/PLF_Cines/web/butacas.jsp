@@ -3,12 +3,17 @@
 <%@ page import="com.example.model.Sala" %>
 <%@ page import="com.example.model.Entrada" %>
 <%@ page import="com.example.model.DatabaseManager" %>
+<%@ page import="com.example.model.Fecha" %>
+
 <%@ page import="java.util.ArrayList" %>
 
 <%
     List<Entrada> entradas = new ArrayList<>();
 try {
     Sala salaSelec = (Sala) session.getAttribute("sala");
+    String fechaStr = (String) session.getAttribute("fecha");
+    Fecha fecha = new Fecha(fechaStr);
+
     entradas = DatabaseManager.getAllEntradas(); 
 
 %>
@@ -39,7 +44,8 @@ try {
                         for (Entrada entrada : entradas) {
                             if (entrada.getNombreSala().equals(salaSelec.getNombreSala()) &&
                                 entrada.getFila() == fila &&
-                                entrada.getColumna() == columna) {
+                                entrada.getColumna() == columna)
+                                 {
                                 ocupadaPorOtroCliente = true;
                                 break;
                             }

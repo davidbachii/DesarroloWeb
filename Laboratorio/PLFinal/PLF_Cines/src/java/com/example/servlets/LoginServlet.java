@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -38,7 +39,8 @@ public class LoginServlet extends HttpServlet {
 
                 if (usuario != null) {
                     if (usuario.getContraseña().equals(contrasena)) {
-
+                        HttpSession session = request.getSession();
+                        session.setAttribute("usuario", usuario);
                         // Usuario autenticado correctamente (no admin)
                         // Aquí puedes redirigir a una página de bienvenida o realizar otras acciones
                         response.getWriter().println("Acceso autorizado. ¡Bienvenido, " + usuario.getNombre() + "!");

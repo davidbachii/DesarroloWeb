@@ -265,9 +265,9 @@ public class DatabaseManager {
             cerrarConexion();
         }
     }
-    
-    public static void seleccionarButaca(int fila, int columna){
-        
+
+    public static void seleccionarButaca(int fila, int columna) {
+
     }
 
     public static void guardarSala(Sala sala) throws SQLException {
@@ -484,6 +484,33 @@ public class DatabaseManager {
                 preparedStatement.setString(7, idEntradaActual);
 
                 preparedStatement.executeUpdate();
+            }
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public boolean validarTarjeta(String email, String numeroTarjeta, Fecha fechaExpiracion, String codigoSeguridad)
+            throws ClassNotFoundException, SQLException {
+        abrirConexion();
+        // Establecer la conexión con la base de datos
+        try {
+            // Consulta SQL para verificar la tarjeta del usuario
+            String sql = "SELECT * FROM tarjeta WHERE email_usuario = ? AND numerotarjeta = ? AND fechaexpiracion = ? AND codigoseguridad = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                LocalDate localDate = fechaExpiracion.toLocalDate();
+                java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
+
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, numeroTarjeta);
+                preparedStatement.setDate(3, fechaSQL);
+                preparedStatement.setString(4, codigoSeguridad);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    // Si hay resultados, la tarjeta es válida
+                    return resultSet.next();
+                }
             }
         } finally {
             cerrarConexion();
