@@ -30,7 +30,7 @@ public class GestionButacas extends HttpServlet {
         Sala sala = (Sala) session.getAttribute("sala");
         // Obtener la cadena JSON de la solicitud
         String butacasSeleccionadasJSON = request.getParameter("butacasSeleccionadas");
-        
+        session.setAttribute("butacasSeleccionadas",butacasSeleccionadasJSON);
         response.sendRedirect(request.getContextPath() + "/confirmarReserva.jsp");
 
     }

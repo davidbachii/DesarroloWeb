@@ -7,6 +7,7 @@ package com.example.servlets;
 import com.example.model.DatabaseManager;
 import com.example.model.Entrada;
 import com.example.model.Fecha;
+import com.example.model.Reserva;
 import com.example.model.Sala;
 import com.example.model.Usuario;
 import jakarta.servlet.http.HttpSession;
@@ -49,7 +50,7 @@ public class ProcesarPagoServlet extends HttpServlet {
             // Obtener la información del usuario de la sesión
             HttpSession session = request.getSession();
             Usuario usuarioActual = (Usuario) session.getAttribute("usuario");
-
+            String emailUsuario = usuarioActual.getCorreo();
             // Validar la tarjeta en la base de datos
             if (DatabaseManager.getInstance().validarTarjeta(usuarioActual.getCorreo(), numeroTarjeta, fechaExp, codigoSeguridad)) {
                 // Los datos de la tarjeta son válidos
@@ -62,7 +63,7 @@ public class ProcesarPagoServlet extends HttpServlet {
                 //CREACION DE RESERVA
                 Sala sala = (Sala) session.getAttribute("sala");
                 // Obtener la cadena JSON de la solicitud
-                String butacasSeleccionadasJSON = request.getParameter("butacasSeleccionadas");
+                String butacasSeleccionadasJSON = (String) session.getAttribute("butacasSeleccionadas");
 
                 // Eliminar corchetes y comillas para obtener pares clave-valor separados por comas
                 String cleanString = butacasSeleccionadasJSON.replaceAll("[\\[\\]\\{\\}\" ]", "");
@@ -107,6 +108,8 @@ public class ProcesarPagoServlet extends HttpServlet {
                         Logger.getLogger(GestionButacas.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+                Reserva reserva = new Reserva(numRef,emailUsuario, idEntrada);
+                DatabaseManager.getInstance().guardarReserva(reserva);
             } else {
                 // Los datos de la tarjeta no son válidos
                 out.println("<h2>Error en el Pago: Datos de Tarjeta Incorrectos</h2>");

@@ -516,4 +516,86 @@ public class DatabaseManager {
             cerrarConexion();
         }
     }
+
+    public static void guardarReserva(Reserva reserva) throws SQLException {
+        abrirConexion();
+        System.out.println("GuardarSala");
+        try {
+            if (reserva != null) {
+                String sql = "INSERT INTO reserva (numeroref, email_usuario, identrada_entrada) VALUES (?, ?, ?)";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, reserva.getNumeroRef());
+                    preparedStatement.setString(2, reserva.getEmail_usuario());
+                    preparedStatement.setString(3, reserva.getId_entrada());
+
+                    preparedStatement.executeUpdate();
+                    System.out.println("Reserva guardada correctamente.");
+                }
+            } else {
+                System.out.println("Error: Reserva es nula.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al guardar la reserva: " + e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public static List<Reserva> getAllReservas() throws SQLException {
+        abrirConexion();
+        List<Reserva> reservas = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM reserva";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        Reserva reserva = new Reserva(
+                                resultSet.getString("numeroref"),
+                                resultSet.getString("email_usuario"),
+                                resultSet.getString("identrada_entrada")
+                        );
+                        reservas.add(reserva);
+                    }
+                }
+            }
+        } finally {
+            cerrarConexion();
+        }
+        return reservas;
+    }
+
+    public static Reserva getReservaPorNumeroDeRef(String nombre) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "SELECT * FROM reserva WHERE numeroref = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, nombre);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return new Reserva(
+                                resultSet.getString("numeroref"),
+                                resultSet.getString("email_usuario"),
+                                resultSet.getString("identrada_entrada")
+                        );
+                    }
+                }
+            }
+        } finally {
+            cerrarConexion();
+        }
+        return null;
+    }
+
+    public static void borrarReserva(Reserva reserva) throws SQLException {
+        abrirConexion();
+        try {
+            String sql = "DELETE FROM reserva WHERE numeroref = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, reserva.getNumeroRef());
+                preparedStatement.executeUpdate();
+            }
+        } finally {
+            cerrarConexion();
+        }
+    }
 }

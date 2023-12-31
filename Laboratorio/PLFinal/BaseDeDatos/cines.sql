@@ -34,7 +34,7 @@ CREATE TABLE Entrada (
     fila smallint,
     columna smallint NOT NULL,
     nombreSala_Sala varchar(20),
-    CONSTRAINT PK_Entrada PRIMARY KEY (idEntrada)
+    CONSTRAINT PK_Entrada PRIMARY KEY (idEntrada,fila,columna)
 );
 
 -- object: Usuario | type: TABLE --
@@ -50,7 +50,6 @@ CREATE TABLE Usuario (
 -- object: Reserva | type: TABLE --
 CREATE TABLE Reserva (
     numeroRef varchar(20) NOT NULL,
-    estado boolean NOT NULL,
     email_Usuario varchar(50),
     idEntrada_Entrada varchar(10),
     CONSTRAINT PK_Reserva PRIMARY KEY (numeroRef)
@@ -62,15 +61,14 @@ CREATE TABLE Comentario (
     valoracion smallint NOT NULL,
     fechaComentario date NOT NULL,
     email_Usuario varchar(50) NOT NULL,
-    nombrePelicula_Pelicula varchar(50),
-    CONSTRAINT PK_Comentario PRIMARY KEY (fechaComentario)
+    nombrePelicula_Pelicula varchar(50)
 );
 
 --object: Tarjeta | type: TABLE --
 CREATE TABLE Tarjeta (
     numeroTarjeta varchar(16) NOT NULL,
     nombreTitular varchar(50) NOT NULL,
-    fechaExpiracion date NOT NULL,
+    fechaExpiracion varchar(10) NOT NULL,
     codigoSeguridad varchar(3) NOT NULL,
     email_Usuario varchar(50) NOT NULL,
     CONSTRAINT PK_Tarjeta PRIMARY KEY (numeroTarjeta),
@@ -115,6 +113,24 @@ VALUES ('Cadena Perpetua', 'La historia de un hombre inocente encarcelado que en
 INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
 VALUES ('El Caballero Oscuro', 'Batman se enfrenta a su némesis, el Joker, en un juego de ingenio que amenaza Gotham City.', 'https://example.com/darkknight', 'The Dark Knight', 'Acción, Crimen, Drama', 'Estados Unidos', 152, 2008, 'Warner Bros.', 'Christopher Nolan', 16, 'Ganadora de 2 premios Oscar.', 'Christian Bale, Heath Ledger, Aaron Eckhart', 'images/CaballeroOscuro.jpeg');
 
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
+VALUES ('Cars', 'En un mundo donde los autos son seres vivos, el aspirante a corredor Rayo McQueen termina en un pequeño pueblo llamado Radiador Springs. Aprendiendo lecciones valiosas de amistad y humildad, Rayo descubre el verdadero significado de la velocidad.', 'https://www.paginaoficial.com/cars', 'Cars', 'Animación', 'Estadounidense', '120 minutos', 2006, 'Pixar', 'John Lasseter', 'Apta para todos los públicos', 'Datos adicionales sobre la película Cars.', 'Owen Wilson, Bonnie Hunt', 'images/Cars.png');
+
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
+VALUES ('Cars 2', 'Rayo McQueen y su amigo Mate se ven envueltos en una misión internacional de espionaje cuando son reclutados para participar en el Grand Prix Mundial. Intrigas, giros y vueltas esperan a nuestros héroes mientras luchan contra una misteriosa amenaza.', 'https://www.paginaoficial.com/cars2', 'Cars 2', 'Animación', 'Estadounidense', '130 minutos', 2011, 'Pixar', 'John Lasseter', 'Apta para todos los públicos', 'Datos adicionales sobre la película Cars 2.', 'Owen Wilson, Larry the Cable Guy', 'images/Cars2.png');
+
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
+VALUES ('Cars 3', 'Con una nueva generación de corredores amenazando su posición, Rayo McQueen se embarca en un emocionante viaje de redescubrimiento y superación. Con la ayuda de entrenadores y nuevos amigos, Rayo intenta volver al ruedo y dejar su marca.', 'https://www.paginaoficial.com/cars3', 'Cars 3', 'Animación', 'Estadounidense', '110 minutos', 2017, 'Pixar', 'Brian Fee', 'Apta para todos los públicos', 'Datos adicionales sobre la película Cars 3.', 'Owen Wilson, Cristela Alonzo', 'images/Cars3.png');
+
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
+VALUES ('Kung Fu Panda', 'Po, un torpe oso panda, sueña con convertirse en un hábil guerrero de kung fu. Su vida da un giro cuando es elegido accidentalmente para cumplir una antigua profecía. Po se embarca en una aventura cómica y emocionante para aprender las artes marciales y salvar el Valle de la Paz.', 'https://www.paginaoficial.com/kungfupanda', 'Kung Fu Panda', 'Animación', 'Estadounidense', '95 minutos', 2008, 'DreamWorks Animation', 'Mark Osborne, John Stevenson', 'Apta para todos los públicos', 'Datos adicionales sobre la película Kung Fu Panda.', 'Jack Black, Angelina Jolie', 'images/KunfuPanda.png');
+
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
+VALUES ('One Piece', 'Monkey D. Luffy y su valiente tripulación emprenden un viaje épico en busca del legendario tesoro conocido como "One Piece". Enfrentándose a peligros, enemigos y desafíos, Luffy se esfuerza por convertirse en el Rey de los Piratas.', 'https://www.paginaoficial.com/onepiece', 'One Piece', 'Animación', 'Japonesa', '120 minutos', 2022, 'Toei Animation', 'Eiichiro Oda', 'Apta para todos los públicos', 'Datos adicionales sobre la película One Piece.', 'Mayumi Tanaka, Kazuya Nakai', 'images/OnePiece.png');
+
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
+VALUES ('Rocky', 'Rocky Balboa, un boxeador de Filadelfia con pocas oportunidades, recibe la oportunidad de enfrentarse al campeón de peso pesado Apollo Creed. Aunque inicialmente es considerado como un oponente fácil, Rocky se prepara para la pelea de su vida, demostrando coraje y determinación.', 'https://www.paginaoficial.com/rocky', 'Rocky', 'Drama', 'Estadounidense', '120 minutos', 1976, 'United Artists', 'John G. Avildsen', 'Apta para mayores de 12 años', 'Datos adicionales sobre la película Rocky.', 'Sylvester Stallone, Talia Shire, Burgess Meredith', 'images/Rocky.png');
+
 -- Puedes agregar más películas según sea necesario...
 
 -- Salas
@@ -139,13 +155,13 @@ VALUES ('E3', '2023-01-03', '18:45:00', 8, 15, 'Sala 3');
 
 -- Usuarios
 INSERT INTO Usuario (nombre, apellidos, contrasenha, email, fechaNacimiento)
-VALUES ('Rafael', 'Gonzalez', 'contraseña1', 'rafael@example.com', '1990-05-15');
+VALUES ('Rafael', 'Gonzalez', '1234', 'rafael@example.com', '1990-05-15');
 
 INSERT INTO Usuario (nombre, apellidos, contrasenha, email, fechaNacimiento)
-VALUES ('Maria', 'Lopez', 'contraseña2', 'maria@example.com', '1985-09-22');
+VALUES ('Maria', 'Lopez', '12345', 'maria@example.com', '1985-09-22');
 
 INSERT INTO Usuario (nombre, apellidos, contrasenha, email, fechaNacimiento)
-VALUES ('Carlos', 'Martinez', 'contraseña3', 'carlos@example.com', '1995-12-10');
+VALUES ('Carlos', 'Martinez', '12345', 'carlos@example.com', '1995-12-10');
 
 -- Reservas
 INSERT INTO Reserva (numeroRef, estado, email_Usuario, idEntrada_Entrada)
