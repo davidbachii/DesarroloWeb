@@ -108,7 +108,7 @@ public class ProcesarPagoServlet extends HttpServlet {
                         Logger.getLogger(GestionButacas.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                Reserva reserva = new Reserva(numRef,emailUsuario, idEntrada);
+                Reserva reserva = new Reserva(numRef,emailUsuario, idEntrada,fila, columna);
                 DatabaseManager.getInstance().guardarReserva(reserva);
             } else {
                 // Los datos de la tarjeta no son válidos

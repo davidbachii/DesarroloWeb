@@ -16,7 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Gestion de peliculas</title>
-        <link rel="stylesheet" type="text/css" href="./estilos/panelAdmin.css">
+        <link rel="stylesheet" type="text/css" href="estilos/panelAdmin.css">
         <script>
             function validarAño() {
                 var año = document.getElementById("anho").value;
@@ -34,6 +34,16 @@
         </script>
     </head>
     <body>
+        
+         <header>
+            <div class="navbar">
+            <a href="gestionPeliculas.jsp">Gestión de Películas</a>
+            <a href="gestionSalas.jsp">Gestión de Salas</a>
+            <a href="gestionEntradas.jsp">Gestión de Entradas</a>
+            <a href="gestionReservas.jsp">Gestión de Reservas</a>
+            <a href="gestionInformes.jsp">Gestión de Informes</a>
+        </div>
+        </header>
         <form action="GestionPelicula" method="post"  onsubmit="return validarAño();">
             <h2>Crear Película</h2>
 
@@ -70,14 +80,14 @@
 
             <label for="duracion">ClasificacionEdad</label>
             <input type="number" id="clasificacionEdad" name="clasificacionEdad" required><br>
-            
+
             <label for="otrosDatos">Otros Datos</label>
             <input type="text" id="otrosDatos" name="otrosDatos" required><br> 
 
-            
+
             <label for="actores">Actores</label>
             <input type="text" id="actores" name="actores" required><br> 
-            
+
             <label for="nacionalidad">Url imagen</label>
             <input type="text" id="imagen" name="imagen" required><br> 
 
@@ -156,18 +166,18 @@
 
             <label for="director">Nuevo Director</label>
             <input type="text" id="nuevoDirector" name="nuevoDirector" required><br>
-            
-            
+
+
             <label for="clasificacionEdad">Nueva Clasificación de Edad</label>
             <input type="number" id="nuevaClasificacionEdad" name="nuevaClasificacionEdad" required><br>
-            
+
             <label for="nuevosDatos">Nuevos Datos</label>
             <input type="text" id="nuevosDatos" name="nuevosDatos" required><br>
 
 
             <label for="nuevosActores">Nuevos Actores</label>
             <input type="text" id="nuevosActores" name="nuevosActores" required><br>
-            
+
             <label for="nuevaImagen">Nuevos url de la imagen</label>
             <input type="text" id="nuevaImagen" name="nuevaImagen" required><br>
 
@@ -177,6 +187,69 @@
             <input type="hidden" name="accion" value="modificar">
             <button type="submit">Modificar Película</button>
         </form>     
+
+        <form action="GestionPelicula" method="post">
+            <h2>Consultar Película</h2>
+            <select name="peliculaAConsultar">
+                <% List<Pelicula> peliculas3 = new ArrayList<>();
+                    try {
+                        peliculas3 = DatabaseManager.getAllPeliculas();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    for (Pelicula pelicula3 : peliculas3) { %>
+                <option value="<%= pelicula3.getNombre() %>"><%= pelicula3.getNombre() %></option>
+                <% } %>
+            </select><br>
+
+            <!-- Campos para mostrar la información de la película -->
+            <label>Nombre</label>
+            <input type="text" id="nombreConsultar" name="nombreConsultar" value="${nombreConsultar}" ><br>
+
+            <label>Sinopsis</label>
+            <textarea id="sinopsisConsultar" name="sinopsisConsultar" >${sinopsisConsultar}</textarea><br>
+
+            <label>Página oficial</label>
+            <input type="text" id="paginaOficialConsultar" name="paginaOficialConsultar" value="${paginaOficialConsultar}" ><br>
+
+            <label for="nuevoTituloOriginal">Título Original</label>
+            <input type="text" id="tituloOriginalConsultar" name="tituloOriginalConsultar" value="${tituloOriginalConsultar}" ><br>
+
+            <label for="nuevoGenero">Género</label>
+            <input type="text" id="generoConsultar" name="generoConsultar" value="${generoConsultar}" ><br>
+
+            <label for="nuevaNacionalidad">Nacionalidad</label>
+            <input type="text" id="nacionalidadConsultar" name="nacionalidadConsultar" value="${nacionalidadConsultar}" ><br>
+
+            <label for="nuevaDuracion">Duración (minutos)</label>
+            <input type="number" id="duracionConsultar" name="duracionConsultar" value="${duracionConsultar}" ><br>
+
+            <label for="nuevoAnho">Año</label>
+            <input type="number" id="AnhoConsultar" name="AnhoConsultar" value="${AnhoConsultar}" ><br>
+
+            <label for="nuevaDistribuidora">Distribuidora</label>
+            <input type="text" id="distribuidoraConsultar" name="distribuidoraConsultar" value="${distribuidoraConsultar}" ><br>
+
+            <label for="nuevoDirector">Director</label>
+            <input type="text" id="directorConsultar" name="directorConsultar" value="${directorConsultar}" ><br>
+
+            <label for="nuevaClasificacionEdad">Clasificación de Edad</label>
+            <input type="number" id="clasificacionEdadConsultar" name="clasificacionEdadConsultar" value="${clasificacionEdadConsultar}" ><br>
+
+            <label for="nuevosDatos">Datos</label>
+            <input type="text" id="datos" name="datosConsultar" value="${datosConsultar}" ><br>
+
+            <label for="nuevosActores">Actores</label>
+            <input type="text" id="actoresConsultar" name="actoresConsultar" value="${actoresConsultar}" ><br>
+
+            <label for="nuevaImagen">URL de la imagen</label>
+            <input type="text" id="ImagenConsultar" name="ImagenConsultar" value="${ImagenConsultar}" ><br>
+
+            <!-- Otros campos para los nuevos valores -->
+
+            <input type="hidden" name="accion" value="Consultar">
+            <button type="submit">Consultar Película</button><br><br>
+        </form>         
 
 
 

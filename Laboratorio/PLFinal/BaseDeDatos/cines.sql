@@ -31,12 +31,11 @@ CREATE TABLE Entrada (
     idEntrada varchar(10) NOT NULL,
     fecha date NOT NULL,
     hora time NOT NULL,
-    fila smallint,
+    fila smallint NOT NULL,
     columna smallint NOT NULL,
     nombreSala_Sala varchar(20),
-    CONSTRAINT PK_Entrada PRIMARY KEY (idEntrada,fila,columna)
+    CONSTRAINT PK_Entrada PRIMARY KEY (idEntrada, fila, columna)
 );
-
 -- object: Usuario | type: TABLE --
 CREATE TABLE Usuario (
     nombre varchar(50) NOT NULL,
@@ -52,7 +51,11 @@ CREATE TABLE Reserva (
     numeroRef varchar(20) NOT NULL,
     email_Usuario varchar(50),
     idEntrada_Entrada varchar(10),
-    CONSTRAINT PK_Reserva PRIMARY KEY (numeroRef)
+    fila_Entrada smallint NOT NULL,
+    columna_Entrada smallint NOT NULL,
+    CONSTRAINT PK_Reserva PRIMARY KEY (numeroRef),
+    CONSTRAINT EntradaReserva_fk FOREIGN KEY (idEntrada_Entrada, fila_Entrada, columna_Entrada)
+    REFERENCES Entrada (idEntrada, fila, columna)
 );
 
 -- object: Comentario | type: TABLE --
@@ -88,8 +91,8 @@ ALTER TABLE Reserva ADD CONSTRAINT UsuarioReserva_fk FOREIGN KEY (email_Usuario)
 REFERENCES Usuario (email);
 
 -- object: EntradaReserva_fk | type: CONSTRAINT --
-ALTER TABLE Reserva ADD CONSTRAINT EntradaReserva_fk FOREIGN KEY (idEntrada_Entrada)
-REFERENCES Entrada (idEntrada);
+--ALTER TABLE Reserva ADD CONSTRAINT EntradaReserva_fk FOREIGN KEY (idEntrada_Entrada, fila_Entrada, columna_Entrada)
+--REFERENCES Entrada (idEntrada, fila, columna);
 
 -- object: ComentarioUsuario_fk | type: CONSTRAINT --
 ALTER TABLE Comentario ADD CONSTRAINT ComentarioUsuario_fk FOREIGN KEY (email_Usuario)
@@ -164,14 +167,15 @@ INSERT INTO Usuario (nombre, apellidos, contrasenha, email, fechaNacimiento)
 VALUES ('Carlos', 'Martinez', '12345', 'carlos@example.com', '1995-12-10');
 
 -- Reservas
-INSERT INTO Reserva (numeroRef,email_Usuario, idEntrada_Entrada)
-VALUES ('R1', 'rafael@example.com', 'E1');
 
-INSERT INTO Reserva (numeroRef, estado, email_Usuario, idEntrada_Entrada)
-VALUES ('R2','maria@example.com', 'E2');
+INSERT INTO Reserva (numeroRef, email_Usuario, idEntrada_Entrada, fila_Entrada, columna_Entrada)
+VALUES ('R1', 'rafael@example.com', 'E1', 5, 10);
 
-INSERT INTO Reserva (numeroRef, estado, email_Usuario, idEntrada_Entrada)
-VALUES ('R3','carlos@example.com', 'E3');
+INSERT INTO Reserva (numeroRef, email_Usuario, idEntrada_Entrada, fila_Entrada, columna_Entrada)
+VALUES ('R2', 'maria@example.com', 'E2', 3, 8);
+
+INSERT INTO Reserva (numeroRef, email_Usuario, idEntrada_Entrada, fila_Entrada, columna_Entrada)
+VALUES ('R3', 'carlos@example.com', 'E3', 8, 15);
 
 -- Comentarios
 INSERT INTO Comentario (texto, valoracion, fechaComentario, email_Usuario, nombrePelicula_Pelicula)
@@ -192,3 +196,4 @@ VALUES ('4444555566667777', 'Maria Lopez', '2023-11-30', '987', 'maria@example.c
 
 INSERT INTO Tarjeta (numeroTarjeta, nombreTitular, fechaExpiracion, codigoSeguridad, email_Usuario)
 VALUES ('7777888899990000', 'Carlos Martinez', '2023-09-30', '345', 'carlos@example.com');
+

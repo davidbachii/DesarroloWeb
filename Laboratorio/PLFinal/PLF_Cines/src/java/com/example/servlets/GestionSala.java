@@ -80,11 +80,10 @@ public class GestionSala extends HttpServlet {
 
                 if (sala != null) {
                     // Modifica la película con los nuevos valores
-                    sala.setNombreSala(request.getParameter("nuevoNombreSala")); 
+                    sala.setNombreSala(request.getParameter("nuevoNombreSala"));
                     sala.setFilas(Integer.parseInt(request.getParameter("nuevoFilas")));
                     sala.setColumnas(Integer.parseInt(request.getParameter("nuevoColumnas")));
                     sala.setNombre_pelicula(request.getParameter("peliculaCambioSala"));
-                    
 
                     // Guarda la película modificada en la base de datos
                     DatabaseManager.getInstance().modificarSala(nombreSalaAModificar, sala);
@@ -98,6 +97,33 @@ public class GestionSala extends HttpServlet {
                 e.printStackTrace();
                 response.getWriter().println("Error al modificar la película.");
             }
+
+        } else if ("Consultar".equals(accion)) {
+
+            String nombreSalaAConsultar = request.getParameter("salaAConsultar");
+
+            try {
+                // Obtén la película por su nombre
+                Sala sala = DatabaseManager.getSalaPorNombre(nombreSalaAConsultar);
+
+                if (sala != null) {
+                    // Setea los atributos de la sala en el request para que puedan ser accesibles en el JSP
+                    request.setAttribute("nuevoNombreSala", sala.getNombreSala());
+                    request.setAttribute("filasConsultar", sala.getFilas());
+                    request.setAttribute("ColumnasConsultar", sala.getColumnas());
+                    request.setAttribute("peliculaEnSala", sala.getNombre_pelicula());
+
+                    // Redirige a la página del formulario con los campos ya populados
+                    request.getRequestDispatcher("gestionSalas.jsp").forward(request, response);
+
+                } else {
+                    response.getWriter().println("No se encontró la película a Consultar.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                response.getWriter().println("Error al modificar la película.");
+            }
+
         } else {
             response.getWriter().println("Acción no reconocida");
         }

@@ -39,12 +39,14 @@ public class LoginServlet extends HttpServlet {
 
                 if (usuario != null) {
                     if (usuario.getContraseña().equals(contrasena)) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("usuario", usuario);
+                        
+                        
+                         HttpSession session = request.getSession();
+                         session.setAttribute("usuario", usuario);
                         // Usuario autenticado correctamente (no admin)
                         // Aquí puedes redirigir a una página de bienvenida o realizar otras acciones
-                        response.getWriter().println("Acceso autorizado. ¡Bienvenido, " + usuario.getNombre() + "!");
-                        response.sendRedirect("index.jsp");
+                        //response.getWriter().println("Acceso autorizado. ¡Bienvenido, " + usuario.getNombre() + "!");
+                        response.sendRedirect("welcome.html");
 
                     }else{
                         response.getWriter().println("Usuario y/o contraseña incorrectos.");

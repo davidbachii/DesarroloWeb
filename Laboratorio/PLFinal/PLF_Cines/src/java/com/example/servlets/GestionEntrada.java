@@ -19,6 +19,7 @@ import java.sql.Time;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +49,7 @@ public class GestionEntrada extends HttpServlet {
             String nombreSala = request.getParameter("nombreSala");
 
             try {
-                
+
                 Fecha fecha = new Fecha(fechaStr);
                 Entrada entrada = new Entrada(idEntrada, fecha, hora, fila, columna, nombreSala);
                 System.out.println(entrada.toString());
@@ -114,6 +115,34 @@ public class GestionEntrada extends HttpServlet {
                 e.printStackTrace();
                 response.getWriter().println("Error al modificar la entrada.");
             }
+        } else if ("Consultar".equals(accion)) {
+
+            String idEntradaAConsultar = request.getParameter("idEntradaAConsultar");
+
+            try {
+                // Obtén la entrada por su ID
+                Entrada entrada = DatabaseManager.getEntradaPorId(idEntradaAConsultar);
+
+                if (entrada != null) {
+                    // Setea los atributos de la entrada en el request para que puedan ser accesibles en el JSP
+                    request.setAttribute("idEntradaConsultar", entrada.getIdEntrada());
+                    LocalDate localDate = entrada.getFecha().toLocalDate();
+                    request.setAttribute("fechaConsultar", localDate);
+                    request.setAttribute("horaConsultar", entrada.getHora());
+                    request.setAttribute("filaConsultar", entrada.getFila());
+                    request.setAttribute("columnaConsultar", entrada.getColumna());
+                    request.setAttribute("nombreSalaAconsultar", entrada.getNombreSala());
+
+                    // Redirige a la página del formulario con los campos ya populados
+                    request.getRequestDispatcher("gestionEntradas.jsp").forward(request, response);
+                } else {
+                    response.getWriter().println("No se encontró la entrada a Consultar.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                response.getWriter().println("Error al consultar la entrada.");
+            }
+
         } else {
             response.getWriter().println("Acción no reconocida");
         }
