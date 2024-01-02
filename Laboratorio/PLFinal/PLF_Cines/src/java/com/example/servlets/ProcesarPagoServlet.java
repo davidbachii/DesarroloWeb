@@ -9,6 +9,7 @@ import com.example.model.Entrada;
 import com.example.model.Fecha;
 import com.example.model.Reserva;
 import com.example.model.Sala;
+import com.example.model.TarjetaCredito;
 import com.example.model.Usuario;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
@@ -42,17 +43,23 @@ public class ProcesarPagoServlet extends HttpServlet {
 
         try {
             // Obtener los parámetros del formulario
-            String numeroTarjeta = request.getParameter("numeroTarjeta");
-            String fechaExpiracion = request.getParameter("fechaExpiracion");
-            Fecha fechaExp = new Fecha(fechaExpiracion);
+            String numeroTarjeta = request.getParameter("numeroT");
+            String nombre_titular = request.getParameter("titular");
+            String fechaExpiracion = request.getParameter("fechaCaducidad");
+            
             String codigoSeguridad = request.getParameter("codigoSeguridad");
 
             // Obtener la información del usuario de la sesión
             HttpSession session = request.getSession();
             Usuario usuarioActual = (Usuario) session.getAttribute("usuario");
             String emailUsuario = usuarioActual.getCorreo();
+            
+            TarjetaCredito tarjeta = new TarjetaCredito(numeroTarjeta, nombre_titular, fechaExpiracion, codigoSeguridad, emailUsuario);
+            
+            DatabaseManager.getInstance().guardarTarjeta(tarjeta);
+            
             // Validar la tarjeta en la base de datos
-            if (DatabaseManager.getInstance().validarTarjeta(usuarioActual.getCorreo(), numeroTarjeta, fechaExp, codigoSeguridad)) {
+            if (DatabaseManager.getInstance().validarTarjeta(emailUsuario, numeroTarjeta, fechaExpiracion, codigoSeguridad)) {
                 // Los datos de la tarjeta son válidos
                 out.println("<h2>Pago Exitoso</h2>");
 

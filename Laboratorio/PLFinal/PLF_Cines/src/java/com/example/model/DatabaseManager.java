@@ -718,9 +718,8 @@ public class DatabaseManager {
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, tarjeta.getNumeroTarjeta());
                     preparedStatement.setString(2, tarjeta.getNombreTitular());
-                    LocalDate localDate = tarjeta.getFecha().toLocalDate();
-                    java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
-                    preparedStatement.setDate(3, fechaSQL);
+                    
+                    preparedStatement.setString(3, tarjeta.getFecha_caducidad());
                     preparedStatement.setString(4, tarjeta.getCodigoSeguridad());
                     preparedStatement.setString(5, tarjeta.getEmail_user());
 
@@ -731,13 +730,13 @@ public class DatabaseManager {
                 System.out.println("Error: El comentario es nula.");
             }
         } catch (SQLException e) {
-            System.err.println("Error al guardar el comentario: " + e.getMessage());
+            System.err.println("Error al guardar la tarjeta: " + e.getMessage());
         } finally {
             cerrarConexion();
         }
     }
      
-       public boolean validarTarjeta(String email, String numeroTarjeta, Fecha fechaExpiracion, String codigoSeguridad)
+       public boolean validarTarjeta(String email, String numeroTarjeta, String fechaExpiracion, String codigoSeguridad)
             throws ClassNotFoundException, SQLException {
         abrirConexion();
         // Establecer la conexión con la base de datos
@@ -746,12 +745,11 @@ public class DatabaseManager {
             String sql = "SELECT * FROM tarjeta WHERE email_usuario = ? AND numerotarjeta = ? AND fechaexpiracion = ? AND codigoseguridad = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-                LocalDate localDate = fechaExpiracion.toLocalDate();
-                java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
+               
 
                 preparedStatement.setString(1, email);
                 preparedStatement.setString(2, numeroTarjeta);
-                preparedStatement.setDate(3, fechaSQL);
+                preparedStatement.setString(3, fechaExpiracion);
                 preparedStatement.setString(4, codigoSeguridad);
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {

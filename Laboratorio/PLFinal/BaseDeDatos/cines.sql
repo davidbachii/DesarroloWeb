@@ -69,7 +69,7 @@ CREATE TABLE Comentario (
 
 --object: Tarjeta | type: TABLE --
 CREATE TABLE Tarjeta (
-    numeroTarjeta varchar(16) NOT NULL,
+    numeroTarjeta varchar(25) NOT NULL,
     nombreTitular varchar(50) NOT NULL,
     fechaExpiracion varchar(10) NOT NULL,
     codigoSeguridad varchar(3) NOT NULL,

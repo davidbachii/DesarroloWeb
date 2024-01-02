@@ -12,14 +12,14 @@ public class TarjetaCredito {
     
     private String numeroTarjeta;
     private String nombreTitular;
-    private Fecha fecha;
+    private String fecha_caducidad;
     private String codigoSeguridad;
     private String email_user;
 
-    public TarjetaCredito(String numeroTarjeta, String nombreTitular, Fecha fecha, String codigoSeguridad, String email_user) {
+    public TarjetaCredito(String numeroTarjeta, String nombreTitular, String fecha_caducidad, String codigoSeguridad, String email_user) {
         this.numeroTarjeta = numeroTarjeta;
         this.nombreTitular = nombreTitular;
-        this.fecha = fecha;
+        this.fecha_caducidad = fecha_caducidad;
         this.codigoSeguridad = codigoSeguridad;
         this.email_user = email_user;
     }
@@ -40,12 +40,12 @@ public class TarjetaCredito {
         this.nombreTitular = nombreTitular;
     }
 
-    public Fecha getFecha() {
-        return fecha;
+    public String getFecha_caducidad() {
+        return fecha_caducidad;
     }
 
-    public void setFecha(Fecha fecha) {
-        this.fecha = fecha;
+    public void setFecha_caducidad(String fecha_caducidad) {
+        this.fecha_caducidad = fecha_caducidad;
     }
 
     public String getCodigoSeguridad() {
@@ -66,9 +66,10 @@ public class TarjetaCredito {
 
     @Override
     public String toString() {
-        return "TarjetaCredito{" + "numeroTarjeta=" + numeroTarjeta + ", nombreTitular=" + nombreTitular + ", fecha=" + fecha + ", codigoSeguridad=" + codigoSeguridad + ", email_user=" + email_user + '}';
+        return "TarjetaCredito{" + "numeroTarjeta=" + numeroTarjeta + ", nombreTitular=" + nombreTitular + ", fecha_caducidad=" + fecha_caducidad + ", codigoSeguridad=" + codigoSeguridad + ", email_user=" + email_user + '}';
     }
-    
+
+   
     
     
 }
