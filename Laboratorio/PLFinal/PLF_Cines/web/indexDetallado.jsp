@@ -89,6 +89,9 @@
                             <button type="submit">Enviar Comentario</button>
                         </form>
                     </div>
+                    <% session.setAttribute("pelicula", pelicula); %>
+
+                    <button onclick="location.href='reserva.jsp'">Reservar</button>                    
                     <% } %>
                 </div>
             </div>

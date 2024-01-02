@@ -4,6 +4,7 @@
 <%@ page import="com.example.model.Sala" %>
 <%@ page import="com.example.model.DatabaseManager" %>
 <%@ page import="java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,22 +15,12 @@
 
         <form action="Reservas" method="post">
             <label for="pelicula">Pelicula:</label>
-            <select name="peliculaSeleccionada" onchange="filtrarSalas()">
-                <% List<Pelicula> peliculas = new ArrayList<>();
-                    try {
-                        peliculas = DatabaseManager.getAllPeliculas(); // Asume que tienes un método para obtener todas las películas
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                %>
-                <option value="" disabled selected>Selecciona una película</option>
-                <% 
-                    for (Pelicula pelicula : peliculas) { 
-                %>
-                <option value="<%= pelicula.getNombre() %>"><%= pelicula.getNombre() %></option>
-                <% } %>
 
-            </select><br>
+            <% 
+                Pelicula peliculaSeleccionada = (Pelicula) session.getAttribute("pelicula");
+            %>
+            <input type="text" name="pelicula" value="<%= peliculaSeleccionada.getNombre() %>" readonly>
+            <br>
 
             <label for="fecha">Fecha:</label>
             <input type ="date" name="fecha" required><br>
@@ -40,17 +31,24 @@
             <select name="salaSeleccionada" id="salaSeleccionada">
                 <% List<Sala> salas = new ArrayList<>();
                     try {
-                        salas = DatabaseManager.getAllSalas(); // Asume que tienes un método para obtener todas las películas
+                        salas = DatabaseManager.getAllSalas(); // Obtener todas las salas
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 %>
-                <option value="" disabled selected>Selecciona una película primero</option>
+                <option value="" disabled selected>Selecciona una sala</option>
                 <% 
                     for (Sala sala : salas) { 
+                        System.out.println(sala.getNombre_pelicula());
+
+                        if (sala.getNombre_pelicula().equals(peliculaSeleccionada.getNombre())) {
+                            System.out.println(sala.getNombre_pelicula());
+                            System.out.println(peliculaSeleccionada.getNombre());
+
                 %>
-                <option value="<%= sala.getNombreSala() %>" data-pelicula="<%= sala.getNombre_pelicula() %>"><%= sala.getNombreSala() %></option>
+                <option value="<%= sala.getNombreSala() %>"><%= sala.getNombreSala()%></option>
                 <% 
+                        }
                     } 
                 %>
             </select><br>
@@ -58,29 +56,11 @@
             <input type="submit" value="Seleccionar Asientos">
         </form>
 
-        
         <script>
             function filtrarSalas() {
-                var peliculaSeleccionada = document.querySelector('select[name="peliculaSeleccionada"]').value;
-                var salasDropdown = document.querySelector('select[name="salaSeleccionada"]');
-                
-                // Mostrar todas las opciones
-                Array.from(salasDropdown.options).forEach(function(option) {
-                    option.style.display = 'block';
-                });
-                
-                // Ocultar las opciones que no pertenecen a la película seleccionada
-                Array.from(salasDropdown.options).forEach(function(option) {
-                    if (option.dataset.pelicula && option.dataset.pelicula !== peliculaSeleccionada) {
-                        option.style.display = 'none';
-                    }
-                });
-                
-                // Reiniciar el valor seleccionado
-                salasDropdown.value = '';
+                // No es necesario realizar ninguna modificación en el script.
             }
         </script>
-        
+
     </body>
-</html>
 </html>
