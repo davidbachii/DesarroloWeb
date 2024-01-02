@@ -31,12 +31,6 @@ nav {
     padding: 0 20px;
 }
 
-.search-bar input {
-    margin-right: 10px;
-    padding: 5px;
-    border-radius: 5px;
-}
-
 .user-profile a {
     color: #ffffff;
     text-decoration: none;

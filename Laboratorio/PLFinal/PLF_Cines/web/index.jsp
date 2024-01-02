@@ -27,10 +27,6 @@
             <h1>CinesWeb</h1>
         </div>
         <nav>
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar...">
-                <button>Buscar</button>
-            </div>
             <div class="user-profile">
                 <a href="login.jsp">Registrarse</a>
             </div>
