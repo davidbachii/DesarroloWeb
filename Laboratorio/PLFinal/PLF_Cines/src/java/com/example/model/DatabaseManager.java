@@ -491,7 +491,7 @@ public class DatabaseManager {
         System.out.println("GuardarSala");
         try {
             if (reserva != null) {
-                String sql = "INSERT INTO reserva (numeroref, email_usuario, identrada_entrada, fila_entrada, columna_entrada) VALUES (?, ?, ?, ?)";
+                String sql = "INSERT INTO reserva (numeroref, email_usuario, identrada_entrada, fila_entrada, columna_entrada) VALUES (?, ?, ?, ?, ?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, reserva.getNumeroRef());
                     preparedStatement.setString(2, reserva.getEmail_usuario());

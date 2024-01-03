@@ -13,7 +13,7 @@ try {
     Sala salaSelec = (Sala) session.getAttribute("sala");
     String fechaStr = (String) session.getAttribute("fecha");
     Fecha fecha = new Fecha(fechaStr);
-
+    System.out.println(fecha);
     entradas = DatabaseManager.getAllEntradas(); 
 
 %>
@@ -42,11 +42,14 @@ try {
 
                         // Verificar si la butaca está ocupada por otras entradas
                         for (Entrada entrada : entradas) {
+                                System.out.println(entrada.getFecha().equals(fecha));
                             if (entrada.getNombreSala().equals(salaSelec.getNombreSala()) &&
                                 entrada.getFila() == fila &&
-                                entrada.getColumna() == columna)
+                                entrada.getColumna() == columna &&
+                                entrada.getFecha().toLocalDate().equals(fecha.toLocalDate()))
                                  {
                                 ocupadaPorOtroCliente = true;
+
                                 break;
                             }
                         }
@@ -101,44 +104,44 @@ try {
             <button type="submit" name="comprarButacas">Comprar</button>
         </form>
         <script>
-$(document).ready(function () {
-    var butacasSeleccionadas = [];
+            $(document).ready(function () {
+                var butacasSeleccionadas = [];
 
-    // Manejar el clic en una butaca
-    $('.butaca').click(function () {
-        var fila = $(this).data('fila');
-        var columna = $(this).data('columna');
+                // Manejar el clic en una butaca
+                $('.butaca').click(function () {
+                    var fila = $(this).data('fila');
+                    var columna = $(this).data('columna');
 
-        // Verificar si la butaca está ocupada por otros clientes
-        var ocupadaPorClientes = $(this).hasClass('ocupadaPorClientes');
+                    // Verificar si la butaca está ocupada por otros clientes
+                    var ocupadaPorClientes = $(this).hasClass('ocupadaPorClientes');
 
-        if (!ocupadaPorClientes) {
-            // Verificar si la butaca está libre u ocupada
-            var ocupada = $(this).hasClass('ocupada');
+                    if (!ocupadaPorClientes) {
+                        // Verificar si la butaca está libre u ocupada
+                        var ocupada = $(this).hasClass('ocupada');
 
-            if (!ocupada) {
-                // Si la butaca está libre, cambiar a ocupada
-                $(this).attr('src', 'butacas/butaca_seleccionada.png');
-                $(this).addClass('ocupada');
-                // Agregar la butaca a la lista de seleccionadas
-                butacasSeleccionadas.push({fila: fila, columna: columna});
-            } else {
-                // Si la butaca está ocupada, cambiar a libre
-                $(this).attr('src', 'butacas/butaca_libre.png');
-                $(this).removeClass('ocupada');
-                // Eliminar la butaca de la lista de seleccionadas
-                butacasSeleccionadas = butacasSeleccionadas.filter(function (butaca) {
-                    return butaca.fila !== fila || butaca.columna !== columna;
+                        if (!ocupada) {
+                            // Si la butaca está libre, cambiar a ocupada
+                            $(this).attr('src', 'butacas/butaca_seleccionada.png');
+                            $(this).addClass('ocupada');
+                            // Agregar la butaca a la lista de seleccionadas
+                            butacasSeleccionadas.push({fila: fila, columna: columna});
+                        } else {
+                            // Si la butaca está ocupada, cambiar a libre
+                            $(this).attr('src', 'butacas/butaca_libre.png');
+                            $(this).removeClass('ocupada');
+                            // Eliminar la butaca de la lista de seleccionadas
+                            butacasSeleccionadas = butacasSeleccionadas.filter(function (butaca) {
+                                return butaca.fila !== fila || butaca.columna !== columna;
+                            });
+                        }
+                    }
+
+                    // Actualizar el campo oculto con las butacas seleccionadas
+                    $('#butacasSeleccionadas').val(JSON.stringify(butacasSeleccionadas));
                 });
-            }
-        }
-
-        // Actualizar el campo oculto con las butacas seleccionadas
-        $('#butacasSeleccionadas').val(JSON.stringify(butacasSeleccionadas));
-    });
-});
-</script>
-</body>
+            });
+        </script>
+    </body>
 </html>
 <%
 } catch (Exception e) {
