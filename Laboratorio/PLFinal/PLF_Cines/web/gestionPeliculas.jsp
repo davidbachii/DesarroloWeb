@@ -22,7 +22,7 @@
                 var año = document.getElementById("anho").value;
                 var mensajeError = document.getElementById("mensajeErrorAño");
 
-                if (año < 1980 || año > 2024) {
+                if (año < 1900 || año > 2024) {
                     mensajeError.innerHTML = "Por favor, introduce un año entre 1980 y 2024.";
                     mensajeError.style.color = "red";
                     return false;
@@ -161,7 +161,7 @@
         </form>
 
 
-        <form action="GestionPelicula" method="post" onsubmit="return validarAnno() && validarGenero() && validarNacionalidad() && validarClasificacionEdad() && validarDuracion();">
+        <form action="GestionPelicula" method="post">
             <h2>Borrar Película</h2>
             <label>Selecciona una película para borrar:</label>
             <select name="peliculaABorrar">
@@ -250,7 +250,7 @@
             <button type="submit">Modificar Película</button>
         </form>     
 
-        <form action="GestionPelicula" method="post" onsubmit="return validarAnno() && validarGenero() && validarNacionalidad() && validarClasificacionEdad() && validarDuracion();">
+        <form action="GestionPelicula" method="post">
             <h2>Consultar Película</h2>
             <select name="peliculaAConsultar">
                 <% List<Pelicula> peliculas3 = new ArrayList<>();
