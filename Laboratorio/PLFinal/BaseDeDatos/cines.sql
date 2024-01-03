@@ -14,6 +14,7 @@ CREATE TABLE Pelicula (
     otrosDatos varchar(200),
     actores varchar(200),
     url_image varchar(500),
+    url_video varchar(500),
     CONSTRAINT PK_Pelicula PRIMARY KEY (nombrePelicula)
 );
 

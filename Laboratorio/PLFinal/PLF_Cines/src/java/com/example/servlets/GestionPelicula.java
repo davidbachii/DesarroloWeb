@@ -64,6 +64,7 @@ public class GestionPelicula extends HttpServlet {
             String otrosDatos = request.getParameter("otrosDatos");
             String actores = request.getParameter("actores");
             String url_image = request.getParameter("imagen");
+            String url_video = request.getParameter("video");
 
             try {
 
@@ -122,6 +123,7 @@ public class GestionPelicula extends HttpServlet {
                     pelicula.setOtrosDatos(request.getParameter("nuevosDatos"));
                     pelicula.setActores(request.getParameter("nuevosActores"));
                     pelicula.setUrl_image(request.getParameter("nuevaImagen"));
+                    pelicula.setUrl_video(request.getParameter("nuevoVideo"));
 
                     // Guarda la película modificada en la base de datos
                     DatabaseManager.modificarPelicula(nombrePeliculaAModificar, pelicula);
@@ -158,6 +160,7 @@ public class GestionPelicula extends HttpServlet {
                     request.setAttribute("datosConsultar", pelicula.getOtrosDatos());
                     request.setAttribute("actoresConsultar", pelicula.getActores());
                     request.setAttribute("ImagenConsultar", pelicula.getUrl_image());
+                    request.setAttribute("VideoConsultar", pelicula.getUrl_video());
 
                     // Redirige a la página del formulario con los campos ya populados
                     request.getRequestDispatcher("gestionPeliculas.jsp").forward(request, response);

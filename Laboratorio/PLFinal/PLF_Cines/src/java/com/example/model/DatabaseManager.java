@@ -128,7 +128,7 @@ public class DatabaseManager {
         System.out.println("GuardarPelicula");
         try {
             if (pelicula != null) {
-                String sql = "INSERT INTO pelicula (nombrepelicula, sinopsis, paginaoficial, titulooriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosdatos, actores, url_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO pelicula (nombrepelicula, sinopsis, paginaoficial, titulooriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosdatos, actores, url_image, url_video) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, pelicula.getNombre());
                     preparedStatement.setString(2, pelicula.getSinopsis());
@@ -144,6 +144,8 @@ public class DatabaseManager {
                     preparedStatement.setString(12, pelicula.getOtrosDatos());
                     preparedStatement.setString(13, pelicula.getActores());
                     preparedStatement.setString(14, pelicula.getUrl_image());
+                    preparedStatement.setString(15, pelicula.getUrl_video());
+
 
                     preparedStatement.executeUpdate();
                 }
