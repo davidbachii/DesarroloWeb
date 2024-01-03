@@ -68,7 +68,7 @@ public class GestionPelicula extends HttpServlet {
 
             try {
 
-                Pelicula pelicula = new Pelicula(nombre, sinopsis, pagina_oficial, titulo_original, genero, nacionalidad, duracion, año, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image);
+                Pelicula pelicula = new Pelicula(nombre, sinopsis, pagina_oficial, titulo_original, genero, nacionalidad, duracion, año, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video);
 
                 // Guardar el usuario en la base de datos
                 DatabaseManager.getInstance().guardarPelicula(pelicula);
