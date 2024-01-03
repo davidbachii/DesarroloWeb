@@ -181,7 +181,8 @@ public class DatabaseManager {
                                 resultSet.getInt("clasificacionEdad"),
                                 resultSet.getString("otrosdatos"),
                                 resultSet.getString("actores"),
-                                resultSet.getString("url_image")
+                                resultSet.getString("url_image"),
+                                resultSet.getString("url_video")
                         );
                         peliculas.add(pelicula);
                     }
@@ -215,7 +216,8 @@ public class DatabaseManager {
                                 resultSet.getInt("clasificacionEdad"),
                                 resultSet.getString("otrosdatos"),
                                 resultSet.getString("actores"),
-                                resultSet.getString("url_image")
+                                resultSet.getString("url_image"),
+                                resultSet.getString("url_video")
                         );
                     }
                 }
