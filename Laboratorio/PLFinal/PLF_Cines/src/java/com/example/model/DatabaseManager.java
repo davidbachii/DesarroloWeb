@@ -491,7 +491,7 @@ public class DatabaseManager {
         System.out.println("GuardarSala");
         try {
             if (reserva != null) {
-                String sql = "INSERT INTO reserva (numeroref, email_usuario, identrada_entrada, fila_entrada, columna_entrada) VALUES (?, ?, ?, ?)";
+                String sql = "INSERT INTO reserva (numeroref, email_usuario, identrada_entrada, fila_entrada, columna_entrada) VALUES (?, ?, ?, ?, ?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, reserva.getNumeroRef());
                     preparedStatement.setString(2, reserva.getEmail_usuario());
@@ -736,21 +736,20 @@ public class DatabaseManager {
         }
     }
      
-       public boolean validarTarjeta(String email, String numeroTarjeta, String fechaExpiracion, String codigoSeguridad)
+       public boolean validarTarjeta(String email, String numeroTarjeta, String codigoSeguridad)
             throws ClassNotFoundException, SQLException {
         abrirConexion();
         // Establecer la conexión con la base de datos
         try {
             // Consulta SQL para verificar la tarjeta del usuario
-            String sql = "SELECT * FROM tarjeta WHERE email_usuario = ? AND numerotarjeta = ? AND fechaexpiracion = ? AND codigoseguridad = ?";
+            String sql = "SELECT * FROM tarjeta WHERE email_usuario = ? AND numerotarjeta = ? AND codigoseguridad = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
                
 
                 preparedStatement.setString(1, email);
                 preparedStatement.setString(2, numeroTarjeta);
-                preparedStatement.setString(3, fechaExpiracion);
-                preparedStatement.setString(4, codigoSeguridad);
+                preparedStatement.setString(3, codigoSeguridad);
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     // Si hay resultados, la tarjeta es válida

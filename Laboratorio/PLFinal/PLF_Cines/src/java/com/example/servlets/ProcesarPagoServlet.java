@@ -43,30 +43,32 @@ public class ProcesarPagoServlet extends HttpServlet {
 
         try {
             // Obtener los parámetros del formulario
-            String numeroTarjeta = request.getParameter("numeroT");
+            String numeroTarjetaConEspacions = request.getParameter("numeroT");
+            String numeroTarjeta = numeroTarjetaConEspacions.replace(" ", "");
+
             String nombre_titular = request.getParameter("titular");
             String fechaExpiracion = request.getParameter("fechaCaducidad");
-            
+
             String codigoSeguridad = request.getParameter("codigoSeguridad");
 
             // Obtener la información del usuario de la sesión
             HttpSession session = request.getSession();
             Usuario usuarioActual = (Usuario) session.getAttribute("usuario");
             String emailUsuario = usuarioActual.getCorreo();
-            
+
             TarjetaCredito tarjeta = new TarjetaCredito(numeroTarjeta, nombre_titular, fechaExpiracion, codigoSeguridad, emailUsuario);
-            
+
             DatabaseManager.getInstance().guardarTarjeta(tarjeta);
-            
+
             // Validar la tarjeta en la base de datos
-            if (DatabaseManager.getInstance().validarTarjeta(emailUsuario, numeroTarjeta, fechaExpiracion, codigoSeguridad)) {
+            if (DatabaseManager.getInstance().validarTarjeta(emailUsuario, numeroTarjeta, codigoSeguridad)) {
                 // Los datos de la tarjeta son válidos
-                out.println("<h2>Pago Exitoso</h2>");
 
                 String numRef = "";
                 int numeroAleatorioRef = new Random().nextInt(90000000) + 100000000;
                 numRef = "R" + Integer.toString(numeroAleatorioRef);// Crear una nueva entrada
 
+                session.setAttribute("numRef", numRef);
                 //CREACION DE RESERVA
                 Sala sala = (Sala) session.getAttribute("sala");
                 // Obtener la cadena JSON de la solicitud
@@ -79,7 +81,7 @@ public class ProcesarPagoServlet extends HttpServlet {
 
                 // Dividir la cadena en pares clave-valor
                 String[] keyValuePairs = cleanString.split(",");
-                
+
                 //IdEntrada para la entradas seleccionadas por el mismo usuario.
                 String idEntrada = "";
                 int numeroAleatorio = new Random().nextInt(90000000) + 100000000;
@@ -107,16 +109,19 @@ public class ProcesarPagoServlet extends HttpServlet {
                     columna = Integer.parseInt(columnaKC[1]);
 
                     Entrada entrada = new Entrada(idEntrada, fecha, hora, fila, columna, nombreSala);
+                    Reserva reserva = new Reserva(numRef, emailUsuario, idEntrada, fila, columna);
 
                     try {
                         // Guardar la entrada en la base de datos
                         DatabaseManager.getInstance().guardarEntrada(entrada);
+                        DatabaseManager.getInstance().guardarReserva(reserva);
+
                     } catch (SQLException ex) {
                         Logger.getLogger(GestionButacas.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                Reserva reserva = new Reserva(numRef,emailUsuario, idEntrada,fila, columna);
-                DatabaseManager.getInstance().guardarReserva(reserva);
+                response.sendRedirect(request.getContextPath() + "/PagoExitoso.jsp");
+
             } else {
                 // Los datos de la tarjeta no son válidos
                 out.println("<h2>Error en el Pago: Datos de Tarjeta Incorrectos</h2>");
