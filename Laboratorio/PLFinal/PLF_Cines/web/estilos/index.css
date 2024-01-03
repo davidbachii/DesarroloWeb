@@ -25,15 +25,26 @@ header h1 {
     padding: 0 20px;
 }
 
+header h2 {
+    text-align: center;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 0 20px;
+    margin-right: auto;
 }
 
-.user-profile a {
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile a{
     color: #ffffff;
-    text-decoration: none;
+    margin-right: auto;
 }
 
 main {
