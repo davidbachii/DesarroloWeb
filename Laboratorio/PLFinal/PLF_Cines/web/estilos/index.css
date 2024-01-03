@@ -16,7 +16,6 @@ body {
 
 header {
     background-color: #62198a;
-    color: #ffffff;
     padding: 10px 0;
 }
 
@@ -31,20 +30,17 @@ header h2 {
 
 nav {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    justify-content: flex-end;
     padding: 0 20px;
     margin-right: auto;
 }
 
 .user-profile {
-    display: flex;
     align-items: center;
 }
 
 .user-profile a{
     color: #ffffff;
-    margin-right: auto;
 }
 
 main {
