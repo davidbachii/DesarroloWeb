@@ -143,12 +143,14 @@
             <label for="otrosDatos">Otros Datos</label>
             <input type="text" id="otrosDatos" name="otrosDatos" required><br> 
 
-
             <label for="actores">Actores</label>
             <input type="text" id="actores" name="actores" required><br> 
 
-            <label for="nacionalidad">Url imagen</label>
-            <input type="text" id="imagen" name="imagen" required><br> 
+            <label for="imagen">Url imagen</label>
+            <input type="text" id="imagen" name="imagen" required><br>
+            
+            <label for="video">Url video</label>
+            <input type="text" id="video" name="video" required><br>
 
 
             <!-- Campos que esta ocultos para saber que accion esta realizando el servlet y no crear un servlet exclusivo para cada accion de 
