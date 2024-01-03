@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #07101d;
+    color: white;
+}
+
+.app-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.app-info h1 {
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input {
+    margin-right: 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile a {
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Imagenes/alpha.jpeg">
+    <link rel="stylesheet" href="estilos.css">
+    <title>AlphaTauri</title>
+
+</head>
+<body>
+
+    <header id = "headerRedbull">
+    <h1>AlphaTauri</h1>
+    <img src="Imagenes/alpha.jpeg" alt="LogoF1" style="max-height: 80px;">
+    </header>
+    <section>
+        <form action="index.html" method="post">
+            <ul>
+              <li>
+                <h2>Vota por el mejor piloto</h2>
+              </li>
+              <li>
+                <p><label for="name">Nombre:</label>
+                <input type="text" id="name" name="user_name" required>
+              </li>
+              <li>
+                <p><label for="mail">Correo electrónico:</label>
+                <input type="email" id="mail" name="user_mail" required ></p>
+              </li>
+              <li>
+                <p><label for="msg">Pilotos:</label>
+                  <input type="text"  name="msg" id="msg" list="pilotos" required size="64" pattern="(Carlos Sainz Jr|Jaime Alguersuari|Sebastien Bourdais|Jean-Éric Vergne|Max Verstappen|Alberto Ascari|Daniel Ricciardo|Sebastian Vettel)" title="Seleccione un piloto perteneciente a la escudería" >
+                
+                <datalist id="pilotos">
+                  <option value="Sebastian Vettel"></option>
+                  <option value="Daniel Ricciardo"></option>
+                  <option value="Max Verstappen"></option>
+                  <option value="Sebastien Bourdais"></option>
+                  <option value="Jaime Alguersuari"></option>
+                  <option value="Jean-Éric Vergne"></option>
+                  <option value="Carlos Sainz Jr."></option>
+                  
+                </datalist> 
+              </li>
+              <li>
+                <p><button  type="submit">Enviar</button>
+              </li>
+
+            </ul>
+          </form>
+    </section>
+    <section class="Team">
+      <h2>Equipo AlphaTauri</h2>
+      <img src="Imagenes/alphateam.jpg" alt="Equipo AlphaTauri">
+      <a href="https://especiales.marca.com/motor/formula1/escuderias/2023/alphatauri.html">AlphaTauri</a>
+      <p>
+        El futuro de la escudería filial de Red Bull es toda una incertidumbre. Los resultados de la temporada pasada fueron decepcionantes, con un 9º puesto en el Mundial de Constructores, posterior a conseguir quedar 6º y subir al podio en 2021.
+      </p>
+      <p>
+        Pero, en la escudería de Faenza apuestan por novedades tanto en el monoplaza, donde el color rojo de su nuevo patrocinador predomina junto al azul, como al frente del AT04, siendo Nyck De Vries, después de su gran carrera en Monza el año pasado, el elegido para acompañar a Yuki Tsunoda en esta nueva temporada.
+      </p>
+      
+  </section>
+</section>
+<section class="info">
+  <h2>Logros de Scuderia AlphaTauri</h2>
+  <ul>
+    <li><strong>Carreras:</strong></li>
+    <li>61</li>
+    <li><strong>Victorias:</strong></li>
+    <li>1</li>
+    <li><strong>Pole positions:</strong></li>
+    <li>0</li>
+    <li><strong>Vueltas rápidas:</strong></li>
+    <li>1</li>
+    <li><strong>Podios</strong></li>
+    <li>2</li>
+    <!-- Agrega el resto de la información aquí -->
+  </ul>
+</section>
+ 
+    
+</body>
+</html>

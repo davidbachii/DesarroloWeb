@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Butacas</title>
+    <link rel="stylesheet" href="butacas.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<!-- Imágenes de butacas -->
+<img id="butaca1" class="butaca" src="butaca_libre.png" alt="Butaca 1">
+<img id="butaca2" class="butaca" src="butaca_libre.png" alt="Butaca 2">
+<img id="butaca3" class="butaca" src="butaca_libre.png" alt="Butaca 3">
+<img id="butaca4" class="butaca" src="butaca_libre.png" alt="Butaca 4">
+<img id="butaca5" class="butaca" src="butaca_libre.png" alt="Butaca 5">
+
+<!-- Botón de compra -->
+<button id="botonCompra" onclick="venta()">Comprar</button>
+
+<script>
+    // jQuery function
+    $(document).ready(function() {
+        $('.butaca').click(function() {
+            // Toggle entre los estados de libre y ocupado
+            $(this).attr('src', function(_, attr) {
+                return (attr.includes('butaca_libre.png')) ? 'butaca_ocupada.png' : 'butaca_libre.png';
+            });
+        });
+
+        // Función para el botón de compra
+        $('#botonCompra').click(function() {
+            // Implementa tu lógica de compra aquí
+            alert("Compra realizada");
+            $('.butaca').attr()
+        });
+    });
+</script>
+
+</body>
+</html>

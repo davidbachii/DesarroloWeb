@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Imagenes/sauber.png">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Sauber</title>
+</head>
+<body>
+  <header id = "headerAlpha">
+    <h1>AlphaRomeo</h1>
+    <img src="Imagenes/sauber.png" alt="LogoF1" style="max-height: 80px;">
+    </header>
+    <section>
+        <form action="index.html" method="post">
+            <ul>
+              <li>
+                <h2>Vota por el mejor piloto</h2>
+              </li>
+              <li>
+                <p><label for="name">Nombre:</label>
+                <input type="text" id="name" name="user_name" required>
+              </li>
+              <li>
+                <p><label for="mail">Correo electrónico:</label>
+                <input type="email" id="mail" name="user_mail" required ></p>
+              </li>
+              <li>
+                <p><label for="msg">Pilotos:</label>
+                  <input type="text"  name="msg" id="msg" list="pilotos" required size="64"  pattern="(Kimi Räikkönen|Felipe Massa|Robert Kubica|Heinz-Harald Frentzen|Sergio Pérez|Kamui Kobayashi|Jean Alesi)" title="Seleccione un piloto perteneciente a la escudería">
+                
+                <datalist id="pilotos">
+                  <option value="Kimi Räikkönen"></option>
+                  <option value="Felipe Massa"></option>
+                  <option value="Robert Kubica"></option>
+                  <option value="Heinz-Harald Frentzen"></option>
+                  <option value="Sergio Pérez"></option>
+                  <option value="Kamui Kobayashi"></option>
+                  <option value="Jean Alesi"></option>
+                  
+                </datalist> 
+              </li>
+              <li>
+                <p><button  type="submit">Enviar</button>
+              </li>
+
+            </ul>
+          </form>
+    </section>
+    <section class="Team">
+      <h2>Equipo AlphaRomeo</h2>
+      <img src="Imagenes/teamRomeo.jpg  " alt="Equipo Redbull">
+      <a href="https://especiales.marca.com/motor/formula1/escuderias/2023/alfaromeo.html">AlphaRomeo</a>
+      <p>   
+          Atrás quedó el color blanco y rojo del C42, para dar paso al negro y rojo del C43. Este cambio de colores intencionado busca aligerar peso en un monoplaza que fue el menos pesado en la temporada anterior y cuya principal ventaja es disponer del motor Ferrari.
+      </p>
+      <p>
+          Valtteri Bottas y Guanyou Zhou continuarán, un año más, al volante del Alfa Romeo. En la escudería italiana han optado por unos pontones muy al estilo de Maranello, con el objetivo de superar el 6º puesto en el Mundial de Constructores de la temporada pasada.
+        
+      </p>
+      
+  </section>
+  <section>
+    <h2>Mejores momentos de AlphaRomeo</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/FYMdRTojYpo?si=ZWx_pKR98DSY6sEU" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </section>
+</section>
+<section class="info">
+  <h2>Logros de AlphaRomeo</h2>
+  <ul>
+    <li><strong>Carreras:</strong></li>
+    <li>192</li>
+    <li><strong>Victorias:</strong></li>
+    <li>10</li>
+    <li><strong>Pole positions:</strong></li>
+    <li>12</li>
+    <li><strong>Vueltas rápidas:</strong></li>
+    <li>15</li>
+    <li><strong>Podios:</strong></li>
+    <li>18</li>
+    <!-- Agrega el resto de la información aquí -->
+  </ul>
+</section>
+    
+</body>
+</html>

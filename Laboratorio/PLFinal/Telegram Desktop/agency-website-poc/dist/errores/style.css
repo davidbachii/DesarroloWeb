@@ -1,0 +1,88 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 0;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.search-bar input {
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.user-profile a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+main {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.pelicula {
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #333;
+}
+
+.pelicula h2 {
+  margin: 0 0 10px;
+  color: #ffffff;
+}
+
+.datos {
+  width: 100%;
+}
+
+.pelicula img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+.datos div {
+  color: lightgray;
+}
+
+.datos div span {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.sinopsis {
+  width: 100%;
+  color: lightgray;
+}
+
+.sinopsis span {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.comentarios {
+  width: 100%;
+  margin-top: 20px;
+}
+
+footer {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+}

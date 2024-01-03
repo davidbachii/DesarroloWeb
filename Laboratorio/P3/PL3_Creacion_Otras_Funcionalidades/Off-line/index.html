@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Proyecto Offline</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+
+        .selected {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mi Proyecto Offline</h1>
+    <p id="offline-message" style="display:none;">Estás en modo fuera de línea. Algunos datos pueden no estar disponibles.</p>
+
+    <h2>Mi Lista de Tareas</h2>
+    <ul id="task-list" onclick="selectTask(event)">
+        <!-- Aquí se cargarán dinámicamente las tareas -->
+    </ul>
+
+    <!-- Formulario para agregar, editar y eliminar tareas -->
+    <form id="task-form">
+        <label for="task">Tarea:</label>
+        <input type="text" id="task" required>
+        <button type="button" onclick="addTask()">Agregar</button>
+        <button type="button" onclick="editTask()">Editar</button>
+        <button type="button" onclick="deleteTask()">Eliminar</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', init);
+
+        function init() {
+            checkConnection();
+            window.addEventListener('online', function () {
+                updateConnectionStatus(true);
+                syncTasks();
+            });
+            window.addEventListener('offline', function () {
+                updateConnectionStatus(false);
+            });
+
+            loadTasks();
+        }
+
+        function checkConnection() {
+            updateConnectionStatus(navigator.onLine);
+        }
+
+        function updateConnectionStatus(online) {
+            var offlineMessage = document.getElementById('offline-message');
+            offlineMessage.style.display = online ? 'none' : 'block';
+        }
+
+        function loadTasks() {
+            var storedTasks = localStorage.getItem('tasks');
+            var taskList = document.getElementById('task-list');
+
+            if (storedTasks) {
+                taskList.innerHTML = storedTasks;
+            }
+        }
+
+        function addTask() {
+            var taskInput = document.getElementById('task');
+            var taskValue = taskInput.value.trim();
+
+            if (taskValue === '') {
+                return;
+            }
+
+            var taskList = document.getElementById('task-list');
+            var newTaskItem = document.createElement('li');
+            newTaskItem.textContent = taskValue;
+            newTaskItem.setAttribute('onclick', 'toggleTaskCompletion(this)');
+            taskList.appendChild(newTaskItem);
+
+            saveTasks();
+            clearTaskInput();
+        }
+
+        function editTask() {
+            var taskInput = document.getElementById('task');
+            var taskValue = taskInput.value.trim();
+
+            if (taskValue === '') {
+                return;
+            }
+
+            var selectedTask = document.querySelector('#task-list li.selected');
+
+            if (selectedTask) {
+                selectedTask.textContent = taskValue;
+                selectedTask.classList.remove('selected');
+            }
+
+            saveTasks();
+            clearTaskInput();
+        }
+
+        function deleteTask() {
+            var selectedTask = document.querySelector('#task-list li.selected');
+
+            if (selectedTask) {
+                selectedTask.remove();
+                saveTasks();
+                clearTaskInput();
+            }
+        }
+
+        function toggleTaskCompletion(taskItem) {
+            taskItem.classList.toggle('completed');
+            saveTasks();
+        }
+
+        function saveTasks() {
+            var taskList = document.getElementById('task-list');
+            localStorage.setItem('tasks', taskList.innerHTML);
+        }
+
+        function clearTaskInput() {
+            document.getElementById('task').value = '';
+        }
+
+        function selectTask(event) {
+            var selectedTask = document.querySelector('#task-list li.selected');
+
+            if (selectedTask) {
+                selectedTask.classList.remove('selected');
+            }
+
+            var clickedTask = event.target;
+
+            if (clickedTask.tagName === 'LI') {
+                clickedTask.classList.add('selected');
+                document.getElementById('task').value = clickedTask.textContent;
+            }
+        }
+
+        function syncTasks() {
+            // Simulación de sincronización con un servidor remoto (puedes reemplazarlo con tu lógica de sincronización real)
+            setTimeout(function () {
+                alert('Sincronización completa');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

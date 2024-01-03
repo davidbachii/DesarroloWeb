@@ -1,0 +1,72 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif; /* Selecciona la fuente y su alternativa */
+    margin: 0; /* Establece el margen exterior como cero */
+    padding: 0; /* Establece el relleno interior como cero */
+    text-align: center; /* Centra el texto dentro del cuerpo */
+    background-color: #f5ec73; /* Establece el color de fondo como rojo mate */
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #23cf93; /* Establece el color de fondo del encabezado */
+    color: #f2eeee; /* Establece el color del texto en el encabezado */
+    padding: 20px; /* Añade un relleno interno de 20px */
+    border-radius: 10px; /* Añade bordes redondeados */
+}
+
+header h1 {
+    margin: 0; /* Establece el margen superior e inferior de h1 como cero */
+    font-size: 36px; /* Establece el tamaño de fuente de h1 */
+    font-family: 'Pacifico', cursive; /* Cambia la fuente de h1 */
+}
+
+header img {
+    max-width: 100%; /* Establece el ancho máximo de la imagen al 100% del contenedor */
+    height: auto; /* Ajusta la altura automáticamente */
+    max-height: 105px; /* Establece la altura máxima de la imagen */
+}
+
+/* Estilos para los contenidos */
+.container {
+    margin: 20px; /* Establece un margen exterior de 20px */
+    padding: 20px; /* Añade un relleno interno de 20px */
+    background-color: #ffffff; /* Establece el color de fondo del contenedor */
+    border-radius: 10px; /* Añade bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una sombra al contenedor */
+}
+
+/* Estilos para los encabezados */
+h2 {
+    color: #333; /* Establece el color del texto de h2 */
+    font-size: 25px; /* Establece el tamaño de fuente de h2 */
+    font-family: 'Indie Flower', cursive; /* Cambia la fuente de h2 */
+}
+
+/* Estilos para las imágenes */
+img {
+    max-width: 100%; /* Establece el ancho máximo de la imagen al 100% del contenedor */
+    height: auto; /* Ajusta la altura automáticamente */
+    border-radius: 10px; /* Añade bordes redondeados */
+    margin-bottom: 10px; /* Establece un margen inferior de 10px */
+    max-height: 500px; /* Establece la altura máxima de la imagen */
+}
+
+/* Estilos para el reproductor de audio */
+audio {
+    width: 100%; /* Establece el ancho al 100% del contenedor */
+    max-width: 400px; /* Establece el ancho máximo de 400px */
+    margin: 20px 0; /* Establece un margen de 20px arriba y abajo */
+}
+
+
+/* Estilos para el reproductor de video */
+iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    
+}
