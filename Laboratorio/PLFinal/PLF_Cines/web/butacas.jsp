@@ -4,7 +4,7 @@
 <%@ page import="com.example.model.Entrada" %>
 <%@ page import="com.example.model.DatabaseManager" %>
 <%@ page import="com.example.model.Fecha" %>
-
+<%@ page import="java.time.LocalTime" %>
 <%@ page import="java.util.ArrayList" %>
 
 <%
@@ -15,7 +15,9 @@ try {
     Fecha fecha = new Fecha(fechaStr);
     System.out.println(fecha);
     entradas = DatabaseManager.getAllEntradas(); 
-
+    
+    String horaStr = (String) session.getAttribute("hora");
+    LocalTime hora = LocalTime.parse(horaStr);
 %>
 <!DOCTYPE html>
 <html>
@@ -46,7 +48,8 @@ try {
                             if (entrada.getNombreSala().equals(salaSelec.getNombreSala()) &&
                                 entrada.getFila() == fila &&
                                 entrada.getColumna() == columna &&
-                                entrada.getFecha().toLocalDate().equals(fecha.toLocalDate()))
+                                entrada.getFecha().toLocalDate().equals(fecha.toLocalDate()) &&
+                                entrada.getHora().equals(hora))
                                  {
                                 ocupadaPorOtroCliente = true;
 
