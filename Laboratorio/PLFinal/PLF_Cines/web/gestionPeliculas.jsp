@@ -94,7 +94,7 @@
     </head>
     <body>
         
-         <header>
+        <header>
             <div class="navbar">
             <a href="gestionPeliculas.jsp">Gestión de Películas</a>
             <a href="gestionSalas.jsp">Gestión de Salas</a>
