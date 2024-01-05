@@ -5,6 +5,8 @@
 <%@ page import="com.example.model.DatabaseManager" %>
 <%@ page import="com.example.model.Fecha" %>
 <%@ page import="java.time.LocalTime" %>
+
+
 <%@ page import="java.util.ArrayList" %>
 
 <%
@@ -18,6 +20,7 @@ try {
     
     String horaStr = (String) session.getAttribute("hora");
     LocalTime hora = LocalTime.parse(horaStr);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -52,6 +55,7 @@ try {
                                 entrada.getHora().equals(hora))
                                  {
                                 ocupadaPorOtroCliente = true;
+
 
                                 break;
                             }
@@ -145,6 +149,7 @@ try {
             });
         </script>
     </body>
+
 </html>
 <%
 } catch (Exception e) {

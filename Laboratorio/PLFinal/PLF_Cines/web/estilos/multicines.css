@@ -1,3 +1,4 @@
+
 .table-precios td:nth-child(4)
 {
     text-align: center;
@@ -89,6 +90,54 @@ h3.titulo-cine {
     }
 }
 
+
+.comentarios {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.comentarios form {
+    display: flex;
+    flex-direction: column;
+}
+
+.comentarios label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.comentarios textarea {
+    resize: vertical;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.comentarios input[type="number"],
+.comentarios input[type="date"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+}
+
+.comentarios button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.comentarios button[type="submit"]:hover {
+    background-color: #0056b3;
+}
 .navbar-light .navbar-toggler {
     color: #fff !important;
     border-color: #fff !important;
@@ -148,11 +197,12 @@ body {
 }
 
 #wrapper{
-   min-height:100vh;
+
+    min-height:100vh;
 }
 
 .flex-fill {
-   flex:1 1 auto;
+    flex:1 1 auto;
 }
 
 
@@ -209,24 +259,26 @@ body {
 
 /* BXSlider */
 .bannerDetail {
-  color: #fff;
-  top: 10px;
-  left: 10px;
-  position: absolute;
-  font-size: 1.3em;
-  padding: 10px;
-  background: #53234fe3;
-  width: 23%;
+
+    color: #fff;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    font-size: 1.3em;
+    padding: 10px;
+    background: #53234fe3;
+    width: 23%;
 }
 
 .bannerDetail a {
-  font-size: 0.75em;
-  color: #fff;
+    font-size: 0.75em;
+    color: #fff;
 }
 
 .bannerDetail a:hover
 {
-  color: #F7941D;
+
+    color: #F7941D;
 }
 
 .white-box {
@@ -234,29 +286,35 @@ body {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #F7941D;
-  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  border-color: #F7941D; }
-  .btn-primary:hover {
+
+    color: #fff;
+    background-color: #F7941D;
+    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    border-color: #F7941D;
+}
+.btn-primary:hover {
     color: #fff;
     background-color: #fdab49;
-    border-color: #F7941D; }
-  .btn-primary:focus, .btn-primary.focus {
+    border-color: #F7941D;
+}
+.btn-primary:focus, .btn-primary.focus {
     background-color: #F7941D;
-     }
-  .btn-primary.disabled, .btn-primary:disabled {
+}
+.btn-primary.disabled, .btn-primary:disabled {
     background-color: #f1c48f;
-    border-color: #f1c48f; }
+    border-color: #f1c48f;
+}
 
-  .btn-primary:not([href]):not([tabindex]):not(.btn-line) {
-    color: #fff; }
-    .btn-primary:not([href]):not([tabindex]):not(.btn-line):hover {
-      color: #fff; }
-  .btn-primary.btn-gradient {
+.btn-primary:not([href]):not([tabindex]):not(.btn-line) {
+    color: #fff;
+}
+.btn-primary:not([href]):not([tabindex]):not(.btn-line):hover {
+    color: #fff;
+}
+.btn-primary.btn-gradient {
     color: #fff;
     background: -webkit-linear-gradient(292deg, #F7941D 44%, #F7941D 85%);
     background: -moz-linear-gradient(292deg, #F7941D 44%, #F7941D 85%);
@@ -264,25 +322,30 @@ body {
     background: linear-gradient(158deg, #F7941D 44%, #F7941D 85%);
     border-color: #F7941D;
     -webkit-transition: all 0.25s linear;
-       -moz-transition: all 0.25s linear;
-         -o-transition: all 0.25s linear;
-            transition: all 0.25s linear; }
-    .btn-primary.btn-gradient:hover {
-      color: #fff;
-      border-color: #0f6a58;
-      opacity: 0.9;
-      text-indent: -1px; }
-    .btn-primary.btn-gradient:focus, .btn-primary.btn-gradient.focus {
-      box-shadow: 0 0 0 2px rgba(22, 160, 133, 0.5); }
-    .btn-primary.btn-gradient.disabled, .btn-primary.btn-gradient:disabled {
-      background-color: #F7941D;
-      border-color: #F7941D; }
-    .btn-primary.btn-gradient:active, .btn-primary.btn-gradient:active:focus, .btn-primary.btn-gradient.active, .btn-primary.btn-gradient.active:focus,
-    .show > .btn-primary.btn-gradient.dropdown-toggle {
-      color: #fff;
-      background-color: #107360;
-      background-image: none;
-      border-color: #0f6a58; }
+    -moz-transition: all 0.25s linear;
+    -o-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+}
+.btn-primary.btn-gradient:hover {
+    color: #fff;
+    border-color: #0f6a58;
+    opacity: 0.9;
+    text-indent: -1px;
+}
+.btn-primary.btn-gradient:focus, .btn-primary.btn-gradient.focus {
+    box-shadow: 0 0 0 2px rgba(22, 160, 133, 0.5);
+}
+.btn-primary.btn-gradient.disabled, .btn-primary.btn-gradient:disabled {
+    background-color: #F7941D;
+    border-color: #F7941D;
+}
+.btn-primary.btn-gradient:active, .btn-primary.btn-gradient:active:focus, .btn-primary.btn-gradient.active, .btn-primary.btn-gradient.active:focus,
+.show > .btn-primary.btn-gradient.dropdown-toggle {
+    color: #fff;
+    background-color: #107360;
+    background-image: none;
+    border-color: #0f6a58;
+}
 
 @media (max-width: 767px){
     .closeFilter {
@@ -306,19 +369,20 @@ body {
 }
 
 select {
-  background-image:
-    linear-gradient(45deg, transparent 50%, #F7941D 60%),
-    linear-gradient(135deg, #F7941D 40%, transparent 50%) !important;
-  background-position:
-    calc(100% - 18px) 14px,
-    calc(100% - 9px) 14px,
-    100% 0;
-  background-size:
-    10px 10px,
-    10px 10px;
-  background-repeat: no-repeat;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, #F7941D 60%),
+        linear-gradient(135deg, #F7941D 40%, transparent 50%) !important;
+    background-position:
+        calc(100% - 18px) 14px,
+        calc(100% - 9px) 14px,
+        100% 0;
+    background-size:
+        10px 10px,
+        10px 10px;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .tag {
@@ -403,6 +467,7 @@ select {
     .banner-skin {
         background-repeat: no-repeat;
   		background-position: top center;
+
     }
     .banner-no-skin {
         display: none;

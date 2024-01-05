@@ -37,11 +37,13 @@
             <label for="hora">Hora:</label>
             <select name="hora" id="hora" required></select><br>
 
+
             <label for="sala">Sala:</label>
             <select name="salaSeleccionada" id="salaSeleccionada">
                 <% List<Sala> salas = new ArrayList<>();
                     try {
                         salas = DatabaseManager.getAllSalas(); // Obtener todas las salas
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

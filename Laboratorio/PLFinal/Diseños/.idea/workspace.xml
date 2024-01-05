@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="15f9b40d-6a8a-4e18-b594-b914e3743fb9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/butacas.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/butacas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLF_Cines/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PLF_Cines/nbproject/build-impl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLF_Cines/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../PLF_Cines/nbproject/genfiles.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLF_Cines/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../PLF_Cines/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLF_Cines/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PLF_Cines/nbproject/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLF_Cines/src/java/com/example/model/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PLF_Cines/src/java/com/example/model/DatabaseManager.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2aAZHMbfYbIwLKJgDjbxvIj682N" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Alejandro/OneDrive - Universidad de Alcala/4º año/Desarrollo web/DesarroloWeb/Laboratorio/PLFinal/Diseños",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="15f9b40d-6a8a-4e18-b594-b914e3743fb9" name="Changes" comment="" />
+      <created>1703763255134</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1703763255134</updated>
+      <workItem from="1703763256319" duration="2306000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

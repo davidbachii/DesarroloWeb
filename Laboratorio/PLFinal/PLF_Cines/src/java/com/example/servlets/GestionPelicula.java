@@ -64,10 +64,11 @@ public class GestionPelicula extends HttpServlet {
             String otrosDatos = request.getParameter("otrosDatos");
             String actores = request.getParameter("actores");
             String url_image = request.getParameter("imagen");
+            String url_video = request.getParameter("video");
 
             try {
 
-                Pelicula pelicula = new Pelicula(nombre, sinopsis, pagina_oficial, titulo_original, genero, nacionalidad, duracion, año, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image);
+                Pelicula pelicula = new Pelicula(nombre, sinopsis, pagina_oficial, titulo_original, genero, nacionalidad, duracion, año, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video);
 
                 // Guardar el usuario en la base de datos
                 DatabaseManager.getInstance().guardarPelicula(pelicula);

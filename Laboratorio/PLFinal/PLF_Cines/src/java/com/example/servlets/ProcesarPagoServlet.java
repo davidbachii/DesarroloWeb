@@ -9,7 +9,7 @@ import com.example.model.Entrada;
 import com.example.model.Fecha;
 import com.example.model.Reserva;
 import com.example.model.Sala;
-import com.example.model.TarjetaCredito;
+
 import com.example.model.Usuario;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
@@ -49,6 +49,7 @@ public class ProcesarPagoServlet extends HttpServlet {
             String nombre_titular = request.getParameter("titular");
             String fechaExpiracion = request.getParameter("fechaCaducidad");
 
+
             String codigoSeguridad = request.getParameter("codigoSeguridad");
 
             // Obtener la información del usuario de la sesión
@@ -64,11 +65,13 @@ public class ProcesarPagoServlet extends HttpServlet {
             if (DatabaseManager.getInstance().validarTarjeta(emailUsuario, numeroTarjeta, codigoSeguridad)) {
                 // Los datos de la tarjeta son válidos
 
+
                 String numRef = "";
                 int numeroAleatorioRef = new Random().nextInt(90000000) + 100000000;
                 numRef = "R" + Integer.toString(numeroAleatorioRef);// Crear una nueva entrada
 
                 session.setAttribute("numRef", numRef);
+
                 //CREACION DE RESERVA
                 Sala sala = (Sala) session.getAttribute("sala");
                 // Obtener la cadena JSON de la solicitud
@@ -122,9 +125,11 @@ public class ProcesarPagoServlet extends HttpServlet {
                 }
                 response.sendRedirect(request.getContextPath() + "/PagoExitoso.jsp");
 
+
             } else {
                 // Los datos de la tarjeta no son válidos
                 out.println("<h2>Error en el Pago: Datos de Tarjeta Incorrectos</h2>");
+                
             }
         } catch (Exception e) {
             e.printStackTrace();

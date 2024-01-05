@@ -3,7 +3,7 @@
 <html lang="en" >
     <head>
         <meta charset="UTF-8">
-        <title>2much_tech - Credit Card Payment Form</title>
+        <title>Introducir Tarjeta</title>
         <link href="https://fonts.googleapis.com/css?family=Raleway|Rock+Salt|Source+Code+Pro:300,400,600" rel="stylesheet"><link rel="stylesheet" href="estilos/tarjeta.css">
 
     </head>
@@ -142,3 +142,4 @@
 
     </body>
 </html>
+
