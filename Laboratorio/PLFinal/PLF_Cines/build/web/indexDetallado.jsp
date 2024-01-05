@@ -14,10 +14,6 @@
 <%@ page import="com.example.model.Comentario" %>
 <%@ page import="java.util.ArrayList" %>
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -306,6 +302,5 @@
                 });
             })
         </script>
-
     </body>
 </html>
