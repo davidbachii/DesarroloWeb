@@ -128,7 +128,7 @@ public class DatabaseManager {
         System.out.println("GuardarPelicula");
         try {
             if (pelicula != null) {
-                String sql = "INSERT INTO pelicula (nombrepelicula, sinopsis, paginaoficial, titulooriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosdatos, actores, url_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO pelicula (nombrepelicula, sinopsis, paginaoficial, titulooriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosdatos, actores, url_image, url_video) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, pelicula.getNombre());
                     preparedStatement.setString(2, pelicula.getSinopsis());
@@ -144,6 +144,7 @@ public class DatabaseManager {
                     preparedStatement.setString(12, pelicula.getOtrosDatos());
                     preparedStatement.setString(13, pelicula.getActores());
                     preparedStatement.setString(14, pelicula.getUrl_image());
+                    preparedStatement.setString(15, pelicula.getUrl_video());
 
                     preparedStatement.executeUpdate();
                 }
@@ -179,7 +180,8 @@ public class DatabaseManager {
                                 resultSet.getInt("clasificacionEdad"),
                                 resultSet.getString("otrosdatos"),
                                 resultSet.getString("actores"),
-                                resultSet.getString("url_image")
+                                resultSet.getString("url_image"),
+                                resultSet.getString("url_video")
                         );
                         peliculas.add(pelicula);
                     }
@@ -213,7 +215,9 @@ public class DatabaseManager {
                                 resultSet.getInt("clasificacionEdad"),
                                 resultSet.getString("otrosdatos"),
                                 resultSet.getString("actores"),
-                                resultSet.getString("url_image")
+                                resultSet.getString("url_image"),
+                                resultSet.getString("url_video")
+                                
                         );
                     }
                 }
@@ -240,7 +244,7 @@ public class DatabaseManager {
     public static void modificarPelicula(String nombreActual, Pelicula nuevaPelicula) throws SQLException {
         abrirConexion();
         try {
-            String sql = "UPDATE pelicula SET nombrepelicula=?, sinopsis=?, paginaoficial=?, titulooriginal=?, genero=?, nacionalidad=?, duracion=?, anho=?, distribuidora=?, director=?, clasificacionedad=?, otrosdatos=?, actores=?, url_image=? WHERE nombrepelicula=?";
+            String sql = "UPDATE pelicula SET nombrepelicula=?, sinopsis=?, paginaoficial=?, titulooriginal=?, genero=?, nacionalidad=?, duracion=?, anho=?, distribuidora=?, director=?, clasificacionedad=?, otrosdatos=?, actores=?, url_image=?, url_video=?  WHERE nombrepelicula=?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, nuevaPelicula.getNombre());
                 preparedStatement.setString(2, nuevaPelicula.getSinopsis());
@@ -256,8 +260,9 @@ public class DatabaseManager {
                 preparedStatement.setString(12, nuevaPelicula.getOtrosDatos());
                 preparedStatement.setString(13, nuevaPelicula.getActores());
                 preparedStatement.setString(14, nuevaPelicula.getUrl_image());
+                preparedStatement.setString(15, nuevaPelicula.getUrl_video());
 
-                preparedStatement.setString(15, nombreActual); // Condición para actualizar la película específica
+                preparedStatement.setString(16, nombreActual); // Condición para actualizar la película específica
 
                 preparedStatement.executeUpdate();
             }
@@ -491,11 +496,13 @@ public class DatabaseManager {
         System.out.println("GuardarSala");
         try {
             if (reserva != null) {
-                String sql = "INSERT INTO reserva (numeroref, email_usuario, identrada_entrada) VALUES (?, ?, ?)";
+                String sql = "INSERT INTO reserva (numeroref, email_usuario, identrada_entrada, fila_entrada, columna_entrada) VALUES (?, ?, ?, ?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, reserva.getNumeroRef());
                     preparedStatement.setString(2, reserva.getEmail_usuario());
                     preparedStatement.setString(3, reserva.getId_entrada());
+                    preparedStatement.setInt(4, reserva.getFila_entrada());
+                    preparedStatement.setInt(5, reserva.getColumna_entrada());
 
                     preparedStatement.executeUpdate();
                     System.out.println("Reserva guardada correctamente.");
@@ -521,7 +528,9 @@ public class DatabaseManager {
                         Reserva reserva = new Reserva(
                                 resultSet.getString("numeroref"),
                                 resultSet.getString("email_usuario"),
-                                resultSet.getString("identrada_entrada")
+                                resultSet.getString("identrada_entrada"),
+                                resultSet.getInt("fila_entrada"),
+                                resultSet.getInt("columna_entrada")
                         );
                         reservas.add(reserva);
                     }
@@ -544,7 +553,9 @@ public class DatabaseManager {
                         return new Reserva(
                                 resultSet.getString("numeroref"),
                                 resultSet.getString("email_usuario"),
-                                resultSet.getString("identrada_entrada")
+                                resultSet.getString("identrada_entrada"),
+                                resultSet.getInt("fila_entrada"),
+                                resultSet.getInt("columna_entrada")
                         );
                     }
                 }
@@ -571,13 +582,15 @@ public class DatabaseManager {
     public static void modificarSala(String nombreActual, Reserva reserva) throws SQLException {
         abrirConexion();
         try {
-            String sql = "UPDATE reserva SET numeroref=?, email_usuario=?, identrada_entrada=? WHERE numeroref=?";
+            String sql = "UPDATE reserva SET numeroref=?, email_usuario=?, identrada_entrada=?, fila_entrada=?, columna_entrada=?  WHERE numeroref=?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, reserva.getNumeroRef());
                 preparedStatement.setString(2, reserva.getEmail_usuario());
                 preparedStatement.setString(3, reserva.getId_entrada());
+                preparedStatement.setInt(4, reserva.getFila_entrada());
+                preparedStatement.setInt(5, reserva.getColumna_entrada());
 
-                preparedStatement.setString(4, nombreActual); // Condición para actualizar la película específica
+                preparedStatement.setString(6, nombreActual); // Condición para actualizar la película específica
 
                 preparedStatement.executeUpdate();
             }
@@ -639,28 +652,30 @@ public class DatabaseManager {
         return comentarios;
     }
 
-    public static Comentario getComentarioPorNombrePelicula(String nombre) throws SQLException {
+    public static List<Comentario> getComentariosPorNombrePelicula(String nombre) throws SQLException {
         abrirConexion();
+        List<Comentario> comentarios = new ArrayList<>();
         try {
             String sql = "SELECT * FROM comentario WHERE nombrepelicula_pelicula = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, nombre);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        return new Comentario(
+                    while (resultSet.next()) {
+                        Comentario comentario = new Comentario(
                                 resultSet.getString("texto"),
                                 resultSet.getInt("valoracion"),
                                 new Fecha(resultSet.getString("fechacomentario")),
                                 resultSet.getString("email_usuario"),
                                 resultSet.getString("nombrepelicula_pelicula")
                         );
+                        comentarios.add(comentario);
                     }
                 }
             }
         } finally {
             cerrarConexion();
         }
-        return null;
+        return comentarios;
     }
 
     public static void borrarComentarioDePelicula(Comentario comentario) throws SQLException {
@@ -689,10 +704,65 @@ public class DatabaseManager {
                 preparedStatement.setDate(3, fechaSQL);
                 preparedStatement.setString(4, comentario.getEmail_user());
                 preparedStatement.setString(5, comentario.getNombrePelicula());
-                
+
                 preparedStatement.setString(6, nombreActual); // Condición para actualizar la película específica
 
                 preparedStatement.executeUpdate();
+            }
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public static void guardarTarjeta(TarjetaCredito tarjeta) throws SQLException {
+        abrirConexion();
+
+        try {
+            if (tarjeta != null) {
+                String sql = "INSERT INTO tarjeta (numerotarjeta, nombretitular, fechaexpiracion, codigoseguridad, email_usuario) VALUES (?, ?, ?, ?, ?)";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, tarjeta.getNumeroTarjeta());
+                    preparedStatement.setString(2, tarjeta.getNombreTitular());
+                    LocalDate localDate = tarjeta.getFecha().toLocalDate();
+                    java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
+                    preparedStatement.setDate(3, fechaSQL);
+                    preparedStatement.setString(4, tarjeta.getCodigoSeguridad());
+                    preparedStatement.setString(5, tarjeta.getEmail_user());
+
+                    preparedStatement.executeUpdate();
+                    System.out.println("Comentario guardada correctamente.");
+                }
+            } else {
+                System.out.println("Error: El comentario es nula.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al guardar el comentario: " + e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    public boolean validarTarjeta(String email, String numeroTarjeta, Fecha fechaExpiracion, String codigoSeguridad)
+            throws ClassNotFoundException, SQLException {
+        abrirConexion();
+        // Establecer la conexión con la base de datos
+        try {
+            // Consulta SQL para verificar la tarjeta del usuario
+            String sql = "SELECT * FROM tarjeta WHERE email_usuario = ? AND numerotarjeta = ? AND fechaexpiracion = ? AND codigoseguridad = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                LocalDate localDate = fechaExpiracion.toLocalDate();
+                java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
+
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, numeroTarjeta);
+                preparedStatement.setDate(3, fechaSQL);
+                preparedStatement.setString(4, codigoSeguridad);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    // Si hay resultados, la tarjeta es válida
+                    return resultSet.next();
+                }
             }
         } finally {
             cerrarConexion();

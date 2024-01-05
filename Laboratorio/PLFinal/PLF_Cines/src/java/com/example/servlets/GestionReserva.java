@@ -32,7 +32,7 @@ public class GestionReserva extends HttpServlet {
         // Realiza diferentes acciones según el valor de 'accion'
         if ("Consultar".equals(accion)) {
             // Obtén los parámetros del formulario de registro
-            String nombreReservaAConsultar = request.getParameter("salaAConsultar");
+            String nombreReservaAConsultar = request.getParameter("reservaAConsultar");
 
             try {
                 // Obtén la película por su nombre
@@ -43,7 +43,8 @@ public class GestionReserva extends HttpServlet {
                     request.setAttribute("numeroReferencia", reserva.getNumeroRef());
                     request.setAttribute("emailUser", reserva.getEmail_usuario());
                     request.setAttribute("idEntrada", reserva.getId_entrada());
-                    
+                    request.setAttribute("fila_entrada", reserva.getFila_entrada());
+                    request.setAttribute("columna_entrada", reserva.getColumna_entrada());
 
                     // Redirige a la página del formulario con los campos ya populados
                     request.getRequestDispatcher("gestionReservas.jsp").forward(request, response);

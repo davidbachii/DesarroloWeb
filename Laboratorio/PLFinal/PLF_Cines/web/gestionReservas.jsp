@@ -35,7 +35,7 @@
         </header>
         <form action="GestionReserva" method="post">
             <h2>Consultar Reserva</h2>
-            <select name="salaAConsultar">
+            <select name="reservaAConsultar">
                 <% List<Reserva> reservas = new ArrayList<>();
                     try {
                         reservas = DatabaseManager.getAllReservas(); 
@@ -57,6 +57,12 @@
 
             <label for="idEntrada">Id de la entrada</label>
             <input type="text" id="idEntrada" name="idEntrada" value="${idEntrada}" ><br>
+            
+            <label for="fila_entrada">Fila de la entrada adquirida</label>
+            <input type="text" id="fila_entrada" name="fila_entrada" value="${fila_entrada}" ><br>
+            
+            <label for="columna_entrada">Columna de la entrada adquirida</label>
+            <input type="text" id="columna_entrada" name="columna_entrada" value="${columna_entrada}" ><br>
 
 
             <input type="hidden" name="accion" value="Consultar">

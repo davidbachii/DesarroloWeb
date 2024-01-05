@@ -25,8 +25,9 @@ public class Pelicula {
     private String otrosDatos;
     private String actores;
     private String url_image;
+    private String url_video;
 
-    public Pelicula(String nombre, String sinopsis, String paginaOficial, String tituloOriginal, String genero, String nacionalidad, int duracion, int año, String distribuidora, String director, int clasificacionEdad, String otrosDatos, String actores, String url_image) {
+    public Pelicula(String nombre, String sinopsis, String paginaOficial, String tituloOriginal, String genero, String nacionalidad, int duracion, int año, String distribuidora, String director, int clasificacionEdad, String otrosDatos, String actores, String url_image, String url_video) {
         this.nombre = nombre;
         this.sinopsis = sinopsis;
         this.paginaOficial = paginaOficial;
@@ -41,6 +42,7 @@ public class Pelicula {
         this.otrosDatos = otrosDatos;
         this.actores = actores;
         this.url_image = url_image;
+        this.url_video = url_video;
     }
 
     public String getNombre() {
@@ -155,9 +157,17 @@ public class Pelicula {
         this.url_image = url_image;
     }
 
+    public String getUrl_video() {
+        return url_video;
+    }
+
+    public void setUrl_video(String url_video) {
+        this.url_video = url_video;
+    }
+
     @Override
     public String toString() {
-        return "Pelicula{" + "nombre=" + nombre + ", sinopsis=" + sinopsis + ", paginaOficial=" + paginaOficial + ", tituloOriginal=" + tituloOriginal + ", genero=" + genero + ", nacionalidad=" + nacionalidad + ", duracion=" + duracion + ", a\u00f1o=" + año + ", distribuidora=" + distribuidora + ", director=" + director + ", clasificacionEdad=" + clasificacionEdad + ", otrosDatos=" + otrosDatos + ", actores=" + actores + ", url_image=" + url_image + '}';
+        return "Pelicula{" + "nombre=" + nombre + ", sinopsis=" + sinopsis + ", paginaOficial=" + paginaOficial + ", tituloOriginal=" + tituloOriginal + ", genero=" + genero + ", nacionalidad=" + nacionalidad + ", duracion=" + duracion + ", a\u00f1o=" + año + ", distribuidora=" + distribuidora + ", director=" + director + ", clasificacionEdad=" + clasificacionEdad + ", otrosDatos=" + otrosDatos + ", actores=" + actores + ", url_image=" + url_image + ", url_video=" + url_video + '}';
     }
 
     
