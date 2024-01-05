@@ -10,18 +10,68 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Seleccionar Hora, Fecha y Sala</title>
-        <link rel="stylesheet" href="./estilos/index.css">
+     <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155274620-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-155274620-1');
+        </script>
+
+        <title>Reserva</title>
+
+        <meta charset="utf-8">
+
+        <!-- Bootstrap core CSS -->
+
+        <link href="estilos/bootstrap.css" rel="stylesheet">
+        <link href="estilos/style.css" rel="stylesheet">
+        <!-- styles needed for carousel slider -->
+        <link href="estilos/owl.carousel.css" rel="stylesheet">
+
+        <link href="estilos/fontawesome.min.css" rel="stylesheet"/>
+
+        <link href="estilos/multicines.css" rel="stylesheet" />
+
+        <!-- include pace script for automatic web page progress bar  -->
+        <script>
+            paceOptions = {
+                elements: true
+            };
+        </script>
     </head>
     <body>
-        <header>
-            <div class="app-info">
-                <h1>CinesWeb</h1>
-            </div>
-        </header>
+ <div id="wrapper" class="d-flex flex-column">
+            <div class="header">
+                <nav class="navbar fixed-top navbar-site navbar-light bg-light navbar-expand-lg" role="navigation" >
+                    <div class="container">
+                        <div class="navbar-identity">
 
+                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggler pull-right" type="button">
+                                <svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse" style="height: auto;">
+                            <ul class="nav navbar-nav ml-auto navbar-right">
+                                <li class="nav-item"><a href="index.jsp" class="nav-link">VOLVER AL MENU DE PELICULAS</a></li>
+                                <li class="nav-item"><a href="login.jsp" class="nav-link">REGISTRARSE</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">ALQUILER DE SALAS</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">PRECIOS</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">PROMOCIONES</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">MERCHANDISING</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">CONTACTO</a></li>
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </div>
+            <!-- /.header -->
         <form action="Reservas" method="post" onsubmit="return validarFormulario()">
             <label for="pelicula">Pelicula:</label>
             <% 

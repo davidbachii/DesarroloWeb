@@ -9,6 +9,7 @@ import com.example.model.Entrada;
 import com.example.model.Fecha;
 import com.example.model.Reserva;
 import com.example.model.Sala;
+import com.example.model.TarjetaCredito;
 
 import com.example.model.Usuario;
 import jakarta.servlet.http.HttpSession;

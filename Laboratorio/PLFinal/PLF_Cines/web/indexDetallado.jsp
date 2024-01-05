@@ -65,14 +65,14 @@
 
         <%  String nombrePelicula = request.getParameter("id");
            Pelicula pelicula = DatabaseManager.getInstance().getPeliculaPorNombre(nombrePelicula);
-
+           session.setAttribute("pelicula",pelicula);
         %>
         <div id="wrapper" class="d-flex flex-column">
             <div class="header">
                 <nav class="navbar fixed-top navbar-site navbar-light bg-light navbar-expand-lg" role="navigation" >
                     <div class="container">
                         <div class="navbar-identity">
-                            
+
                             <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggler pull-right" type="button">
                                 <svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
                             </button>
@@ -152,7 +152,7 @@
                         </div>
                         <h3 class="titulo-cine">COMENTARIOS Y HACER RESERVA</h3>
 
-
+                        <a href="reserva.jsp"><button type="button">Reservar Entradas</button></a>                        
                         <% if (session.getAttribute("usuario") != null) { %>
                         <%
                             // Obtener el usuario de la sesión
@@ -180,6 +180,8 @@
                                 <button type="submit">Enviar Comentario</button>
                             </form>
                         </div>
+
+
                         <% } %>
 
                         <%  
@@ -219,81 +221,9 @@
 
             <!-- /.main-container -->
 
-           
+
         </div>
         <!-- /.wrapper -->
-
-
-
-
-
-
-        <script src="/static/plantilla_bootstrap/assets/js/jquery/jquery-3.3.1.min.js"></script>
-        <script src="/static/js/script.js"></script>
-        <script src="/static/plantilla_bootstrap/assets/js/pace.min.js"></script>
-        <script src="/static/plantilla_bootstrap/assets/plugins/modernizr/modernizr-custom.js"></script>
-        <script src="/static/plantilla_bootstrap/assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
-        <script src="/static/plantilla_bootstrap/assets/bootstrap/js/bootstrap.bundle.js"></script>
-        <script src="/static/plantilla_bootstrap/assets/js/vendors.min.js"></script>
-        <script src="/static/plantilla_bootstrap/assets/plugins/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-        <script src="/static/plantilla_bootstrap/assets/plugins/responsive-cookie/cookies-message.js"></script>
-
-
-        <script>
-            /* Politica de cookies */
-            $.CookiesMessage(
-                    {
-                        messageText: 'Para garantizarte una navegación por nuestra web segura y de calidad, te informamos que utilizamos Cookies. Puedes aceptar todas las cookies pulsando el botón “Aceptar y seguir navegando”. Puedes bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador. Para más información consulte nuestra <b><a href="/politica-de-cookies/">Política de cookies</a></b>',
-                        messageBg: "#fff", // Message box background color
-                        messageColor: "#53234f", // Message box text color
-                        messageLinkColor: "#53234f", // Message box links color
-                        closeEnable: false,
-                        acceptEnable: true, // Show the Accept button
-                        acceptText: "ACEPTAR Y SEGUIR NAVEGANDO", // Accept button text
-                        infoEnable: false, // Show the More Info button
-                        infoText: "Más información", // More Info button text
-                        infoUrl: "#", // More Info button URL
-                        cookieExpire: 180										// Cookie expire time (days)
-                    }
-            );
-
-
-            /* Bannners */
-
-
-
-
-
-
-
-
-            /* End banners */
-
-            $(document).on('click', '[data-toggle="lightbox"]', function (event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
-
-                $('body').on('click', '.ekko-lightbox', function () {
-                    if (lightbox_close_auto == null) {
-                        $(this).modal('hide')
-                    }
-                })
-            });
-
-            $(document).ready(function () {
-
-
-
-
-
-
-
-            })
-
-        </script>
-
-
-
 
         <script>
             $(document).ready(function () {
