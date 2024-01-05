@@ -32,7 +32,8 @@
 
             <label for="fecha">Fecha:</label>
             <input type ="date" name="fecha" id="fecha" required><br>
-
+            
+            
             <label for="hora">Hora:</label>
             <select name="hora" id="hora" required></select><br>
 
@@ -56,7 +57,8 @@
                     } 
                 %>
             </select><br>
-
+            
+            
             <input type="submit" value="Seleccionar Asientos">
         </form>
 
@@ -78,7 +80,6 @@
 
             // Calcular el número de pases en el día
             var numPases = Math.floor((9 * 60 / duracionPelicula));
-            alert(numPases);
             for (var i = 0; i < numPases; i++) {
                 // Formatear la hora
                 var horaRedondeada = new Date(horaInicioCine);
