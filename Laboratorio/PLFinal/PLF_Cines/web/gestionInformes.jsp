@@ -17,6 +17,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Gestion de Informes</title>
+        <link rel="stylesheet" type="text/css" href="estilos/panelAdmin.css">
     </head>
     <body>
         <header>
@@ -53,13 +54,41 @@
             </select><br>
             <!-- Campos que esta ocultos para saber que accion esta realizando el servlet y no crear un servlet exclusivo para cada accion de 
             boorar de insertar, modificar o mostrar contenido-->
-            <input type="hidden" name="filtro" value="borrar">
-
-            <button type="submit">Filtrar por género</button><br>
 
             <label>Resultados</label>
-            <input type="text" id="resultadoFiltroGenero" name="resultadoFiltroGenero" value="${resultadoFiltroGenero}" ><br>
+            <input type="text" id="resultadoFiltroGenero" name="resultadoFiltroGenero" value="${resultadoFiltroGenero}"><br>
+            
+            <input type="hidden" name="filtro" value="genero">
+            <button type="submit">Filtrar por género</button><br>
 
+        </form>
+        <form action="GestionInforme" method="post">
+            <h2>Informe por salas</h2>
+            <label>Selecciona una sala</label>
+            <select name="salaElegida">
+                <% List<Sala> listaSalas = new ArrayList<>();
+                    List<String> nombreSalas = new ArrayList<>();
+                    try {
+                        //Tenemos la lista con todas las peliculas
+                        System.out.println("Tu madre");
+                        listaSalas = DatabaseManager.getInstance().getAllSalas();
+
+                        //Una vez que tengamos la lista, podemos recorrer los generos que hay en cada pelicula y añadirlo a la lista
+                        for (Sala sala : listaSalas) {
+                            nombreSalas.add(sala.getNombreSala());
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    for (String nombre : nombreSalas) { %>
+                <option value="<%= nombre %>"><%= nombre %></option>
+                <% } %>
+            </select><br>
+            <label>Resultados</label>
+            <input type="text" id="resultadoFiltroSala" name="resultadoFiltroSala" value="${resultadoFiltroSala}"><br>
+
+            <input type="hidden" name="filtro" value="sala">
+            <button type="submit">Filtrar por sala</button><br>
         </form>
 
         
