@@ -217,7 +217,6 @@ public class DatabaseManager {
                                 resultSet.getString("actores"),
                                 resultSet.getString("url_image"),
                                 resultSet.getString("url_video")
-                                
                         );
                     }
                 }
@@ -588,8 +587,8 @@ public class DatabaseManager {
                 preparedStatement.setString(1, reserva.getNumeroRef());
                 preparedStatement.setString(2, reserva.getEmail_usuario());
                 preparedStatement.setString(3, reserva.getId_entrada());
-                 preparedStatement.setInt(4, reserva.getFila_entrada());
-                    preparedStatement.setInt(5, reserva.getColumna_entrada());
+                preparedStatement.setInt(4, reserva.getFila_entrada());
+                preparedStatement.setInt(5, reserva.getColumna_entrada());
 
                 preparedStatement.setString(6, nombreActual); // Condición para actualizar la película específica
 
@@ -652,7 +651,6 @@ public class DatabaseManager {
         }
         return comentarios;
     }
-
 
     public static List<Comentario> getComentariosPorNombrePelicula(String nombre) throws SQLException {
         abrirConexion();
@@ -728,9 +726,7 @@ public class DatabaseManager {
                     preparedStatement.setString(1, tarjeta.getNumeroTarjeta());
                     preparedStatement.setString(2, tarjeta.getNombreTitular());
 
-                    LocalDate localDate = tarjeta.getFecha().toLocalDate();
-                    java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
-                    preparedStatement.setDate(3, fechaSQL);
+                    preparedStatement.setString(3, tarjeta.getFecha());
                     preparedStatement.setString(4, tarjeta.getCodigoSeguridad());
                     preparedStatement.setString(5, tarjeta.getEmail_user());
 
@@ -748,7 +744,7 @@ public class DatabaseManager {
         }
     }
 
-    public boolean validarTarjeta(String email, String numeroTarjeta, Fecha fechaExpiracion, String codigoSeguridad)
+    public boolean validarTarjeta(String email, String numeroTarjeta, String fechaExpiracion, String codigoSeguridad)
             throws ClassNotFoundException, SQLException {
         abrirConexion();
         // Establecer la conexión con la base de datos
@@ -758,12 +754,9 @@ public class DatabaseManager {
             String sql = "SELECT * FROM tarjeta WHERE email_usuario = ? AND numerotarjeta = ? AND fechaexpiracion = ? AND codigoseguridad = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-                LocalDate localDate = fechaExpiracion.toLocalDate();
-                java.sql.Date fechaSQL = java.sql.Date.valueOf(localDate);
-
                 preparedStatement.setString(1, email);
                 preparedStatement.setString(2, numeroTarjeta);
-                preparedStatement.setDate(3, fechaSQL);
+                preparedStatement.setString(3, fechaExpiracion);
                 preparedStatement.setString(4, codigoSeguridad);
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {

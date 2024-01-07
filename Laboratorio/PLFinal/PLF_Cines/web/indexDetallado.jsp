@@ -138,7 +138,7 @@
                             </div>
                             <div class="col-4 d-md-none">
 
-                                <a href="https://media.pillalas.com/imagenes/726afb526abffa837e0eefe6014392f91a0cd787abd039d68ca11f80c81df1c36bb42a8d.jpg" data-toggle="lightbox"><img src="https://media.pillalas.com/imagenes/726afb526abffa837e0eefe6014392f91a0cd787abd039d68ca11f80c81df1c36bb42a8d.jpg" class="img-responsive"/></a>
+                               
 
                                 <span data-toggle="modal" data-target="#trailer" class="btn btn-primary" style="padding-top: 10px; margin-top: 10px; display: block; padding-bottom: 10px;">TRAILER <i class="fa fa-play" style="margin-left: 2px;"></i></span>
                             </div>
@@ -152,13 +152,14 @@
                         </div>
                         <h3 class="titulo-cine">COMENTARIOS Y HACER RESERVA</h3>
 
-                        <a href="reserva.jsp"><button type="button">Reservar Entradas</button></a>                        
+                                          
                         <% if (session.getAttribute("usuario") != null) { %>
                         <%
                             // Obtener el usuario de la sesión
                             Usuario usuario = (Usuario) session.getAttribute("usuario");
                             String correoUsuario = (usuario != null) ? usuario.getCorreo() : "";
                         %>
+                        <a href="reserva.jsp"><button type="button">Reservar Entradas</button></a>     
                         <div class="comentarios">
                             <!-- Sección para hacer comentario -->
                             <form action="GestionComentarios" method="post">

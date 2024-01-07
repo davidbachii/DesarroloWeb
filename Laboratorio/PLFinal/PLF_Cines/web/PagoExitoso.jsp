@@ -41,6 +41,8 @@
 
         <p>Día: <%= session.getAttribute("fecha") %></p>
         <p>Hora: <%= session.getAttribute("hora") %></p>
-
+          
+        
+         <a href="index.jsp"><button type="button">Seguir Comprando</button></a>     
     </body>
 </html>

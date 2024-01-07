@@ -27,6 +27,7 @@
             <a href="gestionEntradas.jsp">Gestión de Entradas</a>
             <a href="gestionReservas.jsp">Gestión de Reservas</a>
             <a href="gestionInformes.jsp">Gestión de Informes</a>
+            <a href="login.jsp">Volver</a>
         </div>
         </header>
         <form action="GestionInforme" method="post">
@@ -69,8 +70,7 @@
                 <% List<Sala> listaSalas = new ArrayList<>();
                     List<String> nombreSalas = new ArrayList<>();
                     try {
-                        //Tenemos la lista con todas las peliculas
-                        System.out.println("Tu madre");
+                        
                         listaSalas = DatabaseManager.getInstance().getAllSalas();
 
                         //Una vez que tengamos la lista, podemos recorrer los generos que hay en cada pelicula y añadirlo a la lista

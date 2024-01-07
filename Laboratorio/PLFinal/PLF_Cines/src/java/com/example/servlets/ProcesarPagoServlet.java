@@ -63,7 +63,7 @@ public class ProcesarPagoServlet extends HttpServlet {
             DatabaseManager.getInstance().guardarTarjeta(tarjeta);
 
             // Validar la tarjeta en la base de datos
-            if (DatabaseManager.getInstance().validarTarjeta(emailUsuario, numeroTarjeta, codigoSeguridad)) {
+            if (DatabaseManager.getInstance().validarTarjeta(emailUsuario, numeroTarjeta, fechaExpiracion, codigoSeguridad)) {
                 // Los datos de la tarjeta son válidos
 
 

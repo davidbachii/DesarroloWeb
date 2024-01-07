@@ -13,11 +13,11 @@ public class TarjetaCredito {
     private String numeroTarjeta;
     private String nombreTitular;
 
-    private Fecha fecha;
+    private String fecha;
     private String codigoSeguridad;
     private String email_user;
 
-    public TarjetaCredito(String numeroTarjeta, String nombreTitular, Fecha fecha, String codigoSeguridad, String email_user) {
+    public TarjetaCredito(String numeroTarjeta, String nombreTitular, String fecha, String codigoSeguridad, String email_user) {
         this.numeroTarjeta = numeroTarjeta;
         this.nombreTitular = nombreTitular;
         this.fecha = fecha;
@@ -41,12 +41,11 @@ public class TarjetaCredito {
         this.nombreTitular = nombreTitular;
     }
 
-
-    public Fecha getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Fecha fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -66,11 +65,7 @@ public class TarjetaCredito {
         this.email_user = email_user;
     }
 
-    @Override
-    public String toString() {
-
-        return "TarjetaCredito{" + "numeroTarjeta=" + numeroTarjeta + ", nombreTitular=" + nombreTitular + ", fecha=" + fecha + ", codigoSeguridad=" + codigoSeguridad + ", email_user=" + email_user + '}';
-    }
+   
     
     
     

@@ -58,6 +58,7 @@
     <input class="option-button" type="button" value="Gestión de Entradas" onclick="location.href='gestionEntradas.jsp'">
     <input class="option-button" type="button" value="Gestión de Reservas" onclick="location.href='gestionReservas.jsp'">
     <input class="option-button" type="button" value="Gestión de Informes" onclick="location.href='gestionInformes.jsp'">
+    <input class="option-button" type="button" value="Volver" onclick="location.href='login.jsp'">
   </div>
 
 </body>
