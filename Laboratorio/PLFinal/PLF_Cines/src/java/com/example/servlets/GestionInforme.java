@@ -41,7 +41,7 @@ public class GestionInforme extends HttpServlet {
 
                 //Una vez que tenemos el genero elegido, vamos a ver las peliculas que tienen el genero que buscamos
                 try{
-                    peliculas = DatabaseManager.getAllPeliculas();
+                    peliculas = DatabaseManager.getInstance().getAllPeliculas();
                 }catch(Exception e){}
                 //Las peliculas que tengan el genero que buscamos, las añadiremos a la lista resultado
                 for(Pelicula pelicula : peliculas){

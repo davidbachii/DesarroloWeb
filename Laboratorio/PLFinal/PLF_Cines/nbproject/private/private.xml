@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/victorsanavia/Documents/Repositorios%20git/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/src/java/com/example/servlets/GestionPelicula.java</file>
-            <file>file:/C:/Users/victorsanavia/Documents/Repositorios%20git/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/gestionPeliculas.jsp</file>
-            <file>file:/C:/Users/victorsanavia/Documents/Repositorios%20git/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/src/java/com/example/model/Sala.java</file>
-            <file>file:/C:/Users/victorsanavia/Documents/Repositorios%20git/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/panelAdmin.jsp</file>
-            <file>file:/C:/Users/victorsanavia/Documents/Repositorios%20git/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/src/java/com/example/model/DatabaseManager.java</file>
+            <file>file:/C:/Users/victorsanavia/Documents/Repositorios%20git/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/gestionInformes.jsp</file>
+            <file>file:/C:/Users/victorsanavia/Documents/Repositorios%20git/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/src/java/com/example/servlets/GestionInforme.java</file>
         </group>
     </open-files>
 </project-private>

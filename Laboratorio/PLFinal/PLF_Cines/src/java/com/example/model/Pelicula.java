@@ -169,8 +169,4 @@ public class Pelicula {
     public String toString() {
         return "Pelicula{" + "nombre=" + nombre + ", sinopsis=" + sinopsis + ", paginaOficial=" + paginaOficial + ", tituloOriginal=" + tituloOriginal + ", genero=" + genero + ", nacionalidad=" + nacionalidad + ", duracion=" + duracion + ", a\u00f1o=" + año + ", distribuidora=" + distribuidora + ", director=" + director + ", clasificacionEdad=" + clasificacionEdad + ", otrosDatos=" + otrosDatos + ", actores=" + actores + ", url_image=" + url_image + ", url_video=" + url_video + '}';
     }
-
-    
-    
-
 }

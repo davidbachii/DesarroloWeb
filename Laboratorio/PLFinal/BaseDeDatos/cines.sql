@@ -11,9 +11,10 @@ CREATE TABLE Pelicula (
     distribuidora varchar(50),
     director varchar(50) NOT NULL,
     clasificacionEdad smallint NOT NULL,
-    otrosDatos varchar(200),
-    actores varchar(200),
-    url_image varchar(500),
+    otrosDatos varchar(200) NOT NULL,
+    actores varchar(200) NOT NULL,
+    url_image varchar(500) NOT NULL,
+    url_video varchar(500) NOT NULL,
     CONSTRAINT PK_Pelicula PRIMARY KEY (nombrePelicula)
 );
 
@@ -107,32 +108,32 @@ REFERENCES Pelicula (nombrePelicula);
 
 -- Películas
 
-INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('El Padrino', 'Un poderoso drama criminal que sigue la vida de la familia Corleone en el mundo del crimen organizado.', 'https://example.com/godfather', 'Il Padrino', 'Crimen, Drama', 'Estados Unidos', 175, 1972, 'Paramount Pictures', 'Francis Ford Coppola', 18, 'Ganadora de 3 premios Oscar.', 'Marlon Brando, Al Pacino, James Caan','images/ElPadrino.jpeg');
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video)
+VALUES ('El Padrino', 'Un poderoso drama criminal que sigue la vida de la familia Corleone en el mundo del crimen organizado.', 'https://example.com/godfather', 'Il Padrino', 'Crimen, Drama', 'Estados Unidos', 175, 1972, 'Paramount Pictures', 'Francis Ford Coppola', 18, 'Ganadora de 3 premios Oscar.', 'Marlon Brando, Al Pacino, James Caan','images/ElPadrino.jpeg', 'https://www.youtube.com/embed/iOyQx7MXaz0?si=nuCJfNniJoPzuQTb');
 
-INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Cadena Perpetua', 'La historia de un hombre inocente encarcelado que encuentra esperanza y amistad en Shawshank.', 'https://example.com/shawshank', 'Shawshank Redemption', 'Drama', 'Estados Unidos', 142, 1994, 'Columbia Pictures', 'Frank Darabont', 15, 'Basada en la novela de Stephen King.', 'Tim Robbins, Morgan Freeman', 'images/CadenaPerpetua.jpeg');
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video)
+VALUES ('Cadena Perpetua', 'La historia de un hombre inocente encarcelado que encuentra esperanza y amistad en Shawshank.', 'https://example.com/shawshank', 'Shawshank Redemption', 'Drama', 'Estados Unidos', 142, 1994, 'Columbia Pictures', 'Frank Darabont', 15, 'Basada en la novela de Stephen King.', 'Tim Robbins, Morgan Freeman', 'images/CadenaPerpetua.jpeg', 'https://www.youtube.com/embed/4u87tmlj4oE?si=n318897_-rDPVLzP');
 
-INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('El Caballero Oscuro', 'Batman se enfrenta a su némesis, el Joker, en un juego de ingenio que amenaza Gotham City.', 'https://example.com/darkknight', 'The Dark Knight', 'Acción, Crimen, Drama', 'Estados Unidos', 152, 2008, 'Warner Bros.', 'Christopher Nolan', 16, 'Ganadora de 2 premios Oscar.', 'Christian Bale, Heath Ledger, Aaron Eckhart', 'images/CaballeroOscuro.jpeg');
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video)
+VALUES ('El Caballero Oscuro', 'Batman se enfrenta a su némesis, el Joker, en un juego de ingenio que amenaza Gotham City.', 'https://example.com/darkknight', 'The Dark Knight', 'Accion, Crimen, Drama', 'Estados Unidos', 152, 2008, 'Warner Bros.', 'Christopher Nolan', 16, 'Ganadora de 2 premios Oscar.', 'Christian Bale, Heath Ledger, Aaron Eckhart', 'images/CaballeroOscuro.jpeg', 'https://www.youtube.com/embed/9MEuGQtM9wA?si=A5YSZGVuwDCtK83o');
 
-INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Cars', 'En un mundo donde los autos son seres vivos, el aspirante a corredor Rayo McQueen termina en un pequeño pueblo llamado Radiador Springs. Aprendiendo lecciones valiosas de amistad y humildad, Rayo descubre el verdadero significado de la velocidad.', 'https://www.paginaoficial.com/cars', 'Cars', 'Animación', 'Estadounidense', 120, 2006, 'Pixar', 'John Lasseter', 3, 'Datos adicionales sobre la película Cars.', 'Owen Wilson, Bonnie Hunt', 'images/Cars.png');
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video)
+VALUES ('Cars', 'En un mundo donde los autos son seres vivos, el aspirante a corredor Rayo McQueen termina en un pequeño pueblo llamado Radiador Springs. Aprendiendo lecciones valiosas de amistad y humildad, Rayo descubre el verdadero significado de la velocidad.', 'https://www.paginaoficial.com/cars', 'Cars', 'Animacion', 'Estadounidense', 120, 2006, 'Pixar', 'John Lasseter', 3, 'Datos adicionales sobre la película Cars.', 'Owen Wilson, Bonnie Hunt', 'images/Cars.png', 'https://www.youtube.com/embed/nuQDFYpPUh4?si=owxKwSIVF6QzUeh1');
 
-INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Cars 2', 'Rayo McQueen y su amigo Mate se ven envueltos en una misión internacional de espionaje cuando son reclutados para participar en el Grand Prix Mundial. Intrigas, giros y vueltas esperan a nuestros héroes mientras luchan contra una misteriosa amenaza.', 'https://www.paginaoficial.com/cars2', 'Cars 2', 'Animación', 'Estadounidense', 130, 2011, 'Pixar', 'John Lasseter', 3, 'Datos adicionales sobre la película Cars 2.', 'Owen Wilson, Larry the Cable Guy', 'images/Cars2.png');
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video)
+VALUES ('Cars 2', 'Rayo McQueen y su amigo Mate se ven envueltos en una misión internacional de espionaje cuando son reclutados para participar en el Grand Prix Mundial. Intrigas, giros y vueltas esperan a nuestros héroes mientras luchan contra una misteriosa amenaza.', 'https://www.paginaoficial.com/cars2', 'Cars 2', 'Animacion', 'Estadounidense', 130, 2011, 'Pixar', 'John Lasseter', 3, 'Datos adicionales sobre la película Cars 2.', 'Owen Wilson, Larry the Cable Guy', 'images/Cars2.png', 'https://www.youtube.com/embed/oGpIMRq1O3k?si=UUSOoOjMZg_RPptk');
 
-INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Cars 3', 'Con una nueva generación de corredores amenazando su posición, Rayo McQueen se embarca en un emocionante viaje de redescubrimiento y superación. Con la ayuda de entrenadores y nuevos amigos, Rayo intenta volver al ruedo y dejar su marca.', 'https://www.paginaoficial.com/cars3', 'Cars 3', 'Animación', 'Estadounidense', 110, 2017, 'Pixar', 'Brian Fee', 3, 'Datos adicionales sobre la película Cars 3.', 'Owen Wilson, Cristela Alonzo', 'images/Cars3.png');
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video)
+VALUES ('Cars 3', 'Con una nueva generación de corredores amenazando su posición, Rayo McQueen se embarca en un emocionante viaje de redescubrimiento y superación. Con la ayuda de entrenadores y nuevos amigos, Rayo intenta volver al ruedo y dejar su marca.', 'https://www.paginaoficial.com/cars3', 'Cars 3', 'Animacion', 'Estadounidense', 110, 2017, 'Pixar', 'Brian Fee', 3, 'Datos adicionales sobre la película Cars 3.', 'Owen Wilson, Cristela Alonzo', 'images/Cars3.png', 'https://www.youtube.com/embed/wtmW9rSRIzU?si=MttED7g2UgQk5A08');
 
-INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Kung Fu Panda', 'Po, un torpe oso panda, sueña con convertirse en un hábil guerrero de kung fu. Su vida da un giro cuando es elegido accidentalmente para cumplir una antigua profecía. Po se embarca en una aventura cómica y emocionante para aprender las artes marciales y salvar el Valle de la Paz.', 'https://www.paginaoficial.com/kungfupanda', 'Kung Fu Panda', 'Animación', 'Estadounidense', 95, 2008, 'DreamWorks Animation', 'Mark Osborne, John Stevenson', 3, 'Datos adicionales sobre la película Kung Fu Panda.', 'Jack Black, Angelina Jolie', 'images/KunfuPanda.png');
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video)
+VALUES ('Kung Fu Panda', 'Po, un torpe oso panda, sueña con convertirse en un hábil guerrero de kung fu. Su vida da un giro cuando es elegido accidentalmente para cumplir una antigua profecía. Po se embarca en una aventura cómica y emocionante para aprender las artes marciales y salvar el Valle de la Paz.', 'https://www.paginaoficial.com/kungfupanda', 'Kung Fu Panda', 'Animacion', 'Estadounidense', 95, 2008, 'DreamWorks Animation', 'Mark Osborne, John Stevenson', 3, 'Datos adicionales sobre la película Kung Fu Panda.', 'Jack Black, Angelina Jolie', 'images/KunfuPanda.png', 'https://www.youtube.com/embed/vRhMIpFu-Zw?si=Hwgor3iZaTcqtmz4');
 
-INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('One Piece', 'Monkey D. Luffy y su valiente tripulación emprenden un viaje épico en busca del legendario tesoro conocido como "One Piece". Enfrentándose a peligros, enemigos y desafíos, Luffy se esfuerza por convertirse en el Rey de los Piratas.', 'https://www.paginaoficial.com/onepiece', 'One Piece', 'Animación', 'Japonesa', 120, 2022, 'Toei Animation', 'Eiichiro Oda', 12, 'Datos adicionales sobre la película One Piece.', 'Mayumi Tanaka, Kazuya Nakai', 'images/OnePiece.png');
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video)
+VALUES ('One Piece', 'Monkey D. Luffy y su valiente tripulación emprenden un viaje épico en busca del legendario tesoro conocido como "One Piece". Enfrentándose a peligros, enemigos y desafíos, Luffy se esfuerza por convertirse en el Rey de los Piratas.', 'https://www.paginaoficial.com/onepiece', 'One Piece', 'Animacion', 'Japonesa', 120, 2022, 'Toei Animation', 'Eiichiro Oda', 12, 'Datos adicionales sobre la película One Piece.', 'Mayumi Tanaka, Kazuya Nakai', 'images/OnePiece.png', 'https://www.youtube.com/embed/CWrJQzm0diI?si=tzF0AIbtEib0kGCV');
 
-INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image)
-VALUES ('Rocky', 'Rocky Balboa, un boxeador de Filadelfia con pocas oportunidades, recibe la oportunidad de enfrentarse al campeón de peso pesado Apollo Creed. Aunque inicialmente es considerado como un oponente fácil, Rocky se prepara para la pelea de su vida, demostrando coraje y determinación.', 'https://www.paginaoficial.com/rocky', 'Rocky', 'Drama', 'Estadounidense', 120, 1976, 'United Artists', 'John G. Avildsen', 12, 'Datos adicionales sobre la película Rocky.', 'Sylvester Stallone, Talia Shire, Burgess Meredith', 'images/Rocky.png');
+INSERT INTO Pelicula (nombrePelicula, sinopsis, paginaOficial, tituloOriginal, genero, nacionalidad, duracion, anho, distribuidora, director, clasificacionEdad, otrosDatos, actores, url_image, url_video)
+VALUES ('Rocky', 'Rocky Balboa, un boxeador de Filadelfia con pocas oportunidades, recibe la oportunidad de enfrentarse al campeón de peso pesado Apollo Creed. Aunque inicialmente es considerado como un oponente fácil, Rocky se prepara para la pelea de su vida, demostrando coraje y determinación.', 'https://www.paginaoficial.com/rocky', 'Rocky', 'Drama', 'Estadounidense', 120, 1976, 'United Artists', 'John G. Avildsen', 12, 'Datos adicionales sobre la película Rocky.', 'Sylvester Stallone, Talia Shire, Burgess Meredith', 'images/Rocky.png', 'https://www.youtube.com/embed/Vb-Bx2YkIPA?si=UZigoaMfxKRR6Hy8');
 
 -- Puedes agregar más películas según sea necesario...
 
@@ -196,4 +197,3 @@ VALUES ('4444555566667777', 'Maria Lopez', '2023-11-30', '987', 'maria@example.c
 
 INSERT INTO Tarjeta (numeroTarjeta, nombreTitular, fechaExpiracion, codigoSeguridad, email_Usuario)
 VALUES ('7777888899990000', 'Carlos Martinez', '2023-09-30', '345', 'carlos@example.com');
-

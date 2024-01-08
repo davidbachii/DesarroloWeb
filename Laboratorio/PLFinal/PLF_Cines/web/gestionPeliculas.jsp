@@ -18,7 +18,7 @@
         <title>Gestion de peliculas</title>
         <link rel="stylesheet" type="text/css" href="estilos/panelAdmin.css">
         <script>
-            function validarAño() {
+            function validarAnno() {
                 var año = document.getElementById("anho").value;
                 var mensajeError = document.getElementById("mensajeErrorAño");
 
@@ -31,21 +31,79 @@
                     return true;
                 }
             }
+
+            function validarGenero() {
+                var genero = document.getElementById("genero").value;
+                var mensajeError = document.getElementById("mensajeErrorGenero");
+                var listaGeneros = ["Accion", "Animacion", "Aventura", "Ciencia Ficcion", "Comedia", "Documental", "Drama", "Fantasia", "Historica", "Musical", "Romantica", "Suspense", "Terror"];
+
+                if (listaGeneros.includes(genero)){
+                    mensajeError.innerHTML = "";
+                    return true;
+                } else {
+                    mensajeError.innerHTML = "Por favor, introduce un género válido.";
+                    mensajeError.style.color = "red";
+                    return false;
+                }
+            }
+
+            function validarNacionalidad(){
+                var nacionalidad = document.getElementById("nacionalidad").value;
+                var mensajeError = document.getElementById("mensajeErrorNacionalidad");
+                var listaNacionalidades = ["Espanola", "Francesa", "Inglesa", "Americana", "Inglesa", "Turca", "Italiana"];
+
+                if (listaNacionalidades.includes(nacionalidad)){
+                    mensajeError.innerHTML = "";
+                    return true;
+                } else {
+                    mensajeError.innerHTML = "Por favor, introduce una nacionalidad válida.";
+                    mensajeError.style.color = "red";
+                    return false;
+                }
+            }
+
+            function validarClasificacionEdad(){
+                var clasificacionEdad = document.getElementById("clasificacionEdad").value;
+                var mensajeError = document.getElementById("mensajeErrorClasificacionEdad");
+                var listaClasificaciones = ["0", "7", "12", "16", "18"];
+
+                if (listaClasificaciones.includes(clasificacionEdad)){
+                    mensajeError.innerHTML = "";
+                    return true;
+                } else {
+                    mensajeError.innerHTML = "Por favor, introduce una clasificación de edad válida.";
+                    mensajeError.style.color = "red";
+                    return false;
+                }
+            }
+
+            function validarDuracion(){
+                var duracion = document.getElementById("duracion").value;
+                var mensajeError = document.getElementById("mensajeErrorDuracion");
+
+                if (duracion < 0 || duracion > 773){
+                    mensajeError.innerHTML = "Por favor, introduce una duración válida.";
+                    mensajeError.style.color = "red";
+                    return false;
+                } else {
+                    mensajeError.innerHTML = "";
+                    return true;
+                }
+            }
         </script>
     </head>
     <body>
         
-         <header>
+        <header>
             <div class="navbar">
             <a href="gestionPeliculas.jsp">Gestión de Películas</a>
             <a href="gestionSalas.jsp">Gestión de Salas</a>
             <a href="gestionEntradas.jsp">Gestión de Entradas</a>
             <a href="gestionReservas.jsp">Gestión de Reservas</a>
             <a href="gestionInformes.jsp">Gestión de Informes</a>
-            <a href="login.jsp">Volver</a>
         </div>
         </header>
-        <form action="GestionPelicula" method="post"  onsubmit="return validarAño();">
+        <form action="GestionPelicula" method="post" onsubmit="return validarAnno() && validarGenero() && validarNacionalidad() && validarClasificacionEdad() && validarDuracion();">
             <h2>Crear Película</h2>
 
             <label for="nombre">Nombre</label>
@@ -85,12 +143,14 @@
             <label for="otrosDatos">Otros Datos</label>
             <input type="text" id="otrosDatos" name="otrosDatos" required><br> 
 
-
             <label for="actores">Actores</label>
             <input type="text" id="actores" name="actores" required><br> 
 
-            <label for="nacionalidad">Url imagen</label>
-            <input type="text" id="imagen" name="imagen" required><br> 
+            <label for="imagen">Url imagen</label>
+            <input type="text" id="imagen" name="imagen" required><br>
+            
+            <label for="video">Url video</label>
+            <input type="text" id="video" name="video" required><br>
 
 
             <!-- Campos que esta ocultos para saber que accion esta realizando el servlet y no crear un servlet exclusivo para cada accion de 
@@ -107,7 +167,7 @@
             <select name="peliculaABorrar">
                 <% List<Pelicula> peliculas = new ArrayList<>();
                     try {
-                        peliculas = DatabaseManager.getAllPeliculas(); // Asume que tienes un método para obtener todas las películas
+                        peliculas = DatabaseManager.getAllPeliculas();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -124,7 +184,7 @@
 
 
 
-        <form action="GestionPelicula" method="post">
+        <form action="GestionPelicula" method="post" onsubmit="return validarAnno() && validarGenero() && validarNacionalidad() && validarClasificacionEdad() && validarDuracion();">
             <h2>Modificar Película</h2>
             <select name="peliculaAModificar">
                 <% List<Pelicula> peliculas2 = new ArrayList<>();
@@ -168,19 +228,20 @@
             <label for="director">Nuevo Director</label>
             <input type="text" id="nuevoDirector" name="nuevoDirector" required><br>
 
-
             <label for="clasificacionEdad">Nueva Clasificación de Edad</label>
             <input type="number" id="nuevaClasificacionEdad" name="nuevaClasificacionEdad" required><br>
 
             <label for="nuevosDatos">Nuevos Datos</label>
             <input type="text" id="nuevosDatos" name="nuevosDatos" required><br>
 
-
             <label for="nuevosActores">Nuevos Actores</label>
             <input type="text" id="nuevosActores" name="nuevosActores" required><br>
 
             <label for="nuevaImagen">Nuevos url de la imagen</label>
             <input type="text" id="nuevaImagen" name="nuevaImagen" required><br>
+
+            <label for="nuevoVideo">URL del video en YouTube</label>
+            <input type="text" id="nuevoVideo" name="nuevoVideo" required><br>
 
 
             <!-- Agrega otros campos para los nuevos valores -->
@@ -246,13 +307,13 @@
             <label for="nuevaImagen">URL de la imagen</label>
             <input type="text" id="ImagenConsultar" name="ImagenConsultar" value="${ImagenConsultar}" ><br>
 
+            <label for="nuevoVideo">URL del video en YouTube</label>
+            <input type="text" id="VideoConsultar" name="VideoConsultar" value="${VideoConsultar}" ><br>
+
             <!-- Otros campos para los nuevos valores -->
 
             <input type="hidden" name="accion" value="Consultar">
             <button type="submit">Consultar Película</button><br><br>
         </form>         
-
-
-
     </body>
 </html>
