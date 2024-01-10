@@ -10,7 +10,7 @@
 
 <!DOCTYPE html>
 <html>
-     <head>
+    <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155274620-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -45,7 +45,7 @@
         </script>
     </head>
     <body>
- <div id="wrapper" class="d-flex flex-column">
+        <div id="wrapper" class="d-flex flex-column">
             <div class="header">
                 <nav class="navbar fixed-top navbar-site navbar-light bg-light navbar-expand-lg" role="navigation" >
                     <div class="container">
@@ -59,11 +59,6 @@
                             <ul class="nav navbar-nav ml-auto navbar-right">
                                 <li class="nav-item"><a href="index.jsp" class="nav-link">VOLVER AL MENU DE PELICULAS</a></li>
                                 <li class="nav-item"><a href="login.jsp" class="nav-link">REGISTRARSE</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">ALQUILER DE SALAS</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">PRECIOS</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">PROMOCIONES</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">MERCHANDISING</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">CONTACTO</a></li>
                             </ul>
                         </div>
                         <!--/.nav-collapse -->
@@ -72,48 +67,71 @@
                 </nav>
             </div>
             <!-- /.header -->
-        <form action="Reservas" method="post" onsubmit="return validarFormulario()">
-            <label for="pelicula">Pelicula:</label>
             <% 
-                Pelicula peliculaSeleccionada = (Pelicula) session.getAttribute("pelicula");
+            Pelicula peliculaSeleccionada = (Pelicula) session.getAttribute("pelicula");
             %>
-            <input type="text" name="pelicula" value="<%= peliculaSeleccionada.getNombre() %>" readonly>
-            <br>
 
-            <label for="fecha">Fecha:</label>
-            <input type ="date" name="fecha" id="fecha" required><br>
-            
-            
-            <label for="hora">Hora:</label>
-            <select name="hora" id="hora" required></select><br>
+            <div align="center" style="padding-top: 30px" class="formreservas">
+                <div class="row clearfix">
+                    <h1 class="text-center title-1"><%= peliculaSeleccionada.getNombre() %></h1>
+                    <hr class="mx-auto small text-hr" style="margin-bottom: 30px !important">
+
+                    <div style="clear:both">
+                        <hr>
+                    </div>
+                </div>
+                <h3 class="titulo-cine">RESERVA</h3>
+
+                <div class="col-3 d-none d-md-block">
+
+                    <a href="<%= peliculaSeleccionada.getUrl_image() %>" data-toggle="lightbox"><img class="img-responsive" style="width: 262px;" src="<%= peliculaSeleccionada.getUrl_image() %>" /></a>
 
 
-            <label for="sala">Sala:</label>
-            <select name="salaSeleccionada" id="salaSeleccionada">
-                <% List<Sala> salas = new ArrayList<>();
-                    try {
-                        salas = DatabaseManager.getAllSalas(); // Obtener todas las salas
+                </div>
+                <br>
+                <form action="Reservas" method="post" onsubmit="return validarFormulario()" >
 
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                %>
-                <option value="" disabled selected>Selecciona una sala</option>
-                <% 
-                    for (Sala sala : salas) { 
-                        if (sala.getNombre_pelicula().equals(peliculaSeleccionada.getNombre())) {
-                %>
-                <option value="<%= sala.getNombreSala() %>"><%= sala.getNombreSala()%></option>
-                <% 
-                        }
-                    } 
-                %>
-            </select><br>
-            
-            
-            <input type="submit" value="Seleccionar Asientos">
-        </form>
+                    <label for="fecha">Fecha:</label>
+                    <br>
+                    <input type ="date" name="fecha" id="fecha" required>
+                    <br>
+                    <br>
 
+                    <label for="hora">Hora:</label>
+                    <br>
+                    <select name="hora" id="hora" required></select>
+                    <br>
+
+                    <br>
+                    <label for="sala">Sala:</label>
+                    <br>
+                    <select name="salaSeleccionada" id="salaSeleccionada">
+                        <% List<Sala> salas = new ArrayList<>();
+                            try {
+                                salas = DatabaseManager.getAllSalas(); // Obtener todas las salas
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        %>
+                        <option value="" disabled selected>Selecciona una sala</option>
+                        <% 
+                            for (Sala sala : salas) { 
+                                if (sala.getNombre_pelicula().equals(peliculaSeleccionada.getNombre())) {
+                        %>
+                        <option value="<%= sala.getNombreSala() %>"><%= sala.getNombreSala()%></option>
+                        <% 
+                                }
+                            } 
+                        %>
+                    </select>
+                    <br>
+                    <br>
+
+                    <button type="submit">Seleccionar Butacas</button>
+                </form>
+            </div>
+        </div>
         <script>
             // Obtener la duración de la película y el tiempo entre pases desde el servidor
             var duracionPelicula = <%= peliculaSeleccionada.getDuracion() %>;

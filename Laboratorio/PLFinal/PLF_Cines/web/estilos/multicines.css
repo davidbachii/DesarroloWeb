@@ -89,6 +89,86 @@ h3.titulo-cine {
         color: #fff;
     }
 }
+.tablabutaca {
+    width: 70%; /* Puedes ajustar el ancho según tus necesidades */
+    margin: 0 auto; /* Esto centrará la tabla en el contenedor */
+}
+
+.tablabutaca table {
+    width: 100%; /* La tabla ocupa el 100% del ancho de su contenedor */
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tablabutaca td {
+    padding: 8px;
+    /* Otros estilos para las celdas según sea necesario */
+}
+
+.tablabutaca .butaca {
+    width: 50px; /* Ancho fijo para las butacas */
+    cursor: pointer;
+}
+
+.tablabutaca .sala {
+    position: relative;
+}
+
+.tablabutaca .pantalla {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.formreservas {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.formreservas form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formreservas label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.formreservas textarea {
+    resize: vertical;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.formreservas input[type="number"],
+.formreservas input[type="date"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+}
+
+.formreservas button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.formreservas button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.flex-fill {
+    flex:1 1 auto;
+}
 
 
 .comentarios {
@@ -138,6 +218,7 @@ h3.titulo-cine {
 .comentarios button[type="submit"]:hover {
     background-color: #0056b3;
 }
+
 .navbar-light .navbar-toggler {
     color: #fff !important;
     border-color: #fff !important;
@@ -199,10 +280,6 @@ body {
 #wrapper{
 
     min-height:100vh;
-}
-
-.flex-fill {
-    flex:1 1 auto;
 }
 
 

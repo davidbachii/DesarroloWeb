@@ -17,10 +17,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-
-
-
-
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155274620-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -138,7 +134,7 @@
                             </div>
                             <div class="col-4 d-md-none">
 
-                               
+
 
                                 <span data-toggle="modal" data-target="#trailer" class="btn btn-primary" style="padding-top: 10px; margin-top: 10px; display: block; padding-bottom: 10px;">TRAILER <i class="fa fa-play" style="margin-left: 2px;"></i></span>
                             </div>
@@ -152,7 +148,7 @@
                         </div>
                         <h3 class="titulo-cine">COMENTARIOS Y HACER RESERVA</h3>
 
-                                          
+
                         <% if (session.getAttribute("usuario") != null) { %>
                         <%
                             // Obtener el usuario de la sesión

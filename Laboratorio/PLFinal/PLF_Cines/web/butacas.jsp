@@ -2,8 +2,11 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.model.Sala" %>
 <%@ page import="com.example.model.Entrada" %>
+<%@ page import="com.example.model.Pelicula" %>
+
 <%@ page import="com.example.model.DatabaseManager" %>
 <%@ page import="com.example.model.Fecha" %>
+
 <%@ page import="java.time.LocalTime" %>
 
 
@@ -20,96 +23,157 @@ try {
     
     String horaStr = (String) session.getAttribute("hora");
     LocalTime hora = LocalTime.parse(horaStr);
+    
+    Pelicula peliculaSeleccionada = (Pelicula) session.getAttribute("pelicula");
+
 
 %>
 <!DOCTYPE html>
 <html>
     <head>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-155274620-1');
+        </script> 
         <meta charset="UTF-8">
         <title>Selección de Butacas</title>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
-        <link rel="stylesheet" href="estilos/butacas.css">
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155274620-1"></script>
+        <!-- Bootstrap core CSS -->
+
+        <link href="estilos/bootstrap.css" rel="stylesheet">
+        <link href="estilos/style.css" rel="stylesheet">
+        <!-- styles needed for carousel slider -->
+        <link href="estilos/owl.carousel.css" rel="stylesheet">
+
+        <link href="estilos/fontawesome.min.css" rel="stylesheet"/>
+
+        <link href="estilos/multicines.css" rel="stylesheet" />
     </head>
     <body>
-        <h2>Butacas para la Sala: <%= salaSelec.getNombreSala() %></h2>
-        <form action="GestionButacas" method="post">
-            <table style='border-collapse: collapse;'>
-                <%
-                for (int i = 0; i < salaSelec.getFilas(); i++) {
-                %>
-                <tr>
-                    <%
-                    for (int j = 0; j < salaSelec.getColumnas(); j++) {
-                        int fila = i + 1;
-                        int columna = j + 1;
-                        boolean ocupadaPorOtroCliente = false;
+        <div id="wrapper" class="d-flex flex-column">
+            <div class="header">
+                <nav class="navbar fixed-top navbar-site navbar-light bg-light navbar-expand-lg" role="navigation" >
+                    <div class="container">
+                        <div class="navbar-identity">
 
-                        // Verificar si la butaca está ocupada por otras entradas
-                        for (Entrada entrada : entradas) {
-                                System.out.println(entrada.getFecha().equals(fecha));
-                            if (entrada.getNombreSala().equals(salaSelec.getNombreSala()) &&
-                                entrada.getFila() == fila &&
-                                entrada.getColumna() == columna &&
-                                entrada.getFecha().toLocalDate().equals(fecha.toLocalDate()) &&
-                                entrada.getHora().equals(hora))
-                                 {
-                                ocupadaPorOtroCliente = true;
+                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggler pull-right" type="button">
+                                <svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse" style="height: auto;">
+                            <ul class="nav navbar-nav ml-auto navbar-right">
+                                <li class="nav-item"><a href="index.jsp" class="nav-link">VOLVER AL MENU DE PELICULAS</a></li>
+                                <li class="nav-item"><a href="login.jsp" class="nav-link">REGISTRARSE</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">ALQUILER DE SALAS</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">PRECIOS</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">PROMOCIONES</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">MERCHANDISING</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">CONTACTO</a></li>
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </div>
+            <div align="center" style="padding-top: 30px" class="formreservas">
+                <div class="row clearfix">
+                    <h1 class="text-center title-1"><%= peliculaSeleccionada.getNombre() %></h1>
+                    <hr class="mx-auto small text-hr" style="margin-bottom: 30px !important">
+
+                    <div style="clear:both">
+                        <hr>
+                    </div>
+                </div>
+                <h3 class="titulo-cine">SELECCION BUTACAS: <%= salaSelec.getNombreSala() %></h3>
+                <div class = "tablabutaca">
+                <form action="GestionButacas" method="post">
+                    <table style='border-collapse: collapse;'>
+                        <%
+                        for (int i = 0; i < salaSelec.getFilas(); i++) {
+                        %>
+                        <tr>
+                            <%
+                            for (int j = 0; j < salaSelec.getColumnas(); j++) {
+                                int fila = i + 1;
+                                int columna = j + 1;
+                                boolean ocupadaPorOtroCliente = false;
+
+                                // Verificar si la butaca está ocupada por otras entradas
+                                for (Entrada entrada : entradas) {
+                                        System.out.println(entrada.getFecha().equals(fecha));
+                                    if (entrada.getNombreSala().equals(salaSelec.getNombreSala()) &&
+                                        entrada.getFila() == fila &&
+                                        entrada.getColumna() == columna &&
+                                        entrada.getFecha().toLocalDate().equals(fecha.toLocalDate()) &&
+                                        entrada.getHora().equals(hora))
+                                         {
+                                        ocupadaPorOtroCliente = true;
 
 
-                                break;
+                                        break;
+                                    }
+                                }
+                            %>
+                            <td>
+                                <%
+                                    if (!ocupadaPorOtroCliente) {
+                                        // Verificar si la butaca está libre u ocupada
+                                        boolean ocupada = false;  
+
+                                        if (ocupada) {
+                                        //Si esta ocupada , establecer imagen butaca_seleccionada
+                                %>
+                                <img class='butaca ocupada'
+                                     src='butacas/butaca_seleccionada.png'
+                                     alt='Butaca <%= fila %>-<%= columna %>'
+                                     data-fila='<%= fila %>' data-columna='<%= columna %>'>
+                                <%
+                                } else {
+                               //Si esta libre , establecer imagen butaca_libre
+
+                                %>
+                                <img class='butaca'
+                                     src='butacas/butaca_libre.png'
+                                     alt='Butaca <%= fila %>-<%= columna %>'
+                                     data-fila='<%= fila %>' data-columna='<%= columna %>'>
+                                <%
+                                }
+                            } else {
+                            //Si esta ocupada previamente, establecer imagen butaca_ocupada
+                                %>
+                                <img class='butaca ocupadaPorClientes'
+                                     src='butacas/butaca_ocupada.png'
+                                     alt='Butaca <%= fila %>-<%= columna %>'
+                                     data-fila='<%= fila %>' data-columna='<%= columna %>'>
+                                <%
+                                }
+                                %>
+
+                            </td>
+                            <%
                             }
-                        }
-                    %>
-                    <td>
-                        <%
-                            if (!ocupadaPorOtroCliente) {
-                                // Verificar si la butaca está libre u ocupada
-                                boolean ocupada = false;  
+                                }
+                            %>
+                        </tr>
 
-                                if (ocupada) {
-                                //Si esta ocupada , establecer imagen butaca_seleccionada
-                        %>
-                        <img class='butaca ocupada'
-                             src='butacas/butaca_seleccionada.png'
-                             alt='Butaca <%= fila %>-<%= columna %>'
-                             data-fila='<%= fila %>' data-columna='<%= columna %>'>
-                        <%
-                        } else {
-                       //Si esta libre , establecer imagen butaca_libre
+                    </table>
 
-                        %>
-                        <img class='butaca'
-                             src='butacas/butaca_libre.png'
-                             alt='Butaca <%= fila %>-<%= columna %>'
-                             data-fila='<%= fila %>' data-columna='<%= columna %>'>
-                        <%
-                        }
-                    } else {
-                    //Si esta ocupada previamente, establecer imagen butaca_ocupada
-                        %>
-                        <img class='butaca ocupadaPorClientes'
-                             src='butacas/butaca_ocupada.png'
-                             alt='Butaca <%= fila %>-<%= columna %>'
-                             data-fila='<%= fila %>' data-columna='<%= columna %>'>
-                        <%
-                        }
-                        %>
+                    <!-- Campo oculto para almacenar butacas seleccionadas -->
+                    <input type="hidden" name="butacasSeleccionadas" id="butacasSeleccionadas">
 
-                    </td>
-                    <%
-                    }
-                        }
-                    %>
-                </tr>
-
-            </table>
-
-            <!-- Campo oculto para almacenar butacas seleccionadas -->
-            <input type="hidden" name="butacasSeleccionadas" id="butacasSeleccionadas">
-
-            <button type="submit" name="comprarButacas">Comprar</button>
-        </form>
+                    <button type="submit" name="comprarButacas">Comprar</button>
+                </form>
+                </div>
+            </div>
+        </div>
         <script>
             $(document).ready(function () {
                 var butacasSeleccionadas = [];

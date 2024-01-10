@@ -95,11 +95,6 @@
                             <ul class="nav navbar-nav ml-auto navbar-right">
                                 <li class="nav-item"><a href="index.jsp" class="nav-link">VOLVER AL MENU DE PELICULAS</a></li>
                                 <li class="nav-item"><a href="login.jsp" class="nav-link">REGISTRARSE</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">ALQUILER DE SALAS</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">PRECIOS</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">PROMOCIONES</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">MERCHANDISING</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">CONTACTO</a></li>
                             </ul>
                         </div>
                         <!--/.nav-collapse -->
