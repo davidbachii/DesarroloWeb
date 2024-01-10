@@ -104,7 +104,7 @@ public class GestionPelicula extends HttpServlet {
 
             try {
                 // Obtén la película por su nombre
-                Pelicula pelicula = DatabaseManager.getPeliculaPorNombre(nombrePeliculaAModificar);
+                Pelicula pelicula = DatabaseManager.getInstance().getPeliculaPorNombre(nombrePeliculaAModificar);
                 System.out.println(nombrePeliculaAModificar);
 
                 if (pelicula != null) {

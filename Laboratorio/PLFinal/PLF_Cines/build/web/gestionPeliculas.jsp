@@ -143,15 +143,19 @@
 
             <label for="genero">Nuevo Género</label>
             <input type="text" id="nuevoGenero" name="nuevoGenero" required><br>
+            <span id="mensajeErrorNuevoGenero"></span><br>
 
             <label for="nacionalidad">Nueva Nacionalidad</label>
             <input type="text" id="nuevaNacionalidad" name="nuevaNacionalidad" required><br>
+            <span id="mensajeErrorNuevaNacionalidad"></span><br>
 
             <label for="duracion">Nueva Duración (minutos)</label>
             <input type="number" id="nuevaDuracion" name="nuevaDuracion" required><br>
+            <span id="mensajeErrorNuevaDuracion"></span><br>
 
             <label for="nuevoAnho">Nuevo Año:</label>
             <input type="number" id="nuevoAnho" name="nuevoAnho" required><br>
+            <span id="mensajeErrorNuevoAnho"></span><br>
 
             <label for="distribuidora">Nueva Distribuidora</label>
             <input type="text" id="nuevaDistribuidora" name="nuevaDistribuidora" required><br>
@@ -161,6 +165,7 @@
 
             <label for="clasificacionEdad">Nueva Clasificación de Edad</label>
             <input type="number" id="nuevaClasificacionEdad" name="nuevaClasificacionEdad" required><br>
+            <span id="mensajeErrorNuevaClasificacionEdad"></span><br>
 
             <label for="nuevosDatos">Nuevos Datos</label>
             <input type="text" id="nuevosDatos" name="nuevosDatos" required><br>
@@ -174,11 +179,10 @@
             <label for="nuevoVideo">URL del video en YouTube</label>
             <input type="text" id="nuevoVideo" name="nuevoVideo" required><br>
 
-
             <!-- Agrega otros campos para los nuevos valores -->
 
             <input type="hidden" name="accion" value="modificar">
-            <button type="submit">Modificar Película</button>
+            <button type="submit" id="botonModificarPelicula">Modificar Película</button>
         </form>     
 
         <form action="GestionPelicula" method="post">
