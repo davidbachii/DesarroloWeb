@@ -17,80 +17,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Gestion de peliculas</title>
         <link rel="stylesheet" type="text/css" href="estilos/panelAdmin.css">
-        <script>
-            function validarAnno() {
-                var año = document.getElementById("anho").value;
-                var mensajeError = document.getElementById("mensajeErrorAño");
-
-                if (año < 1980 || año > 2024) {
-                    mensajeError.innerHTML = "Por favor, introduce un año entre 1980 y 2024.";
-                    mensajeError.style.color = "red";
-                    return false;
-                } else {
-                    mensajeError.innerHTML = "";
-                    return true;
-                }
-            }
-
-            function validarGenero() {
-                var genero = document.getElementById("genero").value;
-                var mensajeError = document.getElementById("mensajeErrorGenero");
-                var listaGeneros = ["Accion", "Animacion", "Aventura", "Ciencia Ficcion", "Comedia", "Documental", "Drama", "Fantasia", "Historica", "Musical", "Romantica", "Suspense", "Terror"];
-
-                if (listaGeneros.includes(genero)){
-                    mensajeError.innerHTML = "";
-                    return true;
-                } else {
-                    mensajeError.innerHTML = "Por favor, introduce un género válido.";
-                    mensajeError.style.color = "red";
-                    return false;
-                }
-            }
-
-            function validarNacionalidad(){
-                var nacionalidad = document.getElementById("nacionalidad").value;
-                var mensajeError = document.getElementById("mensajeErrorNacionalidad");
-                var listaNacionalidades = ["Espanola", "Francesa", "Inglesa", "Americana", "Inglesa", "Turca", "Italiana"];
-
-                if (listaNacionalidades.includes(nacionalidad)){
-                    mensajeError.innerHTML = "";
-                    return true;
-                } else {
-                    mensajeError.innerHTML = "Por favor, introduce una nacionalidad válida.";
-                    mensajeError.style.color = "red";
-                    return false;
-                }
-            }
-
-            function validarClasificacionEdad(){
-                var clasificacionEdad = document.getElementById("clasificacionEdad").value;
-                var mensajeError = document.getElementById("mensajeErrorClasificacionEdad");
-                var listaClasificaciones = ["0", "7", "12", "16", "18"];
-
-                if (listaClasificaciones.includes(clasificacionEdad)){
-                    mensajeError.innerHTML = "";
-                    return true;
-                } else {
-                    mensajeError.innerHTML = "Por favor, introduce una clasificación de edad válida.";
-                    mensajeError.style.color = "red";
-                    return false;
-                }
-            }
-
-            function validarDuracion(){
-                var duracion = document.getElementById("duracion").value;
-                var mensajeError = document.getElementById("mensajeErrorDuracion");
-
-                if (duracion < 0 || duracion > 773){
-                    mensajeError.innerHTML = "Por favor, introduce una duración válida.";
-                    mensajeError.style.color = "red";
-                    return false;
-                } else {
-                    mensajeError.innerHTML = "";
-                    return true;
-                }
-            }
-        </script>
     </head>
     <body>
         
@@ -104,7 +30,7 @@
             <a href="login.jsp">Volver</a>
         </div>
         </header>
-        <form action="GestionPelicula" method="post" onsubmit="return validarAnno() && validarGenero() && validarNacionalidad() && validarClasificacionEdad() && validarDuracion();">
+        <form action="GestionPelicula" method="post">
             <h2>Crear Película</h2>
 
             <label for="nombre">Nombre</label>
@@ -121,16 +47,19 @@
 
             <label for="genero">Género</label>
             <input type="text" id="genero" name="genero" required><br>
+            <span id="mensajeErrorGenero"></span><br>
 
             <label for="nacionalidad">Nacionalidad</label>
             <input type="text" id="nacionalidad" name="nacionalidad" required><br>
+            <span id="mensajeErrorNacionalidad"></span><br>
 
             <label for="duracion">Duración (minutos)</label>
             <input type="number" id="duracion" name="duracion" required><br>
+            <span id="mensajeErrorDuracion"></span><br>
 
             <label for="anho">Año:</label>
             <input type="number" id="anho" name="anho" required><br>
-            <span id="mensajeErrorAño"></span><br>
+            <span id="mensajeErrorAnho"></span><br>
 
             <label for="distribuidora">Distribuidora</label>
             <input type="text" id="distribuidora" name="distribuidora" required><br>
@@ -138,8 +67,9 @@
             <label for="director">Director</label>
             <input type="text" id="director" name="director" required><br>
 
-            <label for="duracion">ClasificacionEdad</label>
+            <label for="clasificacionEdad">ClasificacionEdad</label>
             <input type="number" id="clasificacionEdad" name="clasificacionEdad" required><br>
+            <span id="mensajeErrorClasificacionEdad"></span><br>
 
             <label for="otrosDatos">Otros Datos</label>
             <input type="text" id="otrosDatos" name="otrosDatos" required><br> 
@@ -158,7 +88,7 @@
             boorar de insertar, modificar o mostrar contenido-->
             <input type="hidden" name="accion" value="crear">
 
-            <button type="submit">Guardar Película</button>
+            <button type="submit" id="botonCrearPelicula">Guardar Película</button>
         </form>
 
 
@@ -185,7 +115,7 @@
 
 
 
-        <form action="GestionPelicula" method="post" onsubmit="return validarAnno() && validarGenero() && validarNacionalidad() && validarClasificacionEdad() && validarDuracion();">
+        <form action="GestionPelicula" method="post">
             <h2>Modificar Película</h2>
             <select name="peliculaAModificar">
                 <% List<Pelicula> peliculas2 = new ArrayList<>();
@@ -315,6 +245,7 @@
 
             <input type="hidden" name="accion" value="Consultar">
             <button type="submit">Consultar Película</button><br><br>
-        </form>         
+        </form>
+        <script src="estilos/checking.js"></script>
     </body>
 </html>
