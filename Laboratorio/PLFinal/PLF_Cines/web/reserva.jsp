@@ -70,66 +70,64 @@
             <% 
             Pelicula peliculaSeleccionada = (Pelicula) session.getAttribute("pelicula");
             %>
+            <div class="main-container inner-page flex-fill " style="padding-top: 30px !important;">
+                <div  style="padding-top: 30px" class="container">
+                    <div  align="center" class="row clearfix">
+                        <h1 class="text-center title-1"><%= peliculaSeleccionada.getNombre() %></h1>
+                        <hr class="mx-auto small text-hr" style="margin-bottom: 30px !important">
 
-            <div align="center" style="padding-top: 30px" class="formreservas">
-                <div class="row clearfix">
-                    <h1 class="text-center title-1"><%= peliculaSeleccionada.getNombre() %></h1>
-                    <hr class="mx-auto small text-hr" style="margin-bottom: 30px !important">
+                        <div style="clear:both">
+                            <hr>
+                        </div>
+                    </div>
+                    <h3 class="titulo-cine">RESERVA</h3>
 
-                    <div style="clear:both">
-                        <hr>
+                    <div class="col-3 d-none d-md-block">
+
+                        <a href="<%= peliculaSeleccionada.getUrl_image() %>" data-toggle="lightbox"><img class="img-responsive" style="width: 262px;" src="<%= peliculaSeleccionada.getUrl_image() %>" /></a>
+
+
+                    </div>
+                    <div class ="formreservas">
+                    <form action="Reservas" method="post" onsubmit="return validarFormulario()" >
+
+                        <label for="fecha">Fecha:</label>
+                        <input type ="date" name="fecha" id="fecha" required>
+                        <br>
+
+                        <label for="hora">Hora:</label>
+                        <select name="hora" id="hora" required></select>
+                        <br>
+
+                        <br>
+                        <label for="sala">Sala:</label>
+                        <select name="salaSeleccionada" id="salaSeleccionada">
+                            <% List<Sala> salas = new ArrayList<>();
+                                try {
+                                    salas = DatabaseManager.getAllSalas(); // Obtener todas las salas
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %>
+                            <option value="" disabled selected>Selecciona una sala</option>
+                            <% 
+                                for (Sala sala : salas) { 
+                                    if (sala.getNombre_pelicula().equals(peliculaSeleccionada.getNombre())) {
+                            %>
+                            <option value="<%= sala.getNombreSala() %>"><%= sala.getNombreSala()%></option>
+                            <% 
+                                    }
+                                } 
+                            %>
+                        </select>
+                        <br>
+                        <br>
+
+                        <button type="submit">Seleccionar Butacas</button>
+                    </form>
                     </div>
                 </div>
-                <h3 class="titulo-cine">RESERVA</h3>
-
-                <div class="col-3 d-none d-md-block">
-
-                    <a href="<%= peliculaSeleccionada.getUrl_image() %>" data-toggle="lightbox"><img class="img-responsive" style="width: 262px;" src="<%= peliculaSeleccionada.getUrl_image() %>" /></a>
-
-
-                </div>
-                <br>
-                <form action="Reservas" method="post" onsubmit="return validarFormulario()" >
-
-                    <label for="fecha">Fecha:</label>
-                    <br>
-                    <input type ="date" name="fecha" id="fecha" required>
-                    <br>
-                    <br>
-
-                    <label for="hora">Hora:</label>
-                    <br>
-                    <select name="hora" id="hora" required></select>
-                    <br>
-
-                    <br>
-                    <label for="sala">Sala:</label>
-                    <br>
-                    <select name="salaSeleccionada" id="salaSeleccionada">
-                        <% List<Sala> salas = new ArrayList<>();
-                            try {
-                                salas = DatabaseManager.getAllSalas(); // Obtener todas las salas
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        %>
-                        <option value="" disabled selected>Selecciona una sala</option>
-                        <% 
-                            for (Sala sala : salas) { 
-                                if (sala.getNombre_pelicula().equals(peliculaSeleccionada.getNombre())) {
-                        %>
-                        <option value="<%= sala.getNombreSala() %>"><%= sala.getNombreSala()%></option>
-                        <% 
-                                }
-                            } 
-                        %>
-                    </select>
-                    <br>
-                    <br>
-
-                    <button type="submit">Seleccionar Butacas</button>
-                </form>
             </div>
         </div>
         <script>

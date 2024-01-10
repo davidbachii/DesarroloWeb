@@ -101,6 +101,7 @@
             <a href="gestionEntradas.jsp">Gestión de Entradas</a>
             <a href="gestionReservas.jsp">Gestión de Reservas</a>
             <a href="gestionInformes.jsp">Gestión de Informes</a>
+            <a href="login.jsp">Volver</a>
         </div>
         </header>
         <form action="GestionPelicula" method="post" onsubmit="return validarAnno() && validarGenero() && validarNacionalidad() && validarClasificacionEdad() && validarDuracion();">
