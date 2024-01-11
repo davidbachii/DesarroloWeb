@@ -10,6 +10,7 @@
 
         <!-- Agrega el enlace a html2pdf.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>        
         <link rel="stylesheet" href="estilos/pagoexitoso.css">
     </head>
     <body>
@@ -40,8 +41,8 @@
         %>
         <ul>
             <% for (Map<String, Integer> butaca : butacasList) { %>
-                <li>Fila: <%= butaca.get("fila") %>, Columna: <%= butaca.get("columna") %></li>
-            <% } %>
+            <li>Fila: <%= butaca.get("fila") %>, Columna: <%= butaca.get("columna") %></li>
+                <% } %>
         </ul>
 
         <p>Día: <%= session.getAttribute("fecha") %></p>
@@ -50,16 +51,13 @@
             <h3>Código QR:</h3>
             <%-- Mostrar el código QR generado dinámicamente --%>
             <%
-                String datosReserva = "Numero de Referencia: \n" + session.getAttribute("numRef") +
-                                      "Dia: \n" + session.getAttribute("fecha") +
-                                      "Hora: \n" + session.getAttribute("hora") +
-                                      "Butacas Reservadas: \n" + butacasJSON;
-
-                // URL del servicio de generación de códigos QR
-                String qrServiceURL = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + java.net.URLEncoder.encode(datosReserva, "UTF-8");
+                String datosReserva = "Numero de Referencia: " + session.getAttribute("numRef") +
+                                      "Dia: " + session.getAttribute("fecha") +
+                                      "Hora: " + session.getAttribute("hora") +
+                                      "Butacas Reservadas: " + butacasJSON;
             %>
 
-            <img src="<%= qrServiceURL %>" alt="Código QR de la reserva">
+            <div id="codigoQR"></div>        
         </div>
         <!-- Agrega el botón de impresión PDF -->
         <button onclick="imprimirPDF()">Imprimir PDF</button>
@@ -68,6 +66,14 @@
 
         <!-- Agrega el script para imprimir en PDF -->
         <script>
+
+            var qrcode = new QRCode("codigoQR", {
+                text: '<%= datosReserva %>',
+                width: 200,
+                height: 200,
+
+                correctLevel: QRCode.CorrectLevel.H
+            });
             function imprimirPDF() {
                 const options = {
                     margin: 1,
@@ -77,7 +83,7 @@
                         scale: 2,
                         letterRendering: true,
                     },
-                    jsPDF: {unit: 'in', format: 'a3', orientation: 'portrait'},
+                    jsPDF: {unit: 'in', format: 'a4', orientation: 'portrait'},
                 };
 
                 const content = document.body;
