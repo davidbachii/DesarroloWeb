@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package com.example.servlets;
 
 import com.example.model.DatabaseManager;
@@ -12,13 +9,9 @@ import com.example.model.Sala;
 import com.example.model.TarjetaCredito;
 
 import com.example.model.Usuario;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
 import jakarta.servlet.ServletException;

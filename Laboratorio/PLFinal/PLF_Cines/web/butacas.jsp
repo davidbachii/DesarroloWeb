@@ -31,25 +31,15 @@ try {
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
 
-            gtag('config', 'UA-155274620-1');
-        </script> 
         <meta charset="UTF-8">
         <title>Selección de Butacas</title>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155274620-1"></script>
-        <!-- Bootstrap core CSS -->
 
         <link href="estilos/bootstrap.css" rel="stylesheet">
         <link href="estilos/style.css" rel="stylesheet">
-        <!-- styles needed for carousel slider -->
         <link href="estilos/owl.carousel.css" rel="stylesheet">
 
         <link href="estilos/fontawesome.min.css" rel="stylesheet"/>
@@ -71,16 +61,9 @@ try {
                             <ul class="nav navbar-nav ml-auto navbar-right">
                                 <li class="nav-item"><a href="index.jsp" class="nav-link">VOLVER AL MENU DE PELICULAS</a></li>
                                 <li class="nav-item"><a href="login.jsp" class="nav-link">REGISTRARSE</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">ALQUILER DE SALAS</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">PRECIOS</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">PROMOCIONES</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">MERCHANDISING</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">CONTACTO</a></li>
                             </ul>
                         </div>
-                        <!--/.nav-collapse -->
                     </div>
-                    <!-- /.container-fluid -->
                 </nav>
             </div>
             <div align="center" style="padding-top: 30px" class="formreservas">

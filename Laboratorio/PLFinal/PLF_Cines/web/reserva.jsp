@@ -11,38 +11,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155274620-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
 
-            gtag('config', 'UA-155274620-1');
-        </script>
 
         <title>Reserva</title>
 
         <meta charset="utf-8">
 
-        <!-- Bootstrap core CSS -->
-
         <link href="estilos/bootstrap.css" rel="stylesheet">
         <link href="estilos/style.css" rel="stylesheet">
-        <!-- styles needed for carousel slider -->
         <link href="estilos/owl.carousel.css" rel="stylesheet">
 
         <link href="estilos/fontawesome.min.css" rel="stylesheet"/>
 
         <link href="estilos/multicines.css" rel="stylesheet" />
 
-        <!-- include pace script for automatic web page progress bar  -->
-        <script>
-            paceOptions = {
-                elements: true
-            };
-        </script>
     </head>
     <body>
         <div id="wrapper" class="d-flex flex-column">
@@ -61,9 +43,7 @@
                                 <li class="nav-item"><a href="login.jsp" class="nav-link">REGISTRARSE</a></li>
                             </ul>
                         </div>
-                        <!--/.nav-collapse -->
                     </div>
-                    <!-- /.container-fluid -->
                 </nav>
             </div>
             <!-- /.header -->

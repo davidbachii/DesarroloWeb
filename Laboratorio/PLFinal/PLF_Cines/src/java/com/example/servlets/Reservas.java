@@ -1,6 +1,4 @@
-/* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package com.example.servlets;
 
 import com.example.model.DatabaseManager;
@@ -16,10 +14,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Alejandro
- */
 @WebServlet(name = "Reservas", urlPatterns = {"/Reservas"})
 public class Reservas extends HttpServlet {
 

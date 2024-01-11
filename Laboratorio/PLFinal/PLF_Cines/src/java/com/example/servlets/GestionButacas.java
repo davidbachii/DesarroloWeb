@@ -1,8 +1,5 @@
 package com.example.servlets;
 
-import com.example.model.DatabaseManager;
-import com.example.model.Entrada;
-import com.example.model.Fecha;
 import com.example.model.Sala;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -11,11 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.sql.SQLException;
-import java.time.LocalTime;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
