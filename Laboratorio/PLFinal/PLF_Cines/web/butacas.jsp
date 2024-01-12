@@ -40,10 +40,7 @@ try {
 
         <link href="estilos/bootstrap.css" rel="stylesheet">
         <link href="estilos/style.css" rel="stylesheet">
-        <link href="estilos/owl.carousel.css" rel="stylesheet">
-
         <link href="estilos/fontawesome.min.css" rel="stylesheet"/>
-
         <link href="estilos/multicines.css" rel="stylesheet" />
     </head>
     <body>
