@@ -78,7 +78,7 @@
 
                                     <li><p class="text-muted">Duración:<br><strong class="text-dark"><%= pelicula.getDuracion() %> minutos</strong></p></li>
 
-                                    <li><p class="text-muted">Calificación:<br><strong class="text-dark"><img title="No recomendada para menores de <%= pelicula.getClasificacionEdad() %>" style="width:20px; margin-right: 5px;"></strong></p></li>
+                                    <li><p class="text-muted">Calificación:<br><strong class="text-dark"><%= pelicula.getClasificacionEdad() %> años</strong></p></li>
                                     <li><p class="text-muted">Actores:<br><strong class="text-dark"><%= pelicula.getActores() %></strong></p></li>
                                     <li><p class="text-muted">Otros Datos:<br><strong class="text-dark"><%= pelicula.getOtrosDatos() %></strong></p></li>
                                     <li><p class="text-muted">Año:<br><strong class="text-dark"><%= pelicula.getAño() %></strong></p></li>

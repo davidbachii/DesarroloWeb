@@ -44,8 +44,11 @@
   </style>
 </head>
 <body>
+    
+    <% if (session.getAttribute("usuario") != null) { %>
 
   <h1>Panel Administrador</h1>
+  
 
   <div class="options-container">
     <input class="option-button" type="button" value="Gestión de Películas" onclick="location.href='gestionPeliculas.jsp'">
@@ -55,6 +58,10 @@
     <input class="option-button" type="button" value="Gestión de Informes" onclick="location.href='gestionInformes.jsp'">
     <input class="option-button" type="button" value="Volver" onclick="location.href='login.jsp'">
   </div>
+  
+  <% } else { %>
+                    <p>No se encontró el administrador.</p>
+                    <% } %> 
 
 </body>
 </html>

@@ -14,18 +14,18 @@
 
     </head>
     <body>
-        
-        
-        
-         <header>
+
+        <% if (session.getAttribute("usuario") != null) { %>
+
+        <header>
             <div class="navbar">
-            <a href="gestionPeliculas.jsp">Gestión de Películas</a>
-            <a href="gestionSalas.jsp">Gestión de Salas</a>
-            <a href="gestionEntradas.jsp">Gestión de Entradas</a>
-            <a href="gestionReservas.jsp">Gestión de Reservas</a>
-            <a href="gestionInformes.jsp">Gestión de Informes</a>
-            <a href="login.jsp">Volver</a>
-        </div>
+                <a href="gestionPeliculas.jsp">Gestión de Películas</a>
+                <a href="gestionSalas.jsp">Gestión de Salas</a>
+                <a href="gestionEntradas.jsp">Gestión de Entradas</a>
+                <a href="gestionReservas.jsp">Gestión de Reservas</a>
+                <a href="gestionInformes.jsp">Gestión de Informes</a>
+                <a href="login.jsp">Volver</a>
+            </div>
         </header>
         <form action="GestionSala" method="post">
             <h2>Crear Sala</h2>
@@ -160,7 +160,9 @@
 
         </form>     
 
-
+        <% } else { %>
+         <p>Acesso restringido.</p>
+        <% } %>
 
     </body>
 </html>

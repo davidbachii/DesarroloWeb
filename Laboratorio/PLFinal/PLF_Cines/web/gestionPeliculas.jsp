@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="estilos/panelAdmin.css">
     </head>
     <body>
+         <% if (session.getAttribute("usuario") != null) { %>
         
         <header>
             <div class="navbar">
@@ -240,5 +241,10 @@
             <button type="submit">Consultar Película</button><br><br>
         </form>
         <script src="estilos/checking.js"></script>
+        
+          <% } else { %>
+                     <p>Acesso restringido.</p>
+                    <% } %>
+                    
     </body>
 </html>

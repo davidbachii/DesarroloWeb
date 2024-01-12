@@ -18,6 +18,8 @@
     </head>
     <body>
         
+         <% if (session.getAttribute("usuario") != null) { %>
+        
          <header>
             <div class="navbar">
             <a href="gestionPeliculas.jsp">Gestión de Películas</a>
@@ -66,7 +68,9 @@
 
         </form>     
 
-
+              <% } else { %>
+                     <p>Acesso restringido.</p>
+                    <% } %>
 
     </body>
 </html>

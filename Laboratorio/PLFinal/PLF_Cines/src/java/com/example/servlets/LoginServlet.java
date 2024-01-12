@@ -22,6 +22,9 @@ public class LoginServlet extends HttpServlet {
         try {
             if (correo.equals("admin@gmail.com") && contrasena.equals("admin")) {
                 // Usuario admin autenticado correctamente
+                Usuario usuario = new Usuario("Admin", "Admin", contrasena, correo, null);
+                HttpSession session = request.getSession();
+                         session.setAttribute("usuario", usuario);
                 response.sendRedirect("panelAdmin.jsp");
 
             } else {
