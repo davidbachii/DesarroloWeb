@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.example.model;
 
-/**
- *
- * @author david
- */
 public class Comentario {
     
     private String texto;
@@ -68,11 +61,5 @@ public class Comentario {
     public String toString() {
         return "Comentario{" + "texto=" + texto + ", valoracion=" + valoracion + ", fecha=" + fecha + ", email_user=" + email_user + ", nombrePelicula=" + nombrePelicula + '}';
     }
-    
-    
-    
 
-   
-    
-    
 }

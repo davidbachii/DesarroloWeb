@@ -1,8 +1,3 @@
-<%-- 
-    Document   : gestionSalas
-    Created on : 28 dic 2023, 14:05:09
-    Author     : david
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
@@ -82,8 +77,7 @@
                 <option value="<%= sala.getNombreSala() %>"><%= sala.getNombreSala() %></option>
                 <% } %>
             </select><br>
-            <!-- Campos que esta ocultos para saber que accion esta realizando el servlet y no crear un servlet exclusivo para cada accion de 
-            boorar de insertar, modificar o mostrar contenido-->
+
             <input type="hidden" name="accion" value="borrar">
 
             <button type="submit">Borrar Sala</button>
@@ -127,9 +121,6 @@
                 <% } %>
             </select><br>
 
-
-            <!-- Agrega otros campos para los nuevos valores -->
-
             <input type="hidden" name="accion" value="modificar">
             <button type="submit">Modificar Sala</button>
         </form>     
@@ -141,7 +132,7 @@
             <select name="salaAConsultar">
                 <% List<Sala> salas3 = new ArrayList<>();
                     try {
-                        salas3 = DatabaseManager.getAllSalas(); // Asume que tienes un método para obtener todas las películas
+                        salas3 = DatabaseManager.getAllSalas(); 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

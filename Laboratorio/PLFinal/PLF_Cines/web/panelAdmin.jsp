@@ -1,8 +1,3 @@
-<%-- 
-    Document   : panelAdmin
-    Created on : 28 dic 2023, 14:32:38
-    Author     : david
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

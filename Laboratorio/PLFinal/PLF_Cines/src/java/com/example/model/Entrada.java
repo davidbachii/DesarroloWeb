@@ -1,17 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.example.model;
 
 import java.util.Date;
 import java.time.LocalTime;
-
-/**
- *
- * @author david
- */
-
 
 public class Entrada {
     private String idEntrada;
@@ -82,12 +73,5 @@ public class Entrada {
     public String toString() {
         return "Entrada{" + "idEntrada=" + idEntrada + ", fecha=" + fecha + ", hora=" + hora + ", fila=" + fila + ", columna=" + columna + ", nombreSala=" + nombreSala + '}';
     }
-
-    
- 
-    
-    
-    
-    
-    
+  
 }

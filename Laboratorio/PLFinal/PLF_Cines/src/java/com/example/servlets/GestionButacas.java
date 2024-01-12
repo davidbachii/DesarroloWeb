@@ -9,11 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
-/**
- *
- * @author Alejandro
- */
 @WebServlet("/GestionButacas")
 public class GestionButacas extends HttpServlet {
 

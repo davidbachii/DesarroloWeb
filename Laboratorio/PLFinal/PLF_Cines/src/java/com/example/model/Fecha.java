@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.example.model;
 
 import java.time.LocalDate;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
-/**
- *
- * @author david
- */
 /**
  * Clase para manejar fechas (AAAA-MM-DD).
  */
@@ -21,11 +14,6 @@ public class Fecha implements Cloneable {
     private int mes;
     private int dia;
 
-    /**
-     * Constructor.
-     *
-     * @param cadenaFecha Fecha en formato AAAA-MM-DD
-     */
     public Fecha(String cadenaFecha) {
         try {
             // Separamos los tokens que componen la fecha.

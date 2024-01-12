@@ -1,9 +1,3 @@
-<%-- 
-    Document   : gestionInformes
-    Created on : 4 ene 2024, 17:18:31
-    Author     : victorsanavia
---%>
-
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.model.Sala" %>

@@ -1,33 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package com.example.servlets;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import com.example.model.DatabaseManager;
 import com.example.model.Entrada;
 import com.example.model.Fecha;
-import com.example.model.Pelicula;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.Time;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author david
- */
 @WebServlet("/GestionEntrada")
 public class GestionEntrada extends HttpServlet {
 

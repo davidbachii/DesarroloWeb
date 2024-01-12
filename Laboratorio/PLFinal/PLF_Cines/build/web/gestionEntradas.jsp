@@ -1,9 +1,3 @@
-<%-- 
-    Document   : gestionEntradas
-    Created on : 29 dic 2023, 11:47:42
-    Author     : david
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
@@ -17,7 +11,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Gestion de entradas</title>
         <link rel="stylesheet" type="text/css" href="estilos/panelAdmin.css">
-        <!-- Agrega tus estilos y scripts si es necesario -->
     </head>
     <body>
         <header>
@@ -55,7 +48,7 @@
             <select name="nombreSala">
                 <% List<Sala> salas = new ArrayList<>();
                     try {
-                        salas = DatabaseManager.getAllSalas(); // Asume que tienes un método para obtener todas las películas
+                        salas = DatabaseManager.getAllSalas();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -175,9 +168,6 @@
 
             <label>Nombre de Sala</label>
             <input type="text" id="nombreSalaAconsultar" name="nombreSalaAconsultar" value="${nombreSalaAconsultar}"><br>
-
-
-            <!-- Otros campos para mostrar -->
 
             <input type="hidden" name="accion" value="Consultar">
             <button type="submit">Consultar Entrada</button><br><br>

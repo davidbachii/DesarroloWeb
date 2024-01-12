@@ -1,9 +1,3 @@
-<%-- 
-    Document   : gestionPeliculas
-    Created on : 28 dic 2023, 10:45:27
-    Author     : david
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.model.Sala" %>
@@ -106,8 +100,7 @@
                 <option value="<%= pelicula.getNombre() %>"><%= pelicula.getNombre() %></option>
                 <% } %>
             </select><br>
-            <!-- Campos que esta ocultos para saber que accion esta realizando el servlet y no crear un servlet exclusivo para cada accion de 
-            boorar de insertar, modificar o mostrar contenido-->
+
             <input type="hidden" name="accion" value="borrar">
 
             <button type="submit">Borrar Película</button>
@@ -179,8 +172,6 @@
             <label for="nuevoVideo">URL del video en YouTube</label>
             <input type="text" id="nuevoVideo" name="nuevoVideo" required><br>
 
-            <!-- Agrega otros campos para los nuevos valores -->
-
             <input type="hidden" name="accion" value="modificar">
             <button type="submit" id="botonModificarPelicula">Modificar Película</button>
         </form>     
@@ -244,8 +235,6 @@
 
             <label for="nuevoVideo">URL del video en YouTube</label>
             <input type="text" id="VideoConsultar" name="VideoConsultar" value="${VideoConsultar}" ><br>
-
-            <!-- Otros campos para los nuevos valores -->
 
             <input type="hidden" name="accion" value="Consultar">
             <button type="submit">Consultar Película</button><br><br>

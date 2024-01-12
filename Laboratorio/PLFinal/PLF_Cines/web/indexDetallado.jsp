@@ -1,8 +1,4 @@
-<%-- 
-    Document   : indexDetallado
-    Created on : 29 dic 2023, 20:21:19
-    Author     : david
---%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
@@ -17,44 +13,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155274620-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'UA-155274620-1');
-        </script>
-
         <title>Web oficial</title>
-
         <meta charset="utf-8">
 
 
-
-        <!-- Bootstrap core CSS -->
-
         <link href="estilos/bootstrap.css" rel="stylesheet">
         <link href="estilos/style.css" rel="stylesheet">
-        <!-- styles needed for carousel slider -->
         <link href="estilos/owl.carousel.css" rel="stylesheet">
 
         <link href="estilos/fontawesome.min.css" rel="stylesheet"/>
 
         <link href="estilos/multicines.css" rel="stylesheet" />
-
-
-        <!-- include pace script for automatic web page progress bar  -->
-        <script>
-            paceOptions = {
-                elements: true
-            };
-        </script>
-
-
-
 
     </head>
     <body>
@@ -77,28 +46,15 @@
                             <ul class="nav navbar-nav ml-auto navbar-right">
                                 <li class="nav-item"><a href="index.jsp" class="nav-link">VOLVER AL MENU DE PELICULAS</a></li>
                                 <li class="nav-item"><a href="login.jsp" class="nav-link">REGISTRARSE</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">ALQUILER DE SALAS</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">PRECIOS</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">PROMOCIONES</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">MERCHANDISING</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">CONTACTO</a></li>
                             </ul>
                         </div>
-                        <!--/.nav-collapse -->
                     </div>
-                    <!-- /.container-fluid -->
                 </nav>
             </div>
-            <!-- /.header -->
             <div class="main-container inner-page flex-fill " style="padding-top: 30px !important;">
                 <div class="container">
 
-
-
                     <% if (pelicula != null) { %>
-
-
-
                     <div class="row clearfix">
                         <h1 class="text-center title-1"><%= pelicula.getNombre() %></h1>
                         <hr class="mx-auto small text-hr" style="margin-bottom: 30px !important">
@@ -133,8 +89,6 @@
                                 </ul>
                             </div>
                             <div class="col-4 d-md-none">
-
-
 
                                 <span data-toggle="modal" data-target="#trailer" class="btn btn-primary" style="padding-top: 10px; margin-top: 10px; display: block; padding-bottom: 10px;">TRAILER <i class="fa fa-play" style="margin-left: 2px;"></i></span>
                             </div>
@@ -200,28 +154,14 @@
                         <% } else { %>
                         <p>No hay comentarios para esta película.</p>
                         <% } %>
-
-
-
                     </div>
-
-
-
-
                     <% } else { %>
                     <p>No se encontró la película.</p>
                     <% } %>    
 
                 </div>
             </div>
-
-
-            <!-- /.main-container -->
-
-
         </div>
-        <!-- /.wrapper -->
-
         <script>
             $(document).ready(function () {
                 $("#trailer").on('hidden.bs.modal', function (e) {
