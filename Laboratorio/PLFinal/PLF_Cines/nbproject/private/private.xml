@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/index.jsp</file>
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/gestionPeliculas.jsp</file>
+            <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/estilos/tarjeta.css</file>
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/reserva.jsp</file>
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/src/java/com/example/servlets/LoginServlet.java</file>
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/src/java/com/example/servlets/GestionPelicula.java</file>
@@ -23,6 +24,7 @@
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/src/java/com/example/model/Comentario.java</file>
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/src/java/com/example/servlets/CrearUsuario.java</file>
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/confirmarReserva.jsp</file>
+            <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/estilos/tarjetaCredito.js</file>
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/web/estilos/bootstrap.css</file>
             <file>file:/C:/Users/david/OneDrive%20-%20Universidad%20de%20Alcala/Mi%20unidad/UNI/Cuarto/DesarroloWeb/Laboratorio/PLFinal/PLF_Cines/src/java/com/example/model/DatabaseManager.java</file>
         </group>
